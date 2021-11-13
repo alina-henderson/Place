@@ -1,0 +1,6 @@
+.header__line {
+  margin: 0 auto;
+  border: 1px solid #545454;
+  opacity: 70%;
+  max-width: 880px;
+}
