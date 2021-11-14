@@ -6,3 +6,11 @@
 @import url(../blocks/header/__logo/header__logo.css);
 @import url(../blocks/header/__logo/header__logo.css);
 @import url(../blocks/header/__line/header__line.css);
+
+
+@import url(../blocks/popup/__button/popup__button.css);
+@import url(../blocks/popup/__content/popup__content.css);
+@import url(../blocks/popup/__name/popup__name.css);
+@import url(../blocks/popup/__occupation/popup__occupation.css);
+@import url(../blocks/popup/__title/popup__title);
+@import url(../blocks/popup/popup.css);
