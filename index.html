@@ -17,20 +17,35 @@
 
     <main class="main">
       <section class="profile">
-         <img src="./images/profile-image.jpg" alt="Изображение для профиля" class="profile__image">
-         <div class="profile__info">
-           <h1 class="profile__name">Жак-Ив Кусто</h1>
-           <p class="profile__occupation">Исследователь океана</p>
-           <button id="edit-button" class="profile__edit-button"></button>
-         </div>
-         <button id="add-button" class="profile__add-button"></button>
+
+        <div class="profile__data">
+          <img src="./images/profile-image.jpg" alt="Изображение для профиля" class="profile__image">
+          <div class="profile__info">
+              <h1 class="profile__name">Жак-Ив Кусто</h1>
+              <p class="profile__occupation">Исследователь океана</p>
+            <button id="edit-button" class="profile__edit-button"><img src="./images/edit_btn.svg" alt=""></button>
+          </div>
+        </div>
+
+        <button id="add-button" type="button" class="profile__add-button">+</button>
+      </section>
+
+      <section class="elements">
+        <div class="element">
+          <img class="element__picture" src="./images/karachaevsk.jpg" alt="Фотография" data-type="landscape">
+          <h2 class="element__title">Карачаевск</h2>
+          <img class="element__heart" src="./images/heart.svg" alt="Фотография" data-type="landscape">
+        </div>
+
+
+
       </section>
 
 
     </main>
 
     <footer class="footer">
-      
+
     </footer>
 
   </div>
