@@ -7,3 +7,10 @@
   padding: 0;
   margin: 0;
 }
+
+@media screen and (min-width: 320px)  {
+  .profile__data {
+    font-size: 27px;
+    line-height: 32px;
+  }
+}

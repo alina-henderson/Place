@@ -3,3 +3,11 @@
   padding: 45px 200px;
   max-width: 880px;
 }
+
+@media screen and (min-width: 320px)  {
+  .header {
+      max-width: 100vw;
+      padding: 28px 27px 31.6;
+      margin-bottom: 38.25;
+  }
+}
