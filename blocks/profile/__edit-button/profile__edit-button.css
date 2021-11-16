@@ -2,7 +2,8 @@
   border: none;
   background-color: transparent;
   padding: 0;
-  max-width: 24px;
+  width: 24px;
+  height: 24px;
   grid-row: 1;
   grid-column: 2;
   align-self: center;
@@ -10,4 +11,11 @@
 
 .profile__edit-button:hover {
   opacity: 60%;
+}
+
+@media screen and (max-width: 320px)  {
+  .profile__edit-button {
+    width: 18px;
+    height: 18px;
+  }
 }

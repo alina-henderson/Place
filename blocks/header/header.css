@@ -1,13 +1,12 @@
 .header {
-  margin: 0 auto;
-  padding: 45px 200px;
+  margin: 0 auto 36.25px;
   max-width: 880px;
 }
 
 @media screen and (min-width: 320px)  {
   .header {
-      max-width: 100vw;
-      padding: 28px 27px 31.6;
+      min-width: 320px;
       margin-bottom: 38.25;
+      padding: 0;
   }
 }

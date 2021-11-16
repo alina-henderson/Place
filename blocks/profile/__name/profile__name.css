@@ -8,9 +8,12 @@
   margin: 0;
 }
 
-@media screen and (min-width: 320px)  {
-  .profile__data {
+@media screen and (max-width: 320px)  {
+  .profile__name {
     font-size: 27px;
     line-height: 32px;
+    grid-row: 1;
+    grid-column: 3;
+    align-self: center;
   }
 }

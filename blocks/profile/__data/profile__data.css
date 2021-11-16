@@ -3,3 +3,10 @@
   display: flex;
   column-gap: 21px;
 }
+
+@media screen and (max-width: 320px)  {
+  .profile__data {
+    margin: 0 auto;
+    display: inline-block;
+  }
+}
