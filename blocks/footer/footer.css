@@ -4,9 +4,21 @@
   color: #545454;
 }
 
-@media screen and (max-width: 320px)  {
+@media screen and (max-width: 1024px)  {
   .footer {
-      max-width: 320px;
-      padding: 0;
+      max-width: 581px;
+  }
+}
+
+@media screen and (max-width: 768px)  {
+  .footer {
+      padding: 0 19px;
+  }
+}
+
+@media screen and (max-width: 630px)  {
+  .footer {
+      padding: 0 19px;
+      max-width: 282px;
   }
 }

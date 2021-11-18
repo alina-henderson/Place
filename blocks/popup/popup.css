@@ -6,5 +6,5 @@
   left: 0;
   display: grid;
   place-content: center;
-  display: none;
+  background-color:  rgba(0, 0, 0, 0.5); ;
 }

@@ -8,12 +8,18 @@
   margin: 0;
 }
 
-@media screen and (max-width: 320px)  {
+@media screen and (max-width: 768px)  {
+  .profile__occupation {
+    grid-row: 2;
+    grid-column: 1;
+    align-self: center;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 425px)  {
   .profile__occupation {
     font-size: 14px;
     line-height: 16.94px;
-    grid-row: 2;
-    grid-column: 3 / 4;
-    align-self: center;
   }
 }

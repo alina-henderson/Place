@@ -42,4 +42,5 @@
 @import url(../blocks/popup/__occupation/popup__occupation.css);
 @import url(../blocks/popup/__title/popup__title.css);
 @import url(../blocks/popup/popup.css);
-@import url(../blocks/popup/__line/popup__line.css)
+@import url(../blocks/popup/__line/popup__line.css);
+@import url(../blocks/popup/__close-icon/popup__close-icon.css);
