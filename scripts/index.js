@@ -1,8 +1,10 @@
 console.log("loaded")
-const editLink = document.querySelector(".profile__edit-button_type_open")
-const popup = document.querySelector(".popup")
-const popupCloseButton = popup.querySelector(".popup__close-icon")
-const addLink = document.querySelector(".profile__add-button_type-open")
+const editButton = document.querySelector(".profile__edit-button_type_open");
+const popup = document.querySelector(".popup");
+const popupCloseButton = popup.querySelector(".popup__close-icon");
+const addButton = document.querySelector(".profile__add-button_type-open");
+const popupOverlay = popup.querySelector(".popup__overlay");
+
 
 
 function open() {
@@ -13,8 +15,7 @@ function close() {
   popup.classList.remove("popup_opened");
 }
 
-editLink.addEventListener('click', open);
+editButton.addEventListener('click', open);
 popupCloseButton.addEventListener('click', close);
-addLink.addEventListener('click', open);
-
-
+addButton.addEventListener('click', open);
+popupOverlay.addEventListener('click', close);
