@@ -5,7 +5,7 @@
   margin-right: 18px;
 }
 
-@media screen and (max-width: 768px)  {
+@media screen and (max-width: 768px) {
   .profile__image {
       margin: 0;
       margin-bottom: 22.25px;
