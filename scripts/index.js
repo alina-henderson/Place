@@ -6,10 +6,11 @@ const addButton = document.querySelector(".profile__add-button_type-open");
 const popupOverlay = popup.querySelector(".popup__overlay");
 
 const form = popup.querySelector(".form");
-const nameInput = popup.querySelector(".popup__name");
-const occupationInput = popup.querySelector(".popup__occupation");
+const nameInput = popup.querySelector(".form__name");
+const occupationInput = popup.querySelector(".form__occupation");
 
-
+const nameValue = document.querySelector(".profile__name");
+const occupationValue = document.querySelector(".profile__occupation");
 
 
 function open() {
@@ -26,11 +27,10 @@ function formSubmitHandler (evt) {
   evt.preventDefault();
   nameOutput.textContent = nameInput.value;
   occupationOutput.textContent = occupationInput.value;
-
+}
 
 editButton.addEventListener('click', open);
 popupCloseButton.addEventListener('click', close);
 addButton.addEventListener('click', open);
 popupOverlay.addEventListener('click', close);
 form.addEventListener('submit', formSubmitHandler);
-
