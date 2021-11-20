@@ -3,7 +3,7 @@
   display: flex;
   column-gap: 21px;
 }
-@media screen and (max-width: 768px)  {
+@media screen and (max-width: 768px) {
   .profile__data {
     margin: 0 auto;
     flex-direction: column;
