@@ -4,14 +4,11 @@ const popup = document.querySelector(".popup");
 const popupCloseButton = popup.querySelector(".popup__close-icon");
 const addButton = document.querySelector(".profile__add-button_type-open");
 const popupOverlay = popup.querySelector(".popup__overlay");
-
 const form = popup.querySelector(".form");
 const nameInput = popup.querySelector(".form__name");
 const occupationInput = popup.querySelector(".form__occupation");
-
 const nameValue = document.querySelector(".profile__name");
 const occupationValue = document.querySelector(".profile__occupation");
-
 
 function open() {
   popup.classList.add("popup_opened");
