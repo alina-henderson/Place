@@ -3,7 +3,6 @@ const editButton = document.querySelector(".profile__edit-button_type_open");
 const popup = document.querySelector(".popup");
 const popupCloseButton = popup.querySelector(".popup__close-icon");
 const addButton = document.querySelector(".profile__add-button_type-open");
-const popupOverlay = popup.querySelector(".popup__overlay");
 const form = popup.querySelector(".form");
 const nameInput = popup.querySelector(".form__name");
 const occupationInput = popup.querySelector(".form__occupation");
@@ -29,5 +28,4 @@ function formSubmitHandler (evt) {
 editButton.addEventListener('click', open);
 popupCloseButton.addEventListener('click', close);
 addButton.addEventListener('click', open);
-popupOverlay.addEventListener('click', close);
 form.addEventListener('submit', formSubmitHandler);

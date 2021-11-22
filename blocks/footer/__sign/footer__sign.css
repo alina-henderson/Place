@@ -8,7 +8,7 @@
 
 @media screen and (max-width: 320px)  {
   .footer__sign {
-  font-size: 14px;
-  line-height: 16.94px;
+    font-size: 14px;
+    line-height: 16.94px;
   }
 }

@@ -7,7 +7,7 @@
 
 @media screen and (max-width: 768px) {
   .profile__image {
-      margin: 0;
-      margin-bottom: 22.25px;
+    margin: 0;
+    margin-bottom: 22.25px;
   }
 }
