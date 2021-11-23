@@ -1,6 +1,9 @@
 .form {
   border: none;
-  margin: 40px 0 55px;
+  margin: 48px 0 45px;
+  display: grid;
+  row-gap: 43px;
+  width: 100%;
 }
 
 @media screen and (max-width: 630px) {

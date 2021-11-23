@@ -9,6 +9,7 @@
   object-fit: cover;
   background-repeat: no-repeat;
   cursor: pointer;
+  border-radius: 2px;
 }
 
 .profile__add-button:hover {

@@ -10,6 +10,7 @@
   line-height: 21.78px;
   border: none;
   cursor: pointer;
+  border-radius: 2px;
 }
 
 .popup__button:hover {

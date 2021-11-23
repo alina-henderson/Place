@@ -1,4 +1,3 @@
-console.log("loaded")
 const editButton = document.querySelector(".profile__edit-button_type_open");
 const popup = document.querySelector(".popup");
 const popupCloseButton = popup.querySelector(".popup__close-icon");
