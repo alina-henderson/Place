@@ -5,6 +5,7 @@
   overflow: hidden;
   object-fit: cover;
   padding-bottom: 30px;
+  margin: 0 auto;
 }
 
 @media screen and (max-width: 320px) {

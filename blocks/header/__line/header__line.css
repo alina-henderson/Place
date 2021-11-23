@@ -3,4 +3,6 @@
   opacity: 70%;
   width: 100%;
   border: 1px solid #545454;
+  border-left: 0;
+  border-right: 0;
 }
