@@ -1,10 +1,17 @@
 .popup__close-icon {
+  background-image: url("../../../images/close_icon.svg");
+  background-color: transparent;
+  border: none;
+  object-fit: contain;
+  background-repeat: no-repeat;
+  background-position: center;
   position: absolute;
   width: 32px;
   height: 32px;
   left: calc(100% + 8px);
   bottom: calc(100% + 8px);
   cursor: pointer;
+  padding: 0;
 }
 
 @media screen and (max-width: 630px) {
