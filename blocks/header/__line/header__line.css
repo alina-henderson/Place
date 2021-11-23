@@ -4,9 +4,3 @@
   width: 100%;
   border: 1px solid #545454;
 }
-
-@media screen and (max-width: 320px)  {
-  .header__line {
-    width: 320px;
-  }
-}

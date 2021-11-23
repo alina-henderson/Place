@@ -8,7 +8,7 @@
   margin: 0;
 }
 
-@media screen and (max-width: 768px)  {
+@media screen and (max-width: 768px) {
   .profile__occupation {
     grid-row: 2;
     grid-column: 1;
@@ -17,7 +17,7 @@
   }
 }
 
-@media screen and (max-width: 425px)  {
+@media screen and (max-width: 425px) {
   .profile__occupation {
     font-size: 14px;
     line-height: 16.94px;

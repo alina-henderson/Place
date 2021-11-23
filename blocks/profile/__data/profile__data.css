@@ -1,7 +1,7 @@
 .profile__data {
   margin: 0;
   display: flex;
-  column-gap: 21px;
+  column-gap: 30px;
 }
 
 @media screen and (max-width: 768px) {
