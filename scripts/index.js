@@ -140,9 +140,7 @@ function formEditSubmitHandler(evt) {
 
 function formAddSubmitHandler(evt) {
   evt.preventDefault();
-  titleValue.textContent = titleInput.value;
-  linkValue.textContent = linkInput.value;
-  const elementsItem = getItem({title: titleValue, link: linkValue});
+  const elementsItem = getItem({name: titleInput.value, link: linkInput.value});
   elementsContainer.prepend(elementsItem);
 
   close();
@@ -154,6 +152,16 @@ function deleteElement(event) {
   const elementsItem = targetElement.closest('.element')
   elementsItem.remove();
 }
+
+//popup opening full-size images
+// нужно найти все попапы const popups = query('...');
+// затем итеративно проходишь по попапам и внутри каждого ищешь closeButton
+// затем на эту кнопку добавляешь событие клика, которое вызывает closePopup(сюда кинуть сам попап) 
+//смысл в том чтобы функции открытия и закрытия принимали в себя Html element попапа, а затем меняли его состояние
+//function closePopup(popup) {
+//   popup.classList.remove('open')
+// }
+
 
 
 
