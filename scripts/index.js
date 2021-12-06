@@ -59,6 +59,14 @@ function getItem(item) {
   const removeButton = newItem.querySelector('.element__button-trash');
   removeButton.addEventListener('click', deleteElement);
 
+  //set up like button
+  newItem.querySelector('.element__button-like').addEventListener('click', function (evt) {
+    evt.target.classList.toggle('.element__button-like_active');
+  });
+
+  //open full size image popups
+
+
   return newItem;
 }
 
@@ -67,7 +75,7 @@ function getItem(item) {
 //for edit button
 const editButton = document.querySelector('.profile__edit-button');
 const popupEdit = document.querySelector('.popup_edit');
-const popupEditCloseButton = popupEdit.querySelector('.popup__close-icon_edit');
+const popupEditCloseButton = popupEdit.querySelector('.button-close_edit');
 const formEdit = popupEdit.querySelector('.form_edit');
 const nameInput = popupEdit.querySelector('.form__input_value_name');
 const occupationInput = popupEdit.querySelector('.form__input_value_occupation');
@@ -77,15 +85,12 @@ const occupationValue = document.querySelector('.profile__occupation');
 //for add button
 const addButton = document.querySelector('.profile__add-button');
 const popupAdd = document.querySelector('.popup_add');
-const popupAddCloseButton = popupAdd.querySelector('.popup__close-icon_add');
+const popupAddCloseButton = popupAdd.querySelector('.button-close_add');
 const formAdd = popupAdd.querySelector('.form_add');
 const titleInput = popupAdd.querySelector('.form__input_value_title');
 const linkInput = popupAdd.querySelector('.form__input_value_image-link');
 const titleValue = document.querySelector('.element__title');
 const linkValue = document.querySelector('.element__picture');
-
-//for trash button
-// const removeButton = document.querySelector(".element__button-trash");
 
 
 //command edit button
@@ -147,6 +152,8 @@ function deleteElement(event) {
   const elementsItem = targetElement.closest('.element')
   elementsItem.remove();
 }
+
+
 
 editButton.addEventListener('click', openEdit);
 popupEditCloseButton.addEventListener('click', closeEdit);

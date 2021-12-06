@@ -1,5 +1,5 @@
-.popup__close-icon {
-  background-image: url("../../../images/close_icon.svg");
+.button-close {
+  background-image: url("../../images/close_icon.svg");
   background-color: transparent;
   border: none;
   object-fit: contain;
@@ -14,12 +14,12 @@
   padding: 0;
 }
 
-.popup__close-icon:hover {
+.button-close:hover {
   opacity: 0.6;
 }
 
 @media screen and (max-width: 630px) {
-  .popup__close-icon {
+  .button-close {
     background-image: url("../../../images/close_icon_mob.svg");
     left: calc(100% - 20px);
     bottom: calc(100% + 16px);
