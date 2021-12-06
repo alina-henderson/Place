@@ -91,6 +91,8 @@ const titleInput = popupAdd.querySelector('.form__input_value_title');
 const linkInput = popupAdd.querySelector('.form__input_value_image-link');
 const titleValue = document.querySelector('.element__title');
 const linkValue = document.querySelector('.element__picture');
+const buttonSave = popupAdd.querySelector('.popup__button_add');
+
 
 
 //command edit button
@@ -110,8 +112,6 @@ function openAdd() {
   titleInput.value = 'Название';
   linkInput.value = 'Ссылка на картинку';
 
-  const elementsItem = getItem({ title: titleInput, link: linkInput });
-  elementsContainer.prepend(elementsItem);
 }
 
 // function handleAdd() {
@@ -142,6 +142,8 @@ function formAddSubmitHandler(evt) {
   evt.preventDefault();
   titleValue.textContent = titleInput.value;
   linkValue.textContent = linkInput.value;
+  const elementsItem = getItem({title: titleValue, link: linkValue});
+  elementsContainer.prepend(elementsItem);
 
   close();
 }
@@ -158,7 +160,7 @@ function deleteElement(event) {
 editButton.addEventListener('click', openEdit);
 popupEditCloseButton.addEventListener('click', closeEdit);
 formEdit.addEventListener('submit', formEditSubmitHandler);
-formAdd.addEventListener('submit', formAddSubmitHandler);
+buttonSave.addEventListener('click', formAddSubmitHandler);
 addButton.addEventListener('click', openAdd);
 popupAddCloseButton.addEventListener('click', closeAdd);
 
