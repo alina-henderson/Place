@@ -1,6 +1,4 @@
 .popup-pic__image {
-  object-fit: scale-down;
-  object-position: center;
   position: relative;
   max-width: 75vw;
   max-height: 75vh;

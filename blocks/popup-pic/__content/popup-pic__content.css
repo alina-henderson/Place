@@ -4,6 +4,5 @@
   top: 50%;
   transform: translate(-50%, -50%);
   margin: 0, auto;
-  max-width: 75vw;
-  max-height: 75vh;
+  width: fit-content;
 }
