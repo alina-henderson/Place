@@ -35,6 +35,31 @@ const initialCards = [
 const elementsContainer = document.querySelector('.elements');
 const templateEl = document.querySelector('.template');
 
+//for edit button
+const editButton = document.querySelector('.profile__edit-button');
+const popupEdit = document.querySelector('.popup_edit');
+const popupEditCloseButton = popupEdit.querySelector('.button-close_edit');
+const formEdit = popupEdit.querySelector('.form_edit');
+const nameInput = popupEdit.querySelector('.form__input_value_name');
+const occupationInput = popupEdit.querySelector('.form__input_value_occupation');
+const nameValue = document.querySelector('.profile__name');
+const occupationValue = document.querySelector('.profile__occupation');
+
+//for add button
+const addButton = document.querySelector('.profile__add-button');
+const popupAdd = document.querySelector('.popup_add');
+const popupAddCloseButton = popupAdd.querySelector('.button-close_add');
+const formAdd = popupAdd.querySelector('.form_add');
+const titleInput = popupAdd.querySelector('.form__input_value_title');
+const linkInput = popupAdd.querySelector('.form__input_value_image-link');
+const titleValue = document.querySelector('.element__title');
+const linkValue = document.querySelector('.element__picture');
+const buttonSave = popupAdd.querySelector('.popup__button_add');
+
+//for popup-pic close button
+const popupPicBtn = document.querySelector('.button-close_popuppic');
+
+
 function render() {
   const html = initialCards
     .map((item) => {
@@ -61,38 +86,37 @@ function getItem(item) {
 
   //set up like button
   newItem.querySelector('.element__button-like').addEventListener('click', function (evt) {
-    evt.target.classList.toggle('.element__button-like_active');
+    evt.target.classList.toggle('element__button-like_active');
   });
 
-  //open full size image popups
+  //open full-size image popups
+  const popupPic = document.querySelector('.popup-pic')
+  const imagePopupPic = document.querySelector('.popup-pic__image');
+  const titlePopupPic = document.querySelector('.popup-pic__title');
+  const openPopupPic = newItem.querySelector('.element');
 
+
+  newItem.querySelector('.element__picture').addEventListener('click', function() {
+  imagePopupPic.src = item.link;
+  titlePopupPic.textContent = item.name;
+  imagePopupPic.alt = item.alt;
+
+  function openPopupPic() {
+    popupPic.classList.add('popup-pic_opened');
+  }
+
+  openPopupPic();
+
+  function closePopupPic() {
+    popupPic.classList.remove('popup-pic_opened');
+  }
+
+  popupPicBtn.addEventListener('click', closePopupPic);
+
+})
 
   return newItem;
 }
-
-
-
-//for edit button
-const editButton = document.querySelector('.profile__edit-button');
-const popupEdit = document.querySelector('.popup_edit');
-const popupEditCloseButton = popupEdit.querySelector('.button-close_edit');
-const formEdit = popupEdit.querySelector('.form_edit');
-const nameInput = popupEdit.querySelector('.form__input_value_name');
-const occupationInput = popupEdit.querySelector('.form__input_value_occupation');
-const nameValue = document.querySelector('.profile__name');
-const occupationValue = document.querySelector('.profile__occupation');
-
-//for add button
-const addButton = document.querySelector('.profile__add-button');
-const popupAdd = document.querySelector('.popup_add');
-const popupAddCloseButton = popupAdd.querySelector('.button-close_add');
-const formAdd = popupAdd.querySelector('.form_add');
-const titleInput = popupAdd.querySelector('.form__input_value_title');
-const linkInput = popupAdd.querySelector('.form__input_value_image-link');
-const titleValue = document.querySelector('.element__title');
-const linkValue = document.querySelector('.element__picture');
-const buttonSave = popupAdd.querySelector('.popup__button_add');
-
 
 
 //command edit button
@@ -113,18 +137,6 @@ function openAdd() {
   linkInput.value = 'Ссылка на картинку';
 
 }
-
-// function handleAdd() {
-//   const inputTitleText = titleInput.value;
-//   const inputImage = linkInput.value;
-
-//   const elementsItem = getItem({title: inputTitle, link: inputlink});
-//   elementsContainerEl.prepend(elementsItem);
-
-//   titleInput.value = "";
-//   titleInput.value = "";
-// }
-
 
 function closeAdd() {
   popupAdd.classList.remove('popup_opened');
@@ -152,17 +164,6 @@ function deleteElement(event) {
   const elementsItem = targetElement.closest('.element')
   elementsItem.remove();
 }
-
-//popup opening full-size images
-// нужно найти все попапы const popups = query('...');
-// затем итеративно проходишь по попапам и внутри каждого ищешь closeButton
-// затем на эту кнопку добавляешь событие клика, которое вызывает closePopup(сюда кинуть сам попап) 
-//смысл в том чтобы функции открытия и закрытия принимали в себя Html element попапа, а затем меняли его состояние
-//function closePopup(popup) {
-//   popup.classList.remove('open')
-// }
-
-
 
 
 editButton.addEventListener('click', openEdit);
