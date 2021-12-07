@@ -155,7 +155,7 @@ function formAddSubmitHandler(evt) {
   const elementsItem = getItem({name: titleInput.value, link: linkInput.value});
   elementsContainer.prepend(elementsItem);
 
-  close();
+  closeAdd();
 }
 
 //command trash button
