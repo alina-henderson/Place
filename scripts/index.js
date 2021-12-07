@@ -118,7 +118,6 @@ function getItem(item) {
   return newItem;
 }
 
-
 //command edit button
 function openEdit() {
   popupEdit.classList.add('popup_opened');
@@ -142,17 +141,17 @@ function closeAdd() {
   popupAdd.classList.remove('popup_opened');
 }
 
-function formEditSubmitHandler(evt) {
+function submitFormEditHandler(evt) {
   evt.preventDefault();
   nameValue.textContent = nameInput.value;
   occupationValue.textContent = occupationInput.value;
 
-  close();
+  closeEdit();
 }
 
-function formAddSubmitHandler(evt) {
+function submitFormAddHandler(evt) {
   evt.preventDefault();
-  const elementsItem = getItem({name: titleInput.value, link: linkInput.value});
+  const elementsItem = getItem({name: titleInput.value, link: linkInput.value, alt: titleInput.value});
   elementsContainer.prepend(elementsItem);
 
   closeAdd();
@@ -165,11 +164,10 @@ function deleteElement(event) {
   elementsItem.remove();
 }
 
-
 editButton.addEventListener('click', openEdit);
 popupEditCloseButton.addEventListener('click', closeEdit);
-formEdit.addEventListener('submit', formEditSubmitHandler);
-buttonSave.addEventListener('click', formAddSubmitHandler);
+formEdit.addEventListener('submit', submitFormEditHandler);
+buttonSave.addEventListener('click', submitFormAddHandler);
 addButton.addEventListener('click', openAdd);
 popupAddCloseButton.addEventListener('click', closeAdd);
 
