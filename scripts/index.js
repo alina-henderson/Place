@@ -94,45 +94,65 @@ function getItem(item) {
     evt.target.classList.toggle('element__button-like_active');
   });
 
-  // //modify to open with open popup
+  //modify to open with open popup
+  //open full-size image popups
   const openPopupPic = newItem.querySelector('.element');
 
- function openPopupPic() {
-    newItem.querySelector('.element__picture').addEventListener('click', function () {
-      imagePopupPic.src = item.link;
-      titlePopupPic.textContent = item.name;
-      imagePopupPic.alt = item.alt;
 
-      openPopup(popupPic);
+  newItem.querySelector('.element__picture').addEventListener('click', function () {
+    imagePopupPic.src = item.link;
+    titlePopupPic.textContent = item.name;
+    imagePopupPic.alt = item.alt;
 
-  });
- }
+    openPopup(popupPic);
+
+  //do we need it here?
+  // function openPopup() {
+  //   popup.classList.add('popup_opened');
+  // }
+
+
+  //to be deleted
+  // openPopupPic();
+
+  // function closePopupPic() {
+  //   popupPic.classList.remove('popup-pic_opened');
+  // }
+
+  // popupPicBtn.addEventListener('click', closePopupPic);
+
+})
 
   return newItem;
 }
 
-//it dublicates the open/close popup
-//command edit button
-// function openEdit() {
-//   popupEdit.classList.add('popup_opened');
-//   nameInput.value = nameValue.textContent;
-//   occupationInput.value = occupationValue.textContent;
-// }
-
-// function closeEdit() {
-//   popupEdit.classList.remove('popup_opened');
-// }
-
 //command open any popup
 function openPopup() {
-  popup.classList.add('popup_opened');
-
-  // titleInput.value = '';
-  // linkInput.value = '';
+  popupEdit.classList.add('popup_opened');
 }
 
-function closePopup() {
-  popup.classList.remove('popup_opened');
+
+//command edit button
+function openEdit() {
+  popupEdit.classList.add('popup_opened');
+  nameInput.value = nameValue.textContent;
+  occupationInput.value = occupationValue.textContent;
+}
+
+function closeEdit() {
+  popupEdit.classList.remove('popup_opened');
+}
+
+//command open any popup
+function openAdd() {
+  popupAdd.classList.add('popup_opened');
+  titleInput.value = '';
+  linkInput.value = '';
+
+}
+
+function closeAdd() {
+  popupAdd.classList.remove('popup_opened');
 }
 
 function submitFormEditHandler(evt) {
@@ -145,7 +165,7 @@ function submitFormEditHandler(evt) {
 
 function submitFormAddHandler(evt) {
   evt.preventDefault();
-  const elementsItem = getItem({ name: titleInput.value, link: linkInput.value, alt: titleInput.value });
+  const elementsItem = getItem({name: titleInput.value, link: linkInput.value, alt: titleInput.value});
   elementsContainer.prepend(elementsItem);
 
   closeAdd();
@@ -158,11 +178,11 @@ function deleteElement(event) {
   elementsItem.remove();
 }
 
-editButton.addEventListener('click', openEdit);
-popupEditCloseButton.addEventListener('click', closeEdit);
+// editButton.addEventListener('click', openEdit);
+// popupEditCloseButton.addEventListener('click', closeEdit);
 formEdit.addEventListener('submit', submitFormEditHandler);
 buttonSave.addEventListener('click', submitFormAddHandler);
-addButton.addEventListener('click', openAdd);
-popupAddCloseButton.addEventListener('click', closeAdd);
+// addButton.addEventListener('click', openAdd);
+// popupAddCloseButton.addEventListener('click', closeAdd);
 
 render();
