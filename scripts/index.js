@@ -54,12 +54,9 @@ const titleValue = document.querySelector('.element__title');
 const linkValue = document.querySelector('.element__picture');
 const buttonSave = popupAdd.querySelector('.popup__button_add');
 
-
-
 const popupPic = document.querySelector('#popuppic')
-const imagePopupPic = document.querySelector('.popup-pic__image');
-const titlePopupPic = document.querySelector('.popup-pic__title');
-
+const imagePopupPic = document.querySelector('.popup__image');
+const titlePopupPic = document.querySelector('.popup__sign');
 const popup = document.querySelector('.popup');
 
 function render() {
@@ -91,10 +88,8 @@ function getItem(item) {
     evt.target.classList.toggle('element__button-like_active');
   });
 
-  //modify to open with open popup
-  //open full-size image popups
+  //full-size image popups
   const openPopupPic = newItem.querySelector('.element');
-
 
   newItem.querySelector('.element__picture').addEventListener('click', function () {
     imagePopupPic.src = item.link;
