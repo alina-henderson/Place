@@ -56,13 +56,19 @@ const titleValue = document.querySelector('.element__title');
 const linkValue = document.querySelector('.element__picture');
 const buttonSave = popupAdd.querySelector('.popup__button_add');
 
+
+const closeButton = document.querySelector('.button-close');
+
+
 //to be deleted
 //for popup-pic close button
 // const popupPicBtn = document.querySelector('.button-close_popuppic');
 
-const popupPic = document.querySelector('.popup-pic')
+const popupPic = document.querySelector('.popup_pic')
 const imagePopupPic = document.querySelector('.popup-pic__image');
 const titlePopupPic = document.querySelector('.popup-pic__title');
+
+const popup = document.querySelector('.popup');
 
 
 function render() {
@@ -104,22 +110,7 @@ function getItem(item) {
     titlePopupPic.textContent = item.name;
     imagePopupPic.alt = item.alt;
 
-    openPopup(popupPic);
-
-  //do we need it here?
-  // function openPopup() {
-  //   popup.classList.add('popup_opened');
-  // }
-
-
-  //to be deleted
-  // openPopupPic();
-
-  // function closePopupPic() {
-  //   popupPic.classList.remove('popup-pic_opened');
-  // }
-
-  // popupPicBtn.addEventListener('click', closePopupPic);
+    openPopup(openPopupPic);
 
 })
 
@@ -128,32 +119,40 @@ function getItem(item) {
 
 //command open any popup
 function openPopup() {
-  popupEdit.classList.add('popup_opened');
+  popup.classList.add('popup_opened');
+}
+
+//command close any popup
+function closePopup() {
+  popup.classList.remove('popup_opened');
 }
 
 
-//command edit button
-function openEdit() {
-  popupEdit.classList.add('popup_opened');
+// //command edit button
+function openEditProfile() {
   nameInput.value = nameValue.textContent;
   occupationInput.value = occupationValue.textContent;
+  openPopup(popupEdit);
 }
 
-function closeEdit() {
-  popupEdit.classList.remove('popup_opened');
-}
+//   popupEdit.classList.add('popup_opened');
+  // nameInput.value = nameValue.textContent;
+  // occupationInput.value = occupationValue.textContent;
+// }
+
+// function closeEdit() {
+//   popupEdit.classList.remove('popup_opened');
+// }
 
 //command open any popup
-function openAdd() {
-  popupAdd.classList.add('popup_opened');
-  titleInput.value = '';
-  linkInput.value = '';
+// function openAdd() {
+//   popupAdd.classList.add('popup_opened');
+//   titleInput.value = '';
+//   linkInput.value = '';
 
-}
+// }
 
-function closeAdd() {
-  popupAdd.classList.remove('popup_opened');
-}
+
 
 function submitFormEditHandler(evt) {
   evt.preventDefault();
@@ -183,6 +182,6 @@ function deleteElement(event) {
 formEdit.addEventListener('submit', submitFormEditHandler);
 buttonSave.addEventListener('click', submitFormAddHandler);
 // addButton.addEventListener('click', openAdd);
-// popupAddCloseButton.addEventListener('click', closeAdd);
+closeButton.addEventListener('click', closePopup);
 
 render();
