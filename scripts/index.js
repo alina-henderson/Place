@@ -38,7 +38,6 @@ const templateEl = document.querySelector('.template');
 //for edit button
 const editButton = document.querySelector('.profile__edit-button');
 const popupEdit = document.querySelector('.popup_edit');
-const popupEditCloseButton = popupEdit.querySelector('.button-close_edit');
 const formEdit = popupEdit.querySelector('.form_edit');
 const nameInput = popupEdit.querySelector('.form__input_value_name');
 const occupationInput = popupEdit.querySelector('.form__input_value_occupation');
@@ -48,7 +47,6 @@ const occupationValue = document.querySelector('.profile__occupation');
 //for add button
 const addButton = document.querySelector('.profile__add-button');
 const popupAdd = document.querySelector('.popup_add');
-const popupAddCloseButton = popupAdd.querySelector('.button-close_add');
 const formAdd = popupAdd.querySelector('.form_add');
 const titleInput = popupAdd.querySelector('.form__input_value_title');
 const linkInput = popupAdd.querySelector('.form__input_value_image-link');
@@ -64,7 +62,6 @@ const imagePopupPic = document.querySelector('.popup-pic__image');
 const titlePopupPic = document.querySelector('.popup-pic__title');
 
 const popup = document.querySelector('.popup');
-
 
 function render() {
   const html = initialCards
@@ -105,7 +102,7 @@ function getItem(item) {
     titlePopupPic.textContent = item.name;
     imagePopupPic.alt = item.alt;
 
-    openPopup(popupPic);
+    openPopup(openPopupPic);
 
 })
 
@@ -123,27 +120,26 @@ function closePopup() {
 }
 
 
-// //command edit button
+// describe actions in edit popup
 function openEditProfile() {
   nameInput.value = nameValue.textContent;
   occupationInput.value = occupationValue.textContent;
   openPopup(popupEdit);
 }
 
-//   popupEdit.classList.add('popup_opened');
-  // nameInput.value = nameValue.textContent;
-  // occupationInput.value = occupationValue.textContent;
-// }
+// describe actions in add popup
+function openAddProfile() {
+  titleInput.value = '';
+  linkInput.value = '';
+  openPopup(popupAdd);
+}
 
-// function closeEdit() {
-//   popupEdit.classList.remove('popup_opened');
-// }
+
 
 //command open any popup
 // function openAdd() {
 //   popupAdd.classList.add('popup_opened');
-//   titleInput.value = '';
-//   linkInput.value = '';
+
 
 // }
 
@@ -154,7 +150,7 @@ function submitFormEditHandler(evt) {
   nameValue.textContent = nameInput.value;
   occupationValue.textContent = occupationInput.value;
 
-  closeEdit();
+  closePopup();
 }
 
 function submitFormAddHandler(evt) {
@@ -172,11 +168,11 @@ function deleteElement(event) {
   elementsItem.remove();
 }
 
-// editButton.addEventListener('click', openEdit);
+editButton.addEventListener('click', openEditProfile);
 // popupEditCloseButton.addEventListener('click', closeEdit);
 formEdit.addEventListener('submit', submitFormEditHandler);
 buttonSave.addEventListener('click', submitFormAddHandler);
-// addButton.addEventListener('click', openAdd);
+addButton.addEventListener('click', openAddProfile);
 closeButton.addEventListener('click', closePopup);
 
 render();
