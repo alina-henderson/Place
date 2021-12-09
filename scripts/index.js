@@ -57,7 +57,7 @@ const buttonSave = popupAdd.querySelector('.popup__button_add');
 
 const closeButton = document.querySelector('.button-close');
 
-const popupPic = document.querySelector('.popup_pic')
+const popupPic = document.querySelector('#popuppic')
 const imagePopupPic = document.querySelector('.popup-pic__image');
 const titlePopupPic = document.querySelector('.popup-pic__title');
 
@@ -102,7 +102,7 @@ function getItem(item) {
     titlePopupPic.textContent = item.name;
     imagePopupPic.alt = item.alt;
 
-    openPopup(openPopupPic);
+    openPopup(popupPic);
 
 })
 
@@ -110,7 +110,7 @@ function getItem(item) {
 }
 
 //command open any popup
-function openPopup() {
+function openPopup(popup) {
   popup.classList.add('popup_opened');
 }
 
@@ -118,7 +118,6 @@ function openPopup() {
 function closePopup() {
   popup.classList.remove('popup_opened');
 }
-
 
 // describe actions in edit popup
 function openEditProfile() {
@@ -133,9 +132,6 @@ function openAddProfile() {
   linkInput.value = '';
   openPopup(popupAdd);
 }
-
-
-
 
 function submitFormEditHandler(evt) {
   evt.preventDefault();
@@ -162,7 +158,7 @@ function deleteElement(event) {
 
 editButton.addEventListener('click', openEditProfile);
 formEdit.addEventListener('submit', submitFormEditHandler);
-buttonSave.addEventListener('click', submitFormAddHandler);
+formAdd.addEventListener('submit', submitFormAddHandler);
 addButton.addEventListener('click', openAddProfile);
 closeButton.addEventListener('click', closePopup);
 
