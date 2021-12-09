@@ -136,14 +136,6 @@ function openAddProfile() {
 
 
 
-//command open any popup
-// function openAdd() {
-//   popupAdd.classList.add('popup_opened');
-
-
-// }
-
-
 
 function submitFormEditHandler(evt) {
   evt.preventDefault();
@@ -158,7 +150,7 @@ function submitFormAddHandler(evt) {
   const elementsItem = getItem({name: titleInput.value, link: linkInput.value, alt: titleInput.value});
   elementsContainer.prepend(elementsItem);
 
-  closeAdd();
+  closePopup();
 }
 
 //command trash button
@@ -169,7 +161,6 @@ function deleteElement(event) {
 }
 
 editButton.addEventListener('click', openEditProfile);
-// popupEditCloseButton.addEventListener('click', closeEdit);
 formEdit.addEventListener('submit', submitFormEditHandler);
 buttonSave.addEventListener('click', submitFormAddHandler);
 addButton.addEventListener('click', openAddProfile);
