@@ -144,7 +144,7 @@ function submitFormEditHandler(evt) {
   nameValue.textContent = nameInput.value;
   occupationValue.textContent = occupationInput.value;
 
-  closePopup();
+  closePopup(popupEdit);
 }
 
 function submitFormAddHandler(evt) {
@@ -152,7 +152,7 @@ function submitFormAddHandler(evt) {
   const elementsItem = getItem({name: titleInput.value, link: linkInput.value, alt: titleInput.value});
   elementsContainer.prepend(elementsItem);
 
-  closePopup();
+  closePopup(popupAdd);
 }
 
 //command trash button
