@@ -55,7 +55,6 @@ const linkValue = document.querySelector('.element__picture');
 const buttonSave = popupAdd.querySelector('.popup__button_add');
 
 
-const closeButton = document.querySelector('.button-close');
 
 const popupPic = document.querySelector('#popuppic')
 const imagePopupPic = document.querySelector('.popup-pic__image');
@@ -116,6 +115,8 @@ function openPopup(popup) {
 
 const popups = document.querySelectorAll('.popup')
 popups.forEach((popup) => {
+  const closeButton = popup.querySelector('.button-close');
+
   closeButton.addEventListener('click', () => closePopup(popup))
 })
 
@@ -165,6 +166,5 @@ editButton.addEventListener('click', openEditProfile);
 formEdit.addEventListener('submit', submitFormEditHandler);
 formAdd.addEventListener('submit', submitFormAddHandler);
 addButton.addEventListener('click', openAddProfile);
-closeButton.addEventListener('click', closePopup);
 
 render();
