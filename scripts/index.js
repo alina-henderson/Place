@@ -115,7 +115,7 @@ function openPopup(popup) {
 }
 
 //command close any popup
-function closePopup() {
+function closePopup(popup) {
   popup.classList.remove('popup_opened');
 }
 
