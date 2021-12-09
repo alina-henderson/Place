@@ -59,11 +59,6 @@ const buttonSave = popupAdd.querySelector('.popup__button_add');
 
 const closeButton = document.querySelector('.button-close');
 
-
-//to be deleted
-//for popup-pic close button
-// const popupPicBtn = document.querySelector('.button-close_popuppic');
-
 const popupPic = document.querySelector('.popup_pic')
 const imagePopupPic = document.querySelector('.popup-pic__image');
 const titlePopupPic = document.querySelector('.popup-pic__title');
@@ -110,7 +105,7 @@ function getItem(item) {
     titlePopupPic.textContent = item.name;
     imagePopupPic.alt = item.alt;
 
-    openPopup(openPopupPic);
+    openPopup(popupPic);
 
 })
 
