@@ -114,6 +114,11 @@ function openPopup(popup) {
   popup.classList.add('popup_opened');
 }
 
+const popups = document.querySelectorAll('.popup')
+popups.forEach((popup) => {
+  closeButton.addEventListener('click', () => closePopup(popup))
+})
+
 //command close any popup
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
