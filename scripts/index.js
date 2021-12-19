@@ -59,6 +59,12 @@ const imagePopupPic = document.querySelector('.popup__image');
 const titlePopupPic = document.querySelector('.popup__sign');
 const popup = document.querySelector('.popup');
 
+const formElement = document.querySelector('.form');
+const formInput = formElement.querySelector('.form__input');
+const formError = formElement.querySelector(`.${formInput.id}-error`);
+
+
+
 function render() {
   const html = initialCards
     .map((item) => {
@@ -111,8 +117,9 @@ function openPopup(popup) {
 const popups = document.querySelectorAll('.popup')
 popups.forEach((popup) => {
   const closeButton = popup.querySelector('.button-close');
-
-  closeButton.addEventListener('click', () => closePopup(popup))
+  closeButton.addEventListener('click', () => closePopup(popup));
+  const overlay = popup.querySelector('.popup__overlay');
+  overlay.addEventListener('click', () => closePopup(popup));
 })
 
 //command close any popup
@@ -156,6 +163,30 @@ function deleteElement(event) {
   const elementsItem = targetElement.closest('.element')
   elementsItem.remove();
 }
+
+const showError = (input) => {
+  input.classList.add('form__input_type_error');
+};
+
+const hideError = (input) => {
+  input.classList.remove('form__input_type_error');
+};
+
+
+const checkInputValidity = () => {
+  if (!formInput.validity.valid) {
+    showError(formInput, formInput.validationMessage);
+  } else {
+    hideError(formInput);
+  }
+};
+
+
+
+
+
+
+
 
 editButton.addEventListener('click', openEditProfile);
 formEdit.addEventListener('submit', submitFormEditHandler);

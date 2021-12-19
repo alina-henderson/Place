@@ -6,6 +6,7 @@
   box-shadow: 0px 0px 25px
   rgba(0, 0, 0, 0.15);
   position: relative;
+  z-index: 5;
 }
 
 @media screen and (max-width: 630px) {

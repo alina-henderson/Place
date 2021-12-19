@@ -11,4 +11,12 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  margin-top: 30px;
+  margin-bottom: 5px;
+
 }
+
+.form__input:first-child {
+  margin-top: 0;
+}
+
