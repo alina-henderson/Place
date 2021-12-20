@@ -1,12 +1,9 @@
 
 const showError = (form, input, errorMessageText, errorMessageClass, inputErrorClass) => {
-  console.log(`#${input.id}-error`);
   const errorMessage = form.querySelector(`#${input.id}-error`);
-
   errorMessage.textContent = errorMessageText;
   errorMessage.classList.add(errorMessageClass);
   input.classList.add(inputErrorClass);
-
 };
 
 const hideError = (form, input, errorMessageClass, inputErrorClass) => {
@@ -48,7 +45,6 @@ const hasInvalidInput = (inputs) => {
 //find inputs inside each form and link events
 const setInputListeners = (form, { inputSelector, submitButtonSelector, inactiveButtonClass, ...rest }) => {
   const inputs = form.querySelectorAll(inputSelector);
-
   const submitButton = form.querySelector(submitButtonSelector);
 
   inputs.forEach((input) => {
