@@ -1,27 +1,27 @@
 
-// const showError = (form, inputSelector, errorMessage) => {
-//   const errorElemet = form.querySelector(`.${inputSelector.id}-error`);
-//   errorElement.textContent = errorMessage;
-//   form.classList.add(inputErrorClass);
-//   errorElement.classList.add(errorClass);
-// };
+const showError = (form, input, errorMessageText, inputErrorClass, errorMessageClass) => {
+  console.log(`#${input.id}-error`);
+  const errorMessage = form.querySelector(`#${input.id}-error`);
 
-// const hideError = (form, input, inputSelector) => {
-//   const errorElemet = form.querySelector(`.${inputSelector.id}-error`);
-//   errorElement.textContent = '';
-//   inputSelector.classList.remove(inputErrorClass);
-//   errorElement.classList.remove(errorClass);
-// };
+  errorMessage.textContent = errorMessageText;
+  errorMessage.classList.add(errorMessageClass);
+  input.classList.add(inputErrorClass);
+
+};
+
+const hideError = (form, input, inputErrorClass, errorMessageClass) => {
+  const errorMessage = form.querySelector(`#${input.id}-error`);
+  errorMessage.textContent = '';
+  errorMessage.classList.remove(errorMessageClass);
+  input.classList.remove(inputErrorClass);
+};
 
 
-const checkInputValidity = (form, input) => {
+const checkInputValidity = (form, input, { inputErrorClass, errorClass }) => {
   if (!input.validity.valid) {
-    // showError(form, inputSelector, inputSelector.validationMessage, errorClass, inputErrorClass);
-    console.log('invalid')
+    showError(form, input, input.validationMessage, errorClass, inputErrorClass);
   } else {
-    // hideError(form, inputSelector, inputErrorClass, errorClass);
-    console.log('valid')
-
+    hideError(form, input, inputErrorClass, errorClass);
   }
 };
 
@@ -35,15 +35,15 @@ const checkInputValidity = (form, input) => {
 
 
 //find inputs inside each form and link events
-const setInputListeners = (form, { inputSelector }) => {
+const setInputListeners = (form, { inputSelector, ...rest }) => {
   const inputs = form.querySelectorAll(inputSelector);
 
   inputs.forEach((input) => {
     input.addEventListener('input', () => {
-      checkInputValidity(form, input)
+      checkInputValidity(form, input, rest)
     });
   });
-}
+};
 
 const enableValidation = ({ formSelector, ...rest }) => {
   //use formSelector as a key for browser to find forms, collect all forms
@@ -54,7 +54,7 @@ const enableValidation = ({ formSelector, ...rest }) => {
       event.preventDefault();
     });
 
-    setInputListeners(form, rest)
+    setInputListeners(form, rest);
   });
 }
 

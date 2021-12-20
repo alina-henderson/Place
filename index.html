@@ -7,6 +7,7 @@
   <title>Место</title>
   <link rel="stylesheet" href="./pages/index.css">
   <script src="./scripts/index.js" defer></script>
+  <script src="./scripts/validate.js" defer></script>
 </head>
 
 <body class="page">
@@ -65,10 +66,10 @@
       <h2 class="popup__title">Новое место</h2>
 
       <form class="form form_add" name="elementformadd" novalidate>
-        <input class="form__input form__input_value_title" minlength="2" maxlength="30" required type="text" name="title">
-        <span class="form__error form__error_hidden" id="title-element-error">Вы пропустили это поле.</span>
-        <input class="form__input form__input_value_image-link" type="url" required name="image-link">
-        <span class="form__error form__error_hidden" id="link-element-error">Введите адрес сайта.</span>
+        <input class="form__input form__input_value_title" minlength="2" maxlength="30" required type="text" name="title" id="title">
+        <span id="title-error" class="form__error form__error_hidden">Вы пропустили это поле.</span>
+        <input class="form__input form__input_value_image-link" type="url" required name="image-link" id="image-link">
+        <span id="image-link-error" class="form__error form__error_hidden" id="link-element-error">Введите адрес сайта.</span>
         <button class="popup__button popup__button_add" type="submit">Создать</button>
       </form>
 
