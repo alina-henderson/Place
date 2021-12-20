@@ -43,7 +43,7 @@
 
   </div>
 
-  <div class="popup popup_form popup_edit" id="popupedit">
+  <div class="popup popup__form popup_edit" id="popupedit">
     <div class="popup__overlay"></div>
     <div class="popup__content popup__content">
       <button class="button-close button-close_edit" type="button"></button>
@@ -58,17 +58,17 @@
     </div>
   </div>
 
-  <div class="popup popup_form popup_add" id="popupadd">
+  <div class="popup popup__form popup_add" id="popupadd">
     <div class="popup__overlay"></div>
     <div class="popup__content">
       <button class="button-close button-close_add" type="button"></button>
       <h2 class="popup__title">Новое место</h2>
 
-      <form class="form form_add" name="profileformadd">
+      <form class="form form_add" name="elementformadd" novalidate>
         <input class="form__input form__input_value_title" minlength="2" maxlength="30" required type="text" name="title">
-        <span class="form__input-error">Вы пропустили это поле.</span>
+        <span class="form__error form__error_hidden" id="title-element-error">Вы пропустили это поле.</span>
         <input class="form__input form__input_value_image-link" type="url" required name="image-link">
-        <span class="form__input-error">Введите адрес сайта.</span>
+        <span class="form__error form__error_hidden" id="link-element-error">Введите адрес сайта.</span>
         <button class="popup__button popup__button_add" type="submit">Создать</button>
       </form>
 

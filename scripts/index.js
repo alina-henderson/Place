@@ -59,9 +59,8 @@ const imagePopupPic = document.querySelector('.popup__image');
 const titlePopupPic = document.querySelector('.popup__sign');
 const popup = document.querySelector('.popup');
 
-const formElement = document.querySelector('.form');
-const formInput = formElement.querySelector('.form__input');
-const formError = formElement.querySelector(`.${formInput.id}-error`);
+// potencially delete!!
+// const formInput = formElement.querySelector('.form__input');
 
 
 
@@ -164,22 +163,6 @@ function deleteElement(event) {
   elementsItem.remove();
 }
 
-const showError = (input) => {
-  input.classList.add('form__input_type_error');
-};
-
-const hideError = (input) => {
-  input.classList.remove('form__input_type_error');
-};
-
-
-const checkInputValidity = () => {
-  if (!formInput.validity.valid) {
-    showError(formInput, formInput.validationMessage);
-  } else {
-    hideError(formInput);
-  }
-};
 
 
 
