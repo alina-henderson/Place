@@ -1,5 +1,5 @@
 
-const showError = (form, input, errorMessageText, inputErrorClass, errorMessageClass) => {
+const showError = (form, input, errorMessageText, errorMessageClass, inputErrorClass) => {
   console.log(`#${input.id}-error`);
   const errorMessage = form.querySelector(`#${input.id}-error`);
 
@@ -9,7 +9,7 @@ const showError = (form, input, errorMessageText, inputErrorClass, errorMessageC
 
 };
 
-const hideError = (form, input, inputErrorClass, errorMessageClass) => {
+const hideError = (form, input, errorMessageClass, inputErrorClass) => {
   const errorMessage = form.querySelector(`#${input.id}-error`);
   errorMessage.textContent = '';
   errorMessage.classList.remove(errorMessageClass);
@@ -21,26 +21,41 @@ const checkInputValidity = (form, input, { inputErrorClass, errorClass }) => {
   if (!input.validity.valid) {
     showError(form, input, input.validationMessage, errorClass, inputErrorClass);
   } else {
-    hideError(form, input, inputErrorClass, errorClass);
+    hideError(form, input, errorClass, inputErrorClass);
   }
 };
 
-// const hasInvalidInput = (inputList) => {
+const hasInvalidInput = (inputs) => {
+  return Array.from(inputs).some((element) => !element.validity.valid);
+};
 
 
 
-// const toggleButtonState = (inputList, buttonElement) => {
+//  toggle disable Button
+  const toggleButtonState = (inputs, button, inactiveButtonClass) => {
+    if (hasInvalidInput(inputs)) {
+      button.classList.add(inactiveButtonClass);
+      button.disabled = true;
 
+    } else {
+      button.classList.remove(inactiveButtonClass);
+      button.disabled = false;
+    }
+  }
 
 
 
 //find inputs inside each form and link events
-const setInputListeners = (form, { inputSelector, ...rest }) => {
+const setInputListeners = (form, { inputSelector, submitButtonSelector, inactiveButtonClass, ...rest }) => {
   const inputs = form.querySelectorAll(inputSelector);
+
+  const submitButton = form.querySelector(submitButtonSelector);
 
   inputs.forEach((input) => {
     input.addEventListener('input', () => {
-      checkInputValidity(form, input, rest)
+      checkInputValidity(form, input, rest);
+
+      toggleButtonState(inputs, submitButton, inactiveButtonClass);
     });
   });
 };
