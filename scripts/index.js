@@ -59,10 +59,6 @@ const imagePopupPic = document.querySelector('.popup__image');
 const titlePopupPic = document.querySelector('.popup__sign');
 const popup = document.querySelector('.popup');
 
-// potencially delete!!
-// const formInput = formElement.querySelector('.form__input');
-
-
 
 function render() {
   const html = initialCards
