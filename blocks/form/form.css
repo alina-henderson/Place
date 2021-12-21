@@ -1,8 +1,6 @@
 .form {
   border: none;
   margin: 48px 0 0;
-  /*display: grid;
-  row-gap: 30px;*/
   display: flex;
   flex-direction: column;
   width: 100%;

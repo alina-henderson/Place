@@ -1,4 +1,3 @@
-
 const showError = (form, input, errorMessageText, errorMessageClass, inputErrorClass) => {
   const errorMessage = form.querySelector(`#${input.id}-error`);
   errorMessage.textContent = errorMessageText;

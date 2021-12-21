@@ -110,6 +110,8 @@ function getItem(item) {
 
 //command open any popup
 function openPopup(popup) {
+  //enable close with ESC
+  document.addEventListener('keydown', closeEsc);
   popup.classList.add('popup_opened');
 }
 
@@ -121,8 +123,16 @@ popups.forEach((popup) => {
   overlay.addEventListener('click', () => closePopup(popup));
 })
 
+//close by pressing esc
+function closeEsc(evt) {
+  if (evt.key === 'Escape') {
+      const popupOpened = document.querySelector('.popup_opened');
+      closePopup(popupOpened);
+  }
+}
 //command close any popup
 function closePopup(popup) {
+  document.removeEventListener('keydown', closeEsc);
   popup.classList.remove('popup_opened');
 }
 
@@ -135,8 +145,9 @@ function openEditProfile() {
 
 // describe actions in add popup
 function openAddProfile() {
-  titleInput.value = '';
-  linkInput.value = '';
+  formAdd.reset();
+  buttonSave.classList.add("popup__button_disabled");
+  buttonSave.disabled = true;
   openPopup(popupAdd);
 }
 
@@ -162,14 +173,6 @@ function deleteElement(event) {
   const elementsItem = targetElement.closest('.element')
   elementsItem.remove();
 }
-
-
-
-
-
-
-
-
 
 editButton.addEventListener('click', openEditProfile);
 formEdit.addEventListener('submit', submitFormEditHandler);

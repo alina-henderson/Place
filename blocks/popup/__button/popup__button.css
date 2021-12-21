@@ -7,11 +7,12 @@
   font-size: 18px;
   font-weight: 400;
   font-style: normal;
-  line-height: 21.78px;
+  line-height: 22px;
   border: none;
   cursor: pointer;
   border-radius: 2px;
-  margin-top: 50px;
+  position: absolute;
+  bottom: 37px;
 }
 
 .popup__button:hover {
@@ -21,7 +22,10 @@
 @media screen and (max-width: 630px) {
   .popup__button {
     width: 238px;
+    height: 46px;
     font-size: 14px;
-    line-height: 16.94px;
+    line-height: 17px;
+    bottom: 25px;
+    padding: 0;
   }
 }
