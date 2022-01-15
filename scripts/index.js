@@ -176,8 +176,3 @@ const initialCards = [
 // addButton.addEventListener('click', openAddProfile);
 
 // render();
-
-
-//render the list of elements/get the the link to the section
-const elements = document.querySelector('.elements');
-
