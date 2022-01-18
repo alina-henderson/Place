@@ -1,4 +1,4 @@
-class CardsList {
+export default class CardsList {
   constructor(selector) {
     this._selector = selector;
   }

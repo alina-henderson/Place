@@ -176,3 +176,8 @@ const initialCards = [
 // addButton.addEventListener('click', openAddProfile);
 
 // render();
+
+const elementsContainer = document.querySelector('.elements');
+const templateEl = document.querySelector('.template');
+
+elementsContainer.append(templateEl.getView());
