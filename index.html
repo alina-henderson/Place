@@ -50,7 +50,7 @@
       <button class="button-close button-close_edit" type="button"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
 
-      <form class="form form_edit" name="profileform">
+      <!-- <form class="form form_edit" name="profileform">
         <input class="form__input form__input_value_name" minlength="2" maxlength="40" required type="text" name="name"
           id="name">
         <span id="name-error" class="form__error"></span>
@@ -58,7 +58,7 @@
           name="occupation" id="occupation">
         <span id="occupation-error" class="form__error"></span>
         <button class="popup__button popup__button_edit" type="submit">Сохранить</button>
-      </form>
+      </form> -->
 
     </div>
   </div>
@@ -69,14 +69,14 @@
       <button class="button-close button-close_add" type="button"></button>
       <h2 class="popup__title">Новое место</h2>
 
-      <form class="form form_add" name="elementformadd" novalidate>
+      <!-- <form class="form form_add" name="elementformadd" novalidate>
         <input class="form__input form__input_value_title" minlength="2" maxlength="30" required type="text"
           name="title" id="title">
         <span id="title-error" class="form__error"></span>
         <input class="form__input form__input_value_image-link" type="url" required name="image-link" id="image-link">
         <span id="image-link-error" class="form__error"></span>
         <button class="popup__button popup__button_add" type="submit">Создать</button>
-      </form>
+      </form> -->
 
     </div>
   </div>
@@ -91,9 +91,17 @@
     </div>
   </div>
 
-  <!-- <template class="template-form">
-    
-  </template> -->
+<template class="template-form">
+          <form class="form form_edit" name="profileform">
+        <input class="form__input form__input_value_name" minlength="2" maxlength="40" required type="text" name="name"
+          id="name">
+        <span id="name-error" class="form__error"></span>
+        <input class="form__input form__input_value_occupation" minlength="2" maxlength="200" required type="text"
+          name="occupation" id="occupation">
+        <span id="occupation-error" class="form__error"></span>
+        <button class="popup__button popup__button_edit" type="submit">Сохранить</button>
+      </form>
+  </template>
 
   <template class="template">
     <div class="element">

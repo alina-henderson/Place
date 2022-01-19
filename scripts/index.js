@@ -229,6 +229,10 @@ function closePopup(popup) {
   popup.classList.remove('popup_opened');
 }
 
+//FormValidator
+const popup__content
+
+
 popupAdd.addEventListener("click", () => openPopup(popupPic));
 
 // popupPic.addEventListener("submit", handleAddCard);
