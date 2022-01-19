@@ -12,8 +12,12 @@ class Card {
     .cloneNode(true)
   }
 
-  _likeButton = () => {
+  _likeCard = () => {
 		this._element.querySelector('.element__button-like').classList.toggle('element__button-like_active')
+	}
+
+  _deleteCard = () => {
+		this._element.remove();
 	}
 
   getView() { //returns html structure
