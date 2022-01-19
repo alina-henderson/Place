@@ -1,17 +1,18 @@
 class Card {
-  constructor(name, link, alt) {
-      this.name = name;
-      this.link = link;
-      this.alt = alt;
+  constructor(selector, name, link, alt) {
+      this._selector = selector; //saved selector as class char
+      this._name = name;
+      this._link = link;
+      this._alt = alt;
   }
-  _getTemplate() {
+  _getTemplate() { //returns template by selector
     return document.querySelector(this._selector)
     .content
     .querySelector('.element')
     .cloneNode(true)
   }
 
-  getView() {
+  getView() { //returns html structure
     this._element = this._getTemplate();
     this._cardPic = this._element.querySelector('.element__picture');
     this._cardPic.src = this._link;

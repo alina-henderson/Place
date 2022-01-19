@@ -1,3 +1,5 @@
+import Card from './Card.js';
+
 const initialCards = [
   {
     name: 'Архыз',
@@ -177,7 +179,20 @@ const initialCards = [
 
 // render();
 
-const elementsContainer = document.querySelector('.elements');
-const templateEl = document.querySelector('.template');
+// const templateEl = document.querySelector('.template');
 
-elementsContainer.append(templateEl.getView());
+// elementsContainer.append(templateEl.getView());
+
+
+const elements = document.querySelector('.elements');
+
+function render() {
+  const cards = initialCards.map((item) => {
+      const card  = new Card('.template', item.name, item.link, item.alt);
+      return card.getView();
+    });
+
+  elements.append(...cards);
+}
+
+render();
