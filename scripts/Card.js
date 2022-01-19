@@ -1,3 +1,5 @@
+import { openPopup } from "./index.js";
+
 class Card {
   constructor(selector, name, link, alt) {
       this._selector = selector; //saved selector as class char
@@ -13,11 +15,11 @@ class Card {
   }
 
   _popupImage = () => {
-		const popupImg = document.querySelector(".popup_type_img");
-		openPopup(popupImg);
-		popupImg.querySelector('.popup__photo-name').textContent = this._name;
-		popupImg.querySelector('.popup__image').src = this._link;
-		popupImg.querySelector(".popup__image").alt = this._alt;
+		const popupPic = document.querySelector('.popup_pic');
+		openPopup(popupPic);
+		popupPic.querySelector('.popup__image').src = this._link;
+		popupPic.querySelector(".popup__image").alt = this._alt;
+    popupPic.querySelector('.popup__sign').textContent = this._name;
 	}
 
   _likeCard = () => {
@@ -42,8 +44,7 @@ class Card {
   _setEventListeners() {
 		this._element.querySelector('.element__button-like').addEventListener('click', this._likeCard);
     this._element.querySelector('.element__button-trash').addEventListener('click', this._deleteCard);
-    this._element.querySelector('.card__image').addEventListener('click', this._openBigPicture);
-
+    this._element.querySelector('.element__picture').addEventListener('click', this._popupImage);
 	}
 }
 

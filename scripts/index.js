@@ -1,4 +1,7 @@
 import Card from './Card.js';
+// import FormValidator from "./FormValidator.js";
+export {openPopup};
+
 
 const initialCards = [
   {
@@ -179,12 +182,14 @@ const initialCards = [
 
 // render();
 
-// const templateEl = document.querySelector('.template');
-
-// elementsContainer.append(templateEl.getView());
 
 
 const elements = document.querySelector('.elements');
+const popupPic = document.querySelector('#popuppic');
+const popups = document.querySelectorAll('.popup');
+const popupAdd = document.querySelector('.popup_add');
+
+
 
 function render() {
   const cards = initialCards.map((item) => {
@@ -196,3 +201,34 @@ function render() {
 }
 
 render();
+
+//command open any popup
+function openPopup(popup) {
+  //enable close with ESC
+  document.addEventListener('keydown', closeEsc);
+  popup.classList.add('popup_opened');
+}
+
+popups.forEach((popup) => {
+  const closeButton = popup.querySelector('.button-close');
+  closeButton.addEventListener('click', () => closePopup(popup));
+  const overlay = popup.querySelector('.popup__overlay');
+  overlay.addEventListener('click', () => closePopup(popup));
+})
+
+//close by pressing esc
+function closeEsc(evt) {
+  if (evt.key === 'Escape') {
+      const popupOpened = document.querySelector('.popup_opened');
+      closePopup(popupOpened);
+  }
+}
+//command close any popup
+function closePopup(popup) {
+  document.removeEventListener('keydown', closeEsc);
+  popup.classList.remove('popup_opened');
+}
+
+popupAdd.addEventListener("click", () => openPopup(popupPic));
+
+// popupPic.addEventListener("submit", handleAddCard);
