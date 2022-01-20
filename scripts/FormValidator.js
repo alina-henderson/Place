@@ -49,14 +49,6 @@ class FormValidator {
     }
   };
 
-    // _setInputListeners() {
-    //   this._inputs.forEach((input) => {
-    //     input.addEventListener('input', () => {
-    //       this._checkInputValidity(input);
-    //       this._toggleButtonState(this._inputs, this._submitButton);
-    //     });
-    //   });
-    // };
     _setInputListeners = () => {
       this._toggleButtonState();
       this._inputs.forEach( (input) => {

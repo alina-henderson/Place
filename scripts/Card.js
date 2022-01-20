@@ -7,6 +7,7 @@ class Card {
       this._link = link;
       this._alt = alt;
   }
+  
   _getTemplate() { //returns template by selector
     return document.querySelector(this._selector)
     .content
