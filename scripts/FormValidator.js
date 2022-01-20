@@ -1,18 +1,25 @@
 class FormValidator {
-  constructor(selector) {
+  constructor(selector, form) {
     this._selector = selector;
   }
 
-  _getTemplate() { //returns template by selector
-    return document.querySelector(this._selector)
-    .content
-    .querySelector('.form')
-    .cloneNode(true)
-  }
+  _showError = (input, errorMessageText) => {
+    const errorMessage = this._form.querySelector(`#${input.id}-error`);
+    errorMessage.textContent = errorMessageText;
+    errorMessage.classList.add(errorMessageClass);
+    input.classList.add(inputErrorClass);
+  };
+
+  _hideError = (input) => {
+    const errorMessage = form.querySelector(`#${input.id}-error`);
+    errorMessage.textContent = '';
+    errorMessage.classList.remove(errorMessageClass);
+    input.classList.remove(inputErrorClass);
+  };
+
   
-  getView() {
-    return this._getTemplate();
-  }
+
+
 }
 
 export default FormValidator;
