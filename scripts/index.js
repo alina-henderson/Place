@@ -251,7 +251,7 @@ const enableValidation = ({
   submitButtonSelector: '.popup__button',
   inactiveButtonClass: 'popup__button_disabled',
   inputErrorClass: 'form__input_type_error',
-  errorClass: 'form__error_visible'
+  errorMessageClass: 'form__error_visible'
 });
 
 const formEditValidator = new FormValidator(enableValidation, popupEdit);
