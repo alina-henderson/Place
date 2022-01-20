@@ -17,9 +17,16 @@ class FormValidator {
     input.classList.remove(inputErrorClass);
   };
 
+  _checkInputValidity = (input) => {
+    if (!input.validity.valid) {
+      showError(input, input.validationMessage);
+    } else {
+      this._hideError(input);
+    }
+  };
+
+
   
-
-
 }
 
 export default FormValidator;
