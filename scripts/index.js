@@ -294,7 +294,6 @@ function submitFormAddHandler(evt) {
   closePopup(popupAdd);
 }
 
-popupAdd.addEventListener("click", () => openPopup(popupPic));
 editButton.addEventListener('click', openEditProfile);
 formEdit.addEventListener('submit', submitFormEditHandler);
 formAdd.addEventListener('submit', submitFormAddHandler);
