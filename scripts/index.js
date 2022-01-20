@@ -230,7 +230,7 @@ function closePopup(popup) {
 }
 
 //FormValidator
-const popup__content
+// const popup__content
 
 
 popupAdd.addEventListener("click", () => openPopup(popupPic));
