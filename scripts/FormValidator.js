@@ -1,6 +1,15 @@
 class FormValidator {
   constructor(selector, form) {
-    this._selector = selector;
+    this._form = form;
+    this._inputSelector = selector.inputSelector;
+    this._errorMessageClass = selector.errorMessageClass;
+    this._inputErrorClass = selector.inputErrorClass;
+    this._inactiveButtonClass = selector.inactiveButtonClass;
+
+
+
+
+    this._inputs = this._form.querySelectorAll(this._inputSelector);
   }
 
   _showError = (input, errorMessageText) => {
@@ -25,8 +34,22 @@ class FormValidator {
     }
   };
 
+  _hasInvalidInput = () => {
+    return Array.from(this._inputs).some((element) => !element.validity.valid);
+  };
 
-  
+//  toggle disable Button if invalid
+  _toggleButtonState = (inputs, button) => {
+  if (this._hasInvalidInput(inputs)) {
+    button.classList.add(this._inactiveButtonClass);
+    button.disabled = true;
+
+  } else {
+    button.classList.remove(this._inactiveButtonClass);
+    button.disabled = false;
+  }
+}
+
 }
 
 export default FormValidator;
