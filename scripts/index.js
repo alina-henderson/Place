@@ -37,7 +37,6 @@ const initialCards = [
 ];
 
 const elements = document.querySelector('.elements');
-const popupPic = document.querySelector('#popuppic');
 const popups = document.querySelectorAll('.popup');
 
 //for edit button
@@ -59,10 +58,14 @@ const titleValue = document.querySelector('.element__title');
 const linkValue = document.querySelector('.element__picture');
 const buttonSave = popupAdd.querySelector('.popup__button_add');
 
+function createCard(item) {
+  const card = new Card('.template', item.name, item.link, item.alt);
+  return card.getView();
+};
+
 function render() {
   const cards = initialCards.map((item) => {
-    const card = new Card('.template', item.name, item.link, item.alt);
-    return card.getView();
+    return createCard(item);
   });
 
   elements.append(...cards);
@@ -91,6 +94,7 @@ function closeEsc(evt) {
     closePopup(popupOpened);
   }
 }
+
 //command close any popup
 function closePopup(popup) {
   document.removeEventListener('keydown', closeEsc);
@@ -151,5 +155,3 @@ editButton.addEventListener('click', openEditProfile);
 formEdit.addEventListener('submit', submitFormEditHandler);
 formAdd.addEventListener('submit', submitFormAddHandler);
 addButton.addEventListener('click', openAddPopup);
-popupPic.addEventListener("submit", submitFormAddHandler);
-

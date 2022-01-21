@@ -15,7 +15,7 @@ class Card {
       .cloneNode(true)
   }
 
-  _popupImage = () => {
+  _popUpImage = () => {
     const popupPic = document.querySelector('.popup_pic');
     openPopup(popupPic);
     popupPic.querySelector('.popup__image').src = this._link;
@@ -45,7 +45,7 @@ class Card {
   _setEventListeners() {
     this._element.querySelector('.element__button-like').addEventListener('click', this._likeCard);
     this._element.querySelector('.element__button-trash').addEventListener('click', this._deleteCard);
-    this._element.querySelector('.element__picture').addEventListener('click', this._popupImage);
+    this._element.querySelector('.element__picture').addEventListener('click', this._popUpImage);
   }
 }
 
