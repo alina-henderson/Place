@@ -126,8 +126,6 @@ function openEditProfile() {
 // describe actions in add popup
 function openAddPopup() {
   formAdd.reset();
-  buttonSave.classList.add("popup__button_disabled");
-  buttonSave.disabled = true;
   openPopup(popupAdd);
   formAddValidator.resetValidation();
 }
@@ -145,7 +143,7 @@ function submitFormEditHandler(evt) {
 function submitFormAddHandler(evt) {
   evt.preventDefault();
   const card = new Card('.template', titleInput.value, linkInput.value, titleInput.value);
-  elements.prepend(card.getView());
+  elements.prepend(createCard(item));
   titleInput.value = '';
   linkInput.value = '';
   closePopup(popupAdd);
