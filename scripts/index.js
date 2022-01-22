@@ -143,7 +143,12 @@ function submitFormEditHandler(evt) {
 function submitFormAddHandler(evt) {
   evt.preventDefault();
   const card = new Card('.template', titleInput.value, linkInput.value, titleInput.value);
-  elements.prepend(createCard(item));
+  elements.prepend(createCard({
+    name: titleInput.value,
+    link: linkInput.value,
+    alt: titleInput.value,
+  })
+  );
   titleInput.value = '';
   linkInput.value = '';
   closePopup(popupAdd);
