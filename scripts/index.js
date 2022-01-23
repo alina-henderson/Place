@@ -142,7 +142,6 @@ function submitFormEditHandler(evt) {
 //add new card to places
 function submitFormAddHandler(evt) {
   evt.preventDefault();
-  const card = new Card('.template', titleInput.value, linkInput.value, titleInput.value);
   elements.prepend(createCard({
     name: titleInput.value,
     link: linkInput.value,
