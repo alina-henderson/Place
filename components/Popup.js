@@ -1,4 +1,3 @@
-
 export default class Popup {
   constructor(selector) {
     this._selector = document.querySelector(selector);
@@ -20,10 +19,15 @@ export default class Popup {
   _handleEscClose(evt) {
     if (evt.key === 'Escape') {
       this.close();
-    }
+    };
   }
 
   setEventListeners() {
-
+    this._overlay.addEventListener('click', () => {
+      this.close();
+    });
+    this._closeButton.addEventListener('click', () => {
+      this.close();
+    });
   }
 }

@@ -1,4 +1,3 @@
-
 export default class Section {
   constructor({ items, renderer }, containerSelector) {
     this._items = items;
@@ -18,6 +17,5 @@ export default class Section {
       this._renderer(item);
     });
   }
-
 
 }

@@ -1,6 +1,14 @@
 import Card from '../components/Card.js';
 import FormValidator from "../components/FormValidator.js";
+import Section from "../components/Section.js";
+import Popup from "../components/Popup.js";
+import UserInfo.js from "../components/UserInfo.js";
+import PopupWithForm.js from "../components/PopupWithForm.js";
+import PicturePopup.js from "../components/PicturePopup.js";
+
+
 export { openPopup };
+
 
 
 const initialCards = [
