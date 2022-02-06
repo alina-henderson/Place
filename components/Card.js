@@ -1,4 +1,4 @@
-import { openPopup } from "../pages/index.js";
+// import { openPopup } from "../pages/index.js";
 
 class Card {
   constructor(selector, name, link, alt) {
@@ -9,6 +9,7 @@ class Card {
   }
 
   _getTemplate() { //returns template by selector
+    console.log(this._selector)
     return document.querySelector(this._selector)
       .content
       .querySelector('.element')

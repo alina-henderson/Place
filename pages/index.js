@@ -66,8 +66,19 @@ const titleValue = document.querySelector('.element__title');
 const linkValue = document.querySelector('.element__picture');
 const buttonSave = popupAdd.querySelector('.popup__button_add');
 
+
+// const addFormValidation = new FormValidator(dataValidation, formAddCards);
+// const editProfileValidation = new FormValidator(dataValidation, formProfile);
+
+// addFormValidation.enableValidation();
+// formProfileValidation.enableValidation();
+
 //card container
 const template = '.template';
+
+// const addCardPopup = new PopupWithForm(popupCards, handleSubmitAddCard);
+// const popupWithImage = new PopupWithImage(popupImage);
+// const editProfilePopup = new PopupWithForm(popupProfile, handleSubmitProfile)
 
 // function createCard(item) {
 //   const card = new Card('.template', item.name, item.link, item.alt);
@@ -75,21 +86,20 @@ const template = '.template';
 // };
 
 const createCard = (item) => {
-  const newCard = new Card({
-    object: item,
-    selector: template,
-    handleCardClick: () => popupWithImage.open(item),
-  });
-  const cardsElement = newCard.generateCard();
-  return cardsElement
+  const newCard = new Card( '.template', item.name, item.link, item.alt);
+  //   handleCardClick: () => popupWithImage.open(item),
+  // });
+  const cardsElement = newCard.getView();
+  return cardsElement;
 }
 
 const cardList = new Section({
   items: initialCards.reverse(),
   renderer: createCard,
 },
-elementsSection
+'.elements'
 );
+cardList.renderItem();
 
 // cardList.renderItem();
 // function render() {
@@ -144,48 +154,48 @@ const formAddValidator = new FormValidator(enableValidation, popupAdd);
 formEditValidator.enableValidation();
 formAddValidator.enableValidation();
 
-// describe actions in edit popup
-function openEditProfile() {
-  nameInput.value = nameValue.textContent;
-  occupationInput.value = occupationValue.textContent;
-  openPopup(popupEdit);
-  formEditValidator.resetValidation();
-}
+// // describe actions in edit popup
+// function openEditProfile() {
+//   nameInput.value = nameValue.textContent;
+//   occupationInput.value = occupationValue.textContent;
+//   openPopup(popupEdit);
+//   formEditValidator.resetValidation();
+// }
 
-// describe actions in add popup
-function openAddPopup() {
-  formAdd.reset();
-  openPopup(popupAdd);
-  formAddValidator.resetValidation();
-}
+// // describe actions in add popup
+// function openAddPopup() {
+//   formAdd.reset();
+//   openPopup(popupAdd);
+//   formAddValidator.resetValidation();
+// }
 
-//edit profile
-function submitFormEditHandler(evt) {
-  evt.preventDefault();
-  nameValue.textContent = nameInput.value;
-  occupationValue.textContent = occupationInput.value;
+// //edit profile
+// function submitFormEditHandler(evt) {
+//   evt.preventDefault();
+//   nameValue.textContent = nameInput.value;
+//   occupationValue.textContent = occupationInput.value;
 
-  closePopup(popupEdit);
-}
+//   closePopup(popupEdit);
+// }
 
-//add new card to places
-function submitFormAddHandler(evt) {
-  evt.preventDefault();
-  elements.prepend(createCard({
-    name: titleInput.value,
-    link: linkInput.value,
-    alt: titleInput.value,
-  })
-  );
-  titleInput.value = '';
-  linkInput.value = '';
-  closePopup(popupAdd);
-}
+// //add new card to places
+// function submitFormAddHandler(evt) {
+//   evt.preventDefault();
+//   elements.prepend(createCard({
+//     name: titleInput.value,
+//     link: linkInput.value,
+//     alt: titleInput.value,
+//   })
+//   );
+//   titleInput.value = '';
+//   linkInput.value = '';
+//   closePopup(popupAdd);
+// }
 
-editButton.addEventListener('click', openEditProfile);
-formEdit.addEventListener('submit', submitFormEditHandler);
-formAdd.addEventListener('submit', submitFormAddHandler);
-addButton.addEventListener('click', openAddPopup);
+// editButton.addEventListener('click', openEditProfile);
+// formEdit.addEventListener('submit', submitFormEditHandler);
+// formAdd.addEventListener('submit', submitFormAddHandler);
+// addButton.addEventListener('click', openAddPopup);
 
 
 //новый экземпляр класса Section
