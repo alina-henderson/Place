@@ -1,0 +1,19 @@
+{
+  "name": "mesto",
+  "version": "1.0.0",
+  "description": "### Обзор * Описание проекта  и его функциональности * Использованные технологии * Ссылка на проект",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alina-henderson/mesto.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alina-henderson/mesto/issues"
+  },
+  "homepage": "https://github.com/alina-henderson/mesto#readme"
+}

@@ -1,5 +1,5 @@
-import Card from './Card.js';
-import FormValidator from "./FormValidator.js";
+import Card from '../components/Card.js';
+import FormValidator from "../components/FormValidator.js";
 export { openPopup };
 
 
@@ -157,3 +157,7 @@ editButton.addEventListener('click', openEditProfile);
 formEdit.addEventListener('submit', submitFormEditHandler);
 formAdd.addEventListener('submit', submitFormAddHandler);
 addButton.addEventListener('click', openAddPopup);
+
+
+//новый экземпляр класса Section
+//const defaultCardList = new Section({ data: items }, cardListSelector);
