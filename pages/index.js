@@ -73,12 +73,12 @@ function render() {
 
 render();
 
-//command open any popup
-function openPopup(popup) {
-  //enable close with ESC
-  document.addEventListener('keydown', closeEsc);
-  popup.classList.add('popup_opened');
-}
+// //command open any popup
+// function openPopup(popup) {
+//   //enable close with ESC
+//   document.addEventListener('keydown', closeEsc);
+//   popup.classList.add('popup_opened');
+// }
 
 popups.forEach((popup) => {
   const closeButton = popup.querySelector('.button-close');
@@ -87,19 +87,19 @@ popups.forEach((popup) => {
   overlay.addEventListener('click', () => closePopup(popup));
 })
 
-//close by pressing esc
-function closeEsc(evt) {
-  if (evt.key === 'Escape') {
-    const popupOpened = document.querySelector('.popup_opened');
-    closePopup(popupOpened);
-  }
-}
+// //close by pressing esc
+// function closeEsc(evt) {
+//   if (evt.key === 'Escape') {
+//     const popupOpened = document.querySelector('.popup_opened');
+//     closePopup(popupOpened);
+//   }
+// }
 
-//command close any popup
-function closePopup(popup) {
-  document.removeEventListener('keydown', closeEsc);
-  popup.classList.remove('popup_opened');
-}
+// //command close any popup
+// function closePopup(popup) {
+//   document.removeEventListener('keydown', closeEsc);
+//   popup.classList.remove('popup_opened');
+// }
 
 const enableValidation = ({
   formSelector: '.form',
