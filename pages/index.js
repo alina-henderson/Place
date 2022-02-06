@@ -88,12 +88,12 @@ render();
 //   popup.classList.add('popup_opened');
 // }
 
-popups.forEach((popup) => {
-  const closeButton = popup.querySelector('.button-close');
-  closeButton.addEventListener('click', () => closePopup(popup));
-  const overlay = popup.querySelector('.popup__overlay');
-  overlay.addEventListener('click', () => closePopup(popup));
-})
+// popups.forEach((popup) => {
+//   const closeButton = popup.querySelector('.button-close');
+//   closeButton.addEventListener('click', () => closePopup(popup));
+//   const overlay = popup.querySelector('.popup__overlay');
+//   overlay.addEventListener('click', () => closePopup(popup));
+// })
 
 // //close by pressing esc
 // function closeEsc(evt) {
