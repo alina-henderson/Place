@@ -1,13 +1,13 @@
 import Card from '../components/Card.js';
-import FormValidator from "../components/FormValidator.js";
-import Section from "../components/Section.js";
-import Popup from "../components/Popup.js";
-import UserInfo.js from "../components/UserInfo.js";
-import PopupWithForm.js from "../components/PopupWithForm.js";
-import PicturePopup.js from "../components/PicturePopup.js";
+import FormValidator from '../components/FormValidator.js';
+import Section from '../components/Section.js';
+import Popup from '../components/Popup.js';
+import UserInfo from '../components/UserInfo.js';
+import PopupWithForm from '../components/PopupWithForm.js';
+import PicturePopup from '../components/PicturePopup.js';
 
 
-export { openPopup };
+// export { openPopup };
 
 
 
@@ -66,20 +66,41 @@ const titleValue = document.querySelector('.element__title');
 const linkValue = document.querySelector('.element__picture');
 const buttonSave = popupAdd.querySelector('.popup__button_add');
 
-function createCard(item) {
-  const card = new Card('.template', item.name, item.link, item.alt);
-  return card.getView();
-};
+//card container
+const template = '.template';
 
-function render() {
-  const cards = initialCards.map((item) => {
-    return createCard(item);
+// function createCard(item) {
+//   const card = new Card('.template', item.name, item.link, item.alt);
+//   return card.getView();
+// };
+
+const createCard = (item) => {
+  const newCard = new Card({
+    object: item,
+    selector: template,
+    handleCardClick: () => popupWithImage.open(item),
   });
-
-  elements.append(...cards);
+  const cardsElement = newCard.generateCard();
+  return cardsElement
 }
 
-render();
+const cardList = new Section({
+  items: initialCards.reverse(),
+  renderer: createCard,
+},
+elementsSection
+);
+
+// cardList.renderItem();
+// function render() {
+//   const cards = initialCards.map((item) => {
+//     return createCard(item);
+//   });
+
+//   elements.append(...cards);
+// }
+
+// render();
 
 // //command open any popup
 // function openPopup(popup) {
