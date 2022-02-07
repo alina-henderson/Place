@@ -86,9 +86,9 @@ const template = '.template';
 // };
 
 const createCard = (item) => {
-  const newCard = new Card( '.template', item.name, item.link, item.alt);
-  //   handleCardClick: () => popupWithImage.open(item),
-  // });
+  const newCard = new Card('.template', item.name, item.link, item.alt);
+    // handleCardClick: () => popupWithImage.open(item));
+
   const cardsElement = newCard.getView();
   return cardsElement;
 }
