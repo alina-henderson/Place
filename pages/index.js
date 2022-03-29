@@ -84,8 +84,14 @@ const template = '.template';
 //   const card = new Card('.template', item.name, item.link, item.alt);
 //   return card.getView();
 // };
+
 const picturePopup = new PicturePopup('.popup_pic');
-// picturePopup.setEventListeners();
+
+// each popup gets its own sample from PopupWithForm
+// const addPicturePopup = new PopupWithForm ('.popup_add', submitAddCardForm);
+// const editProfilePopup = new PopupWithForm ('.popup_type_edit', submitEditProfileForm);
+// const editAvatarPopup = new PopupWithForm ('.popup_type_avatar', submitEditAvatarForm);
+
 
 const createCard = (item) => {
   const newCard = new Card( '.template', item.name, item.link, item.alt, () => picturePopup.open(item));
@@ -101,6 +107,7 @@ const cardList = new Section({
 '.elements'
 );
 cardList.renderer();
+
 
 // cardList.renderItem();
 // function render() {
@@ -155,6 +162,17 @@ const formAddValidator = new FormValidator(enableValidation, popupAdd);
 formEditValidator.enableValidation();
 formAddValidator.enableValidation();
 
+// EventListeners
+picturePopup.setEventListeners()
+
+
+
+
+// editButton.addEventListener('click', openEditProfile);
+// formEdit.addEventListener('submit', submitFormEditHandler);
+// formAdd.addEventListener('submit', submitFormAddHandler);
+// addButton.addEventListener('click', openAddPopup);
+
 // // describe actions in edit popup
 // function openEditProfile() {
 //   nameInput.value = nameValue.textContent;
@@ -193,10 +211,6 @@ formAddValidator.enableValidation();
 //   closePopup(popupAdd);
 // }
 
-// editButton.addEventListener('click', openEditProfile);
-// formEdit.addEventListener('submit', submitFormEditHandler);
-// formAdd.addEventListener('submit', submitFormAddHandler);
-// addButton.addEventListener('click', openAddPopup);
 
 
 //новый экземпляр класса Section
