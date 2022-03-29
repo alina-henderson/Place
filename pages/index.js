@@ -85,9 +85,10 @@ const template = '.template';
 //   return card.getView();
 // };
 
-const picturePopup = new PicturePopup('.popup_pic');
+
 
 // each popup gets its own sample from PopupWithForm
+const picturePopup = new PicturePopup('.popup_pic');
 // const addPicturePopup = new PopupWithForm ('.popup_add', submitAddCardForm);
 // const editProfilePopup = new PopupWithForm ('.popup_type_edit', submitEditProfileForm);
 // const editAvatarPopup = new PopupWithForm ('.popup_type_avatar', submitEditAvatarForm);
@@ -107,6 +108,11 @@ const cardList = new Section({
 '.elements'
 );
 cardList.renderer();
+
+// add a new picture card
+const submitAddCardForm = (data) => {
+  cardList.addItem(createCard(data))
+}
 
 
 // cardList.renderItem();
@@ -134,19 +140,7 @@ cardList.renderer();
 //   overlay.addEventListener('click', () => closePopup(popup));
 // })
 
-// //close by pressing esc
-// function closeEsc(evt) {
-//   if (evt.key === 'Escape') {
-//     const popupOpened = document.querySelector('.popup_opened');
-//     closePopup(popupOpened);
-//   }
-// }
 
-// //command close any popup
-// function closePopup(popup) {
-//   document.removeEventListener('keydown', closeEsc);
-//   popup.classList.remove('popup_opened');
-// }
 
 const enableValidation = ({
   formSelector: '.form',
@@ -164,7 +158,6 @@ formAddValidator.enableValidation();
 
 // EventListeners
 picturePopup.setEventListeners()
-
 
 
 
@@ -197,7 +190,7 @@ picturePopup.setEventListeners()
 //   closePopup(popupEdit);
 // }
 
-// //add new card to places
+//add new card to places
 // function submitFormAddHandler(evt) {
 //   evt.preventDefault();
 //   elements.prepend(createCard({
@@ -212,6 +205,3 @@ picturePopup.setEventListeners()
 // }
 
 
-
-//новый экземпляр класса Section
-//const defaultCardList = new Section({ data: items }, cardListSelector);
