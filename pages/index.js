@@ -84,7 +84,7 @@ const template = '.template';
 //   const card = new Card('.template', item.name, item.link, item.alt);
 //   return card.getView();
 // };
-const picturePopup = new PicturePopup('.popup__image');
+const picturePopup = new PicturePopup('.popup_pic');
 // picturePopup.setEventListeners();
 
 const createCard = (item) => {

@@ -7,10 +7,10 @@ export default class PicturePopup extends Popup {
     this._popupSign = this._selector.querySelector('.popup__sign');
   }
 
-  open(name, link) {
-    this._popupLink.alt = name;
-    this._popupLink.src = link;
-    this._popupSign.textContent = name;
+  open(data) {
+    this._popupLink.alt = data.name;
+    this._popupLink.src = data.link;
+    this._popupSign.textContent = data.name;
     super.open();
   }
 }
