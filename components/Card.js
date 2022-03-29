@@ -1,6 +1,6 @@
 // import { openPopup } from "../pages/index.js";
 
-class Card {
+export default class Card {
   constructor(selector, name, link, alt, handleCardClick) {
     this._selector = selector; //saved selector as class char
     this._name = name;
@@ -10,7 +10,6 @@ class Card {
   }
 
   _getTemplate() { //returns template by selector
-    console.log(this._selector)
     return document.querySelector(this._selector)
       .content
       .querySelector('.element')
@@ -48,9 +47,8 @@ class Card {
     this._element.querySelector('.element__button-like').addEventListener('click', this._likeCard);
     this._element.querySelector('.element__button-trash').addEventListener('click', this._deleteCard);
     this._element.querySelector('.element__picture').addEventListener('click',() => {
-      this._handleCardClick()
+      this._handleCardClick(this._name, this._link)
   });
   }
 }
 
-export default Card;

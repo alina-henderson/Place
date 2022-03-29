@@ -77,17 +77,18 @@ const buttonSave = popupAdd.querySelector('.popup__button_add');
 const template = '.template';
 
 // const addCardPopup = new PopupWithForm(popupCards, handleSubmitAddCard);
-// const popupWithImage = new PopupWithImage(popupImage);
 // const editProfilePopup = new PopupWithForm(popupProfile, handleSubmitProfile)
+
 
 // function createCard(item) {
 //   const card = new Card('.template', item.name, item.link, item.alt);
 //   return card.getView();
 // };
+const picturePopup = new PicturePopup('.popup__image');
+// picturePopup.setEventListeners();
 
 const createCard = (item) => {
-  const newCard = new Card('.template', item.name, item.link, item.alt);
-    // handleCardClick: () => popupWithImage.open(item));
+  const newCard = new Card( '.template', item.name, item.link, item.alt, () => picturePopup.open(item));
 
   const cardsElement = newCard.getView();
   return cardsElement;
@@ -99,7 +100,7 @@ const cardList = new Section({
 },
 '.elements'
 );
-cardList.renderItem();
+cardList.renderer();
 
 // cardList.renderItem();
 // function render() {
