@@ -87,11 +87,6 @@ const template = '.template';
 
 
 
-// each popup gets its own sample from PopupWithForm
-const picturePopup = new PicturePopup('.popup_pic');
-// const addPicturePopup = new PopupWithForm ('.popup_add', submitAddCardForm);
-// const editProfilePopup = new PopupWithForm ('.popup_type_edit', submitEditProfileForm);
-// const editAvatarPopup = new PopupWithForm ('.popup_type_avatar', submitEditAvatarForm);
 
 
 const createCard = (item) => {
@@ -113,6 +108,13 @@ cardList.renderer();
 const submitAddCardForm = (data) => {
   cardList.addItem(createCard(data))
 }
+
+// each popup gets its own sample from PopupWithForm
+const picturePopup = new PicturePopup('.popup_pic');
+const addPicturePopup = new PopupWithForm ('.popup_add', submitAddCardForm);
+// const editProfilePopup = new PopupWithForm ('.popup_edit', submitEditProfileForm);
+// const editAvatarPopup = new PopupWithForm ('.popup_type_avatar', submitEditAvatarForm);
+
 
 
 // cardList.renderItem();
@@ -158,8 +160,11 @@ formAddValidator.enableValidation();
 
 // EventListeners
 picturePopup.setEventListeners()
+addPicturePopup.setEventListeners()
 
 
+addButton.addEventListener ('click', () => addPicturePopup.open());
+//addButton.addEventListener ('click', () => addPicturePopup.open());
 
 // editButton.addEventListener('click', openEditProfile);
 // formEdit.addEventListener('submit', submitFormEditHandler);
