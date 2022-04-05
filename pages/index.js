@@ -80,14 +80,6 @@ const template = '.template';
 // const editProfilePopup = new PopupWithForm(popupProfile, handleSubmitProfile)
 
 
-// function createCard(item) {
-//   const card = new Card('.template', item.name, item.link, item.alt);
-//   return card.getView();
-// };
-
-
-
-
 
 const createCard = (item) => {
   const newCard = new Card( '.template', item.name, item.link, item.alt, () => picturePopup.open(item));
@@ -109,11 +101,17 @@ const submitAddCardForm = (data) => {
   cardList.addItem(createCard(data))
 }
 
+
+// User info
+const userInfo = new UserInfo({
+  nameSelector: '.profile__name',
+  occupationSelector: '.profile__occupation',
+});
+
 // each popup gets its own sample from PopupWithForm
 const picturePopup = new PicturePopup('.popup_pic');
 const addPicturePopup = new PopupWithForm ('.popup_add', submitAddCardForm);
-// const editProfilePopup = new PopupWithForm ('.popup_edit', submitEditProfileForm);
-// const editAvatarPopup = new PopupWithForm ('.popup_type_avatar', submitEditAvatarForm);
+const editProfilePopup = new PopupWithForm ('.popup_edit', submitFormEditHandler);
 
 
 
@@ -161,10 +159,10 @@ formAddValidator.enableValidation();
 // EventListeners
 picturePopup.setEventListeners()
 addPicturePopup.setEventListeners()
-
+editProfilePopup.setEventListeners()
 
 addButton.addEventListener ('click', () => addPicturePopup.open());
-//addButton.addEventListener ('click', () => addPicturePopup.open());
+editButton.addEventListener ('click', () => editProfilePopup.open());
 
 // editButton.addEventListener('click', openEditProfile);
 // formEdit.addEventListener('submit', submitFormEditHandler);
@@ -186,14 +184,14 @@ addButton.addEventListener ('click', () => addPicturePopup.open());
 //   formAddValidator.resetValidation();
 // }
 
-// //edit profile
-// function submitFormEditHandler(evt) {
-//   evt.preventDefault();
-//   nameValue.textContent = nameInput.value;
-//   occupationValue.textContent = occupationInput.value;
+//edit profile
+function submitFormEditHandler(evt) {
+  evt.preventDefault();
+  nameValue.textContent = nameInput.value;
+  occupationValue.textContent = occupationInput.value;
 
-//   closePopup(popupEdit);
-// }
+  closePopup(popupEdit);
+}
 
 //add new card to places
 // function submitFormAddHandler(evt) {
