@@ -98,7 +98,7 @@ cardList.renderer();
 
 // add a new picture card
 const submitAddCardForm = (data) => {
-  cardList.addItem(createCard(data))
+  cardList.addItem(data)
 }
 
 
@@ -107,6 +107,16 @@ const userInfo = new UserInfo({
   nameSelector: '.profile__name',
   occupationSelector: '.profile__occupation',
 });
+
+//edit profile
+function submitFormEditHandler(evt) {
+  // evt.preventDefault();
+  nameValue.textContent = nameInput.value;
+  occupationValue.textContent = occupationInput.value;
+
+  editProfilePopup.close();
+}
+
 
 // each popup gets its own sample from PopupWithForm
 const picturePopup = new PicturePopup('.popup_pic');
@@ -184,14 +194,6 @@ editButton.addEventListener ('click', () => editProfilePopup.open());
 //   formAddValidator.resetValidation();
 // }
 
-//edit profile
-function submitFormEditHandler(evt) {
-  evt.preventDefault();
-  nameValue.textContent = nameInput.value;
-  occupationValue.textContent = occupationInput.value;
-
-  closePopup(popupEdit);
-}
 
 //add new card to places
 // function submitFormAddHandler(evt) {
