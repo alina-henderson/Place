@@ -2,13 +2,14 @@ class FormValidator {
   constructor(data, form) {
     this._form = form;
     this._inputSelector = data.inputSelector;
-    this._errorMessageClass = data.errorMessageClass;
-    this._inputErrorClass = data.inputErrorClass;
-    this._inactiveButtonClass = data.inactiveButtonClass;
-    this._submitButton = this._form.querySelector(this._submitButtonSelector);
     this._submitButtonSelector = data.submitButtonSelector;
+    this._inactiveButtonClass = data.inactiveButtonClass;
+    this._inputErrorClass = data.inputErrorClass;
+
+    this._errorMessageClass = data.errorMessageClass;
+    this._submitButton = this._form.querySelector(this._submitButtonSelector);
     this._inputs = this._form.querySelectorAll(this._inputSelector);
-    this._button = this._form.querySelector(this._submitButton);
+    // this._button = this._form.querySelector(this._submitButton);
   };
 
   _showError = (input, errorMessageText) => {
@@ -40,12 +41,12 @@ class FormValidator {
   //  toggle disable Button if invalid
   _toggleButtonState = () => {
     if (this._hasInvalidInput()) {
-      this._button.classList.add(this._inactiveButtonClass);
-      this._button.disabled = true;
+      this._submitButton.classList.add(this._inactiveButtonClass);
+      this._submitButton.disabled = true;
 
     } else {
-      this._button.classList.remove(this._inactiveButtonClass);
-      this._button.disabled = false;
+      this._submitButton.classList.remove(this._inactiveButtonClass);
+      this._submitButton.disabled = false;
     }
   };
 
