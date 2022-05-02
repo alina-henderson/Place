@@ -40,7 +40,7 @@ export default class Card {
     this._like.addEventListener('click', this._likeCard);
     this._element.querySelector('.element__button-trash').addEventListener('click', this._deleteCard);
     this._cardPic.addEventListener('click',() => {
-      this._handleCardClick(this._name, this._link)
+    this._handleCardClick()
   });
   }
 }

@@ -1,14 +1,14 @@
 class FormValidator {
-  constructor(selector, form) {
+  constructor(data, form) {
     this._form = form;
-    this._inputSelector = selector.inputSelector;
-    this._errorMessageClass = selector.errorMessageClass;
-    this._inputErrorClass = selector.inputErrorClass;
-    this._inactiveButtonClass = selector.inactiveButtonClass;
+    this._inputSelector = data.inputSelector;
+    this._errorMessageClass = data.errorMessageClass;
+    this._inputErrorClass = data.inputErrorClass;
+    this._inactiveButtonClass = data.inactiveButtonClass;
     this._submitButton = this._form.querySelector(this._submitButtonSelector);
-    this._submitButtonSelector = selector.submitButtonSelector;
+    this._submitButtonSelector = data.submitButtonSelector;
     this._inputs = this._form.querySelectorAll(this._inputSelector);
-    this._button = this._form.querySelector('.popup__button');
+    this._button = this._form.querySelector(this._submitButton);
   };
 
   _showError = (input, errorMessageText) => {
