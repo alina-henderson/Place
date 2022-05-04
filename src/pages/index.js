@@ -74,7 +74,7 @@ const template = '.template';
 
 
 const createCard = (item) => {
-  const newCard = new Card( '.template', item.name, item.link, item.alt, () => picturePopup.open(item));
+  const newCard = new Card('.template', item.name, item.link, item.alt, () => picturePopup.open(item));
 
   const cardsElement = newCard.getView();
   return cardsElement;
@@ -82,11 +82,11 @@ const createCard = (item) => {
 
 const cardList = new Section({
   items: initialCards.reverse(),
-  renderer: createCard,
-},
-'.elements'
-);
-cardList.renderer();
+  renderer: (item) => {
+    cardList.addItem(createCard(item));
+  },
+ }, '.elements');
+// cardList.renderer();
 
 // add a new picture card
 const submitAddCardForm = (data) => {
@@ -110,8 +110,8 @@ function submitFormEditHandler(evt) {
 
 // each popup gets its own sample from PopupWithForm
 const picturePopup = new PicturePopup('.popup_pic');
-const addPicturePopup = new PopupWithForm ('.popup_add', submitAddCardForm);
-const editProfilePopup = new PopupWithForm ('.popup_edit', submitFormEditHandler);
+const addPicturePopup = new PopupWithForm('.popup_add', submitAddCardForm);
+const editProfilePopup = new PopupWithForm('.popup_edit', submitFormEditHandler);
 
 
 const enableValidation = ({
@@ -133,5 +133,5 @@ picturePopup.setEventListeners()
 addPicturePopup.setEventListeners()
 editProfilePopup.setEventListeners()
 
-addButton.addEventListener ('click', () => addPicturePopup.open());
-editButton.addEventListener ('click', () => editProfilePopup.open());
+addButton.addEventListener('click', () => addPicturePopup.open());
+editButton.addEventListener('click', () => editProfilePopup.open());
