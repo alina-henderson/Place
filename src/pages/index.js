@@ -82,11 +82,11 @@ const createCard = (item) => {
 
 const cardList = new Section({
   items: initialCards.reverse(),
-  renderer: (item) => {
-    cardList.addItem(createCard(item));
+  renderer: createCard,
   },
- }, '.elements');
-// cardList.renderer();
+ '.elements'
+ );
+cardList.renderer();
 
 // add a new picture card
 const submitAddCardForm = (data) => {
