@@ -86,7 +86,7 @@ const cardList = new Section({
     cardList.addItem(createCard(item));
   }
 }, '.elements');
-// cardList.renderer();
+// cardList.renderItems();
 
 // add a new picture card
 const submitAddCardForm = (data) => {
