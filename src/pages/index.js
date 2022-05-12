@@ -40,11 +40,11 @@ const initialCards = [
   }
 ];
 
-const elements = document.querySelector('.elements');
+// const element = document.querySelector('.elements');
 const popups = document.querySelectorAll('.popup');
 
 //for edit button
-const editButton = document.querySelector('.profile__edit-button');
+const buttonEdit = document.querySelector('.profile__edit-button');
 const popupEdit = document.querySelector('.popup_edit');
 const formEdit = popupEdit.querySelector('.form_edit');
 const nameInput = popupEdit.querySelector('.form__input_value_name');
@@ -53,7 +53,7 @@ const nameValue = document.querySelector('.profile__name');
 const occupationValue = document.querySelector('.profile__occupation');
 
 //for add button
-const addButton = document.querySelector('.profile__add-button');
+const buttonAdd = document.querySelector('.profile__add-button');
 const popupAdd = document.querySelector('.popup_add');
 const formAdd = popupAdd.querySelector('.form_add');
 const titleInput = popupAdd.querySelector('.form__input_value_title');
@@ -82,15 +82,15 @@ const createCard = (item) => {
 
 const cardList = new Section({
   items: initialCards.reverse(),
-  renderer: createCard,
-  },
- '.elements'
- );
-cardList.renderer();
+  renderer: (item) => {
+    cardList.addItem(createCard(item));
+  }
+}, '.elements');
+// cardList.renderer();
 
 // add a new picture card
 const submitAddCardForm = (data) => {
-  cardList.addItem(data)
+  cardList.addItem(createCard(data))
 }
 
 
@@ -133,5 +133,5 @@ picturePopup.setEventListeners()
 addPicturePopup.setEventListeners()
 editProfilePopup.setEventListeners()
 
-addButton.addEventListener('click', () => addPicturePopup.open());
-editButton.addEventListener('click', () => editProfilePopup.open());
+buttonAdd.addEventListener('click', () => addPicturePopup.open());
+buttonEdit.addEventListener('click', () => editProfilePopup.open());
