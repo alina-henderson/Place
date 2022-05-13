@@ -13,7 +13,10 @@ export default class Section {
 
 
   renderItems(cards) {
+    console.log('cards', cards)
     cards.forEach((item) => {
+      console.log('item', item)
+      console.log('rendered', this._renderer)
       this._renderer(item);
     })
   }
