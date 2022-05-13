@@ -23,7 +23,7 @@ _handleSubmit = (evt) => {
 
 setEventListeners() {
   super.setEventListeners();
-  this._form.addEventListener('submit', _handleSubmit.bind(this._getInputValues));
+  this._form.addEventListener('submit', this._handleSubmit);
 }
 
 
