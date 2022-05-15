@@ -63,11 +63,6 @@ const linkValue = document.querySelector('.element__picture');
 const buttonSave = popupAdd.querySelector('.popup__button_add');
 
 
-// const addFormValidation = new FormValidator(dataValidation, formAddCards);
-// const editProfileValidation = new FormValidator(dataValidation, formProfile);
-
-// addFormValidation.enableValidation();
-// formProfileValidation.enableValidation();
 
 //card container
 const template = '.template';
@@ -101,7 +96,7 @@ const userInfo = new UserInfo({
 
 //edit profile
 function submitFormEditHandler(evt) {
-  const data = this._getInputValues();
+  const data = this._getInputValues(); //insert data from getInputValues
   nameValue.textContent = data.name;
   occupationValue.textContent = data.occupation;
   editProfilePopup.close();
@@ -133,7 +128,6 @@ picturePopup.setEventListeners()
 addPicturePopup.setEventListeners()
 editProfilePopup.setEventListeners()
 
-// buttonAdd.addEventListener('click', () => addPicturePopup.open());
 buttonAdd.addEventListener('click', () => {
   formAddValidator.resetValidation();
   addPicturePopup.open();
