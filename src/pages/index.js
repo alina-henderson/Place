@@ -128,6 +128,7 @@ const formAddValidator = new FormValidator(enableValidation, popupAdd);
 formEditValidator.enableValidation();
 formAddValidator.enableValidation();
 
+
 // EventListeners
 picturePopup.setEventListeners()
 addPicturePopup.setEventListeners()
@@ -139,4 +140,15 @@ buttonAdd.addEventListener('click', () => {
   addPicturePopup.open();
 });
 
-buttonEdit.addEventListener('click', () => editProfilePopup.open());
+// buttonEdit.addEventListener('click', () => editProfilePopup.open());
+buttonEdit.addEventListener('click', () => {
+  const updatedUserInfo = userInfo.getUserInfo();
+  nameInput.value = updatedUserInfo.name;
+  occupationInput.value = updatedUserInfo.occupation;
+  // formEditValidator.activateButton();
+  formEditValidator.resetValidation();
+  editProfilePopup.open();
+});
+
+// fill out form with user's data
+
