@@ -75,7 +75,7 @@ const template = '.template';
 
 const createCard = (item) => {
   const newCard = new Card('.template', item.name, item.link, item.alt, () => picturePopup.open(item));
-
+console.log(item.name, item.link, item.alt)
   const cardsElement = newCard.getView();
   return cardsElement;
 }
@@ -133,5 +133,10 @@ picturePopup.setEventListeners()
 addPicturePopup.setEventListeners()
 editProfilePopup.setEventListeners()
 
-buttonAdd.addEventListener('click', () => addPicturePopup.open());
+// buttonAdd.addEventListener('click', () => addPicturePopup.open());
+buttonAdd.addEventListener('click', () => {
+  formAddValidator.resetValidation();
+  addPicturePopup.open();
+});
+
 buttonEdit.addEventListener('click', () => editProfilePopup.open());
