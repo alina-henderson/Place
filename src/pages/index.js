@@ -145,7 +145,6 @@ buttonEdit.addEventListener('click', () => {
   const updatedUserInfo = userInfo.getUserInfo();
   nameInput.value = updatedUserInfo.name;
   occupationInput.value = updatedUserInfo.occupation;
-  // formEditValidator.activateButton();
   formEditValidator.resetValidation();
   editProfilePopup.open();
 });
