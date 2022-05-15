@@ -75,7 +75,6 @@ const template = '.template';
 
 const createCard = (item) => {
   const newCard = new Card('.template', item.name, item.link, item.alt, () => picturePopup.open(item));
-console.log(item.name, item.link, item.alt)
   const cardsElement = newCard.getView();
   return cardsElement;
 }
@@ -102,9 +101,9 @@ const userInfo = new UserInfo({
 
 //edit profile
 function submitFormEditHandler(evt) {
-  // evt.preventDefault();
-  nameValue.textContent = nameInput.value;
-  occupationValue.textContent = occupationInput.value;
+  const data = this._getInputValues();
+  nameValue.textContent = data.name;
+  occupationValue.textContent = data.occupation;
   editProfilePopup.close();
 }
 
@@ -140,14 +139,13 @@ buttonAdd.addEventListener('click', () => {
   addPicturePopup.open();
 });
 
-// buttonEdit.addEventListener('click', () => editProfilePopup.open());
 buttonEdit.addEventListener('click', () => {
   const updatedUserInfo = userInfo.getUserInfo();
+  // fill out form with user's data
   nameInput.value = updatedUserInfo.name;
   occupationInput.value = updatedUserInfo.occupation;
   formEditValidator.resetValidation();
   editProfilePopup.open();
 });
 
-// fill out form with user's data
 
