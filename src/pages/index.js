@@ -99,7 +99,7 @@ function submitFormEditHandler(evt) {
   const data = this._getInputValues(); //insert data from getInputValues
   nameValue.textContent = data.name;
   occupationValue.textContent = data.occupation;
-  editProfilePopup.close();
+  // editProfilePopup.close();
 }
 
 // each popup gets its own sample from PopupWithForm
