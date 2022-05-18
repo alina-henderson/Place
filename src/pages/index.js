@@ -87,19 +87,14 @@ const submitAddCardForm = (data) => {
   cardList.addItem(createCard(data))
 }
 
-
 // User info
 const userInfo = new UserInfo({
   nameSelector: '.profile__name',
   occupationSelector: '.profile__occupation',
 });
 
-//edit profile
-function submitFormEditHandler(evt) {
-  const data = this._getInputValues(); //insert data from getInputValues
-  nameValue.textContent = data.name;
-  occupationValue.textContent = data.occupation;
-  // editProfilePopup.close();
+function submitFormEditHandler(data) {
+  userInfo.setUserInfo(data); //insert data from setUserInfo
 }
 
 // each popup gets its own sample from PopupWithForm
@@ -141,5 +136,3 @@ buttonEdit.addEventListener('click', () => {
   formEditValidator.resetValidation();
   editProfilePopup.open();
 });
-
-
