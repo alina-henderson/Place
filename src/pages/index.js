@@ -6,6 +6,7 @@ import Popup from '../components/Popup.js';
 import UserInfo from '../components/UserInfo.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import PicturePopup from '../components/PicturePopup.js';
+import Api from '../components/Api';
 
 const initialCards = [
   {
@@ -40,6 +41,7 @@ const initialCards = [
   }
 ];
 
+
 // const element = document.querySelector('.elements');
 const popups = document.querySelectorAll('.popup');
 
@@ -67,6 +69,33 @@ const buttonSave = popupAdd.querySelector('.popup__button_add');
 //card container
 const template = '.template';
 
+const api = new Api({
+  url: 'https://mesto.nomoreparties.co/v1/cohort-42',
+  headers: {
+    authorization: 'f25ee209-d794-409d-8eae-29ba78e4618b',
+    'Content-Type': 'application/json'
+  }
+});
+
+// Load profile from the server
+const getServerUserInfo = api.getUserInfo()
+  .then((userInfo) => {
+    console.log(userInfo)
+    return userInfo
+  })
+  .catch((err) => {
+    console.log(`Ошибка загрузки информации о пользователе с сервера ${err}`)
+  });
+
+
+// api.setUserInfo()
+//   .then(data => {
+//     const userInfo = new UserInfo(data)
+//     userInfo.getUserInfo()
+//   })
+//   .catch(err => console.log(`Ошибка: ${err.status}`));
+
+
 
 const createCard = (item) => {
   const newCard = new Card('.template', item.name, item.link, item.alt, () => picturePopup.open(item));
@@ -91,6 +120,7 @@ const submitAddCardForm = (data) => {
 const userInfo = new UserInfo({
   nameSelector: '.profile__name',
   occupationSelector: '.profile__occupation',
+  //avatarSelector: '.profile__image'
 });
 
 function submitFormEditHandler(data) {
