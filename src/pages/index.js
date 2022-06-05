@@ -77,15 +77,6 @@ const api = new Api({
   }
 });
 
-// Load profile from the server
-const getServerUserInfo = api.getUserInfo()
-  .then((userInfo) => {
-    console.log(userInfo)
-    return userInfo
-  })
-  .catch((err) => {
-    console.log(`Ошибка загрузки информации о пользователе с сервера ${err}`)
-  });
 
 
 // api.setUserInfo()
@@ -120,8 +111,20 @@ const submitAddCardForm = (data) => {
 const userInfo = new UserInfo({
   nameSelector: '.profile__name',
   occupationSelector: '.profile__occupation',
-  //avatarSelector: '.profile__image'
+  avatarSelector: '.profile__image'
 });
+
+// Load profile from the server
+const getServerUserInfo = api.getUserInfo()
+  .then((userData) => {
+    console.log('then result', userData)
+    userInfo.setUserInfo(userData)
+  })
+  .catch((err) => {
+    console.log(`Ошибка загрузки информации о пользователе с сервера ${err}`)
+  });
+  console.log('const result', getServerUserInfo)
+
 
 function submitFormEditHandler(data) {
   userInfo.setUserInfo(data); //insert data from setUserInfo
