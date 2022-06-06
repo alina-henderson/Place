@@ -28,12 +28,12 @@ editProfile(userData) {
   }).then((response) => this._handleResponse(response))
 }
 
-// getInitialCards() {
-//   return fetch(`${this._url}/cards `, {
-//       headers: this._headers
-//   })
-//   .then((res) => this._handleResponse(res));
-// }
+getInitialCards() {
+  return fetch(`${this._url}/cards `, {
+      headers: this._headers
+  })
+  .then((res) => this._handleResponse(res));
+}
 
 
 

@@ -8,38 +8,38 @@ import PopupWithForm from '../components/PopupWithForm.js';
 import PicturePopup from '../components/PicturePopup.js';
 import Api from '../components/Api';
 
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg',
-    alt: 'Фото Архыз'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg',
-    alt: 'Фото Челябинская область'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg',
-    alt: 'Фото Иваново'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg',
-    alt: 'Фото Камчатка'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg',
-    alt: 'Фото Холмогорский район'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg',
-    alt: 'Фото Байкал'
-  }
-];
+// const initialCards = [
+//   {
+//     name: 'Архыз',
+//     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg',
+//     alt: 'Фото Архыз'
+//   },
+//   {
+//     name: 'Челябинская область',
+//     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg',
+//     alt: 'Фото Челябинская область'
+//   },
+//   {
+//     name: 'Иваново',
+//     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg',
+//     alt: 'Фото Иваново'
+//   },
+//   {
+//     name: 'Камчатка',
+//     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg',
+//     alt: 'Фото Камчатка'
+//   },
+//   {
+//     name: 'Холмогорский район',
+//     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg',
+//     alt: 'Фото Холмогорский район'
+//   },
+//   {
+//     name: 'Байкал',
+//     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg',
+//     alt: 'Фото Байкал'
+//   }
+// ];
 
 
 // const element = document.querySelector('.elements');
@@ -94,6 +94,18 @@ const createCard = (item) => {
   return cardsElement;
 }
 
+// Load cards from the server
+const getServerCards = api.getInitialCards()
+  .then((cardsData) => {
+    // console.log('then result', cardsData)
+    Card.getView(cardsData)
+  })
+  .catch((err) => {
+    console.log(`Ошибка загрузки информации о пользователе с сервера ${err}`)
+  });
+  // console.log('const result', getServerUserInfo)
+
+
 const cardList = new Section({
   items: initialCards.reverse(),
   renderer: (item) => {
@@ -117,13 +129,13 @@ const userInfo = new UserInfo({
 // Load profile from the server
 const getServerUserInfo = api.getUserInfo()
   .then((userData) => {
-    console.log('then result', userData)
-    userInfo.setUserInfo(userData)
+    // console.log('then result', userData)
+    UserInfo.setUserInfo(userData)
   })
   .catch((err) => {
     console.log(`Ошибка загрузки информации о пользователе с сервера ${err}`)
   });
-  console.log('const result', getServerUserInfo)
+  // console.log('const result', getServerUserInfo)
 
 
 function submitFormEditHandler(data) {
