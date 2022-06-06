@@ -26,8 +26,8 @@ export default class Card {
     this._element = null
   }
 
-  getView() { //returns html structure
-
+  //returns html structure
+  getView() { 
     this._cardPic.src = this._link;
     this._cardPic.alt = this._name;
     this._element.querySelector('.element__title').textContent = this._name;
