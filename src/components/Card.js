@@ -61,12 +61,14 @@ export default class Card {
     this._cardPic.alt = this._name;
     this._element.querySelector('.element__title').textContent = this._name;
     this._likesNumber.textContent = this._likes;
-    this._setEventListeners();
+
 
     if (this._cardOwnerID !== this._userID) {
       this._trash.classList.add('button__trash_hidden')
       return this._element;
     }
+    this._setEventListeners();
+  }
 
     _setEventListeners() {
       this._like.addEventListener('click', this._likeCard);
