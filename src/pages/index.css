@@ -35,6 +35,7 @@
 @import url(../blocks/form/__error/form__error.css);
 @import url(../blocks/form/__error/_visible/form__error_visible.css);
 @import url(../blocks/element/__button-trash/element__button-trash.css);
+@import url(../blocks/element/__button-trash/_hidden/__button-trash_hidden.css);
 @import url(../blocks/popup/__image/popup__image.css);
 @import url(../blocks/popup/__sign/popup__sign.css);
 @import url(../blocks/button-close/button-close.css);
