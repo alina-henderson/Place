@@ -94,6 +94,30 @@
     </div>
   </div>
 
+  <div class="popup popup_type_form popup_confirm">
+    <div class="popup__overlay"></div>
+    <form class="popup__container">
+      <button class="button-close button-close_popup_confirm" type="button"></button>
+      <h2 class="popup__title">Вы уверены</h2>
+      <button class="popup__button popup__button_confirm">Да</button>
+    </form>
+  </div>
+
+  <div class="popup popup_type_avatar">
+    <div class="popup__overlay"></div>
+    <form id="form-save-avatar" class="popup__container" name="add" novalidate>
+      <button class="button-close button-close_avatar" type="button"></button>
+      <h2 class="popup__title">Обновить аватар</h2>
+      <fieldset class="popup__info">
+        <div class="popup__info-item">
+          <input id="avatar-input" class="form__input form__input_value_image-link" type="url" name="url" placeholder="Ссылка на картинку" required>
+          <span id="image-link-error" class="form__error"></span>
+        </div>
+      </fieldset>
+      <button class="popup__button popup__button_save">Сохранить</button>
+    </form>
+  </div>
+</div>
 
   <template class="template">
     <div class="element">
@@ -101,7 +125,11 @@
       <button class="element__button-trash" type="button"></button>
       <div class="element__sign">
         <h2 class="element__title"></h2>
-        <button class="element__button-like" id="likeBtn" type="button"></button>
+        <div class="element__likes">
+          <button class="element__button-like" id="likeBtn" type="button"></button>
+          <span class="element__likes-number">5</span>
+        </div>
+
       </div>
     </div>
   </template>

@@ -64,6 +64,8 @@ const titleValue = document.querySelector('.element__title');
 const linkValue = document.querySelector('.element__picture');
 const buttonSave = popupAdd.querySelector('.popup__button_add');
 
+//button to save changes in profile data
+const buttonSaveProfile = popupEdit.querySelector('.popup__button_edit');
 
 
 //card container
@@ -84,14 +86,13 @@ const createCard = (cardsData) => {
 }
 
 
-
-
 // User info
 const userInfo = new UserInfo({
   nameSelector: '.profile__name',
   occupationSelector: '.profile__occupation',
   avatarSelector: '.profile__image'
 });
+
 
 // Load profile from the server
 const getServerUserInfo = api.getUserInfo()
@@ -102,6 +103,7 @@ const getServerUserInfo = api.getUserInfo()
     console.log(`Ошибка загрузки информации о пользователе с сервера ${err}`)
   });
 
+
 // Load cards from the server
 const loadCards = api.getInitialCards()
   .then((cardsData) => {
@@ -110,32 +112,67 @@ const loadCards = api.getInitialCards()
   .catch((err) => {
     console.log(`Ошибка загрузки информации о пользователе с сервера ${err}`)
   });
-  console.log('const result', loadCards)
+console.log('const result', loadCards)
 
 
-  const cardList = new Section({
-    items: initialCards.reverse(),
-    renderer: (item) => {
-      cardList.addItem(createCard(item));
-    }
-  }, '.elements');
-  cardList.renderItems(initialCards);
 
-  
-  // add a new picture card
-  const submitAddCardForm = (data) => {
-    cardList.addItem(createCard(data))
+const cardList = new Section({
+  items: initialCards.reverse(),
+  renderer: (item) => {
+    cardList.addItem(createCard(item));
   }
+}, '.elements');
+// cardList.renderItems(initialCards);
+
+//edit profile/submit form
+const submitFormEditHandler = (profileData) => {
+  api.editProfile(profileData)
+    .then((response) => {
+      userInfo.setUserInfo(profileData);
+      buttonSaveProfile.textContent = 'Сохранение...';
+      PopupWithForm.close();
+    })
+    .catch((error) => {
+      console.log(`Ошибка редактирования профиля ${error}`)
+    })
+    .finally(() => {
+      profileButton.textContent = 'Сохранить';
+    });
+};
+ //insert data from setUserInfo
 
 
-function submitFormEditHandler(data) {
-  userInfo.setUserInfo(data); //insert data from setUserInfo
+// function submitFormEditHandler(data) {
+//   userInfo.setUserInfo(data); //insert data from setUserInfo
+// }
+
+// add a new picture card
+
+
+const submitAddCardForm = (inputData) => {
+  // buttonCreate.textContent = 'Создание...';
+  api.addCard(inputData)
+  
+  .then((res) => {
+    cardList.addItem(createCard(inputData))
+    addPicturePopup.close();
+  })
+  .catch((err) => {
+    console.log(`Невозможно добавить карточку ${err}`);
+  })
 }
+// const submitAddCardForm = (data) => {
+//   cardList.addItem(createCard(data))
+// }
+
+
+
 
 // each popup gets its own sample from PopupWithForm
 const picturePopup = new PicturePopup('.popup_pic');
 const addPicturePopup = new PopupWithForm('.popup_add', submitAddCardForm);
 const editProfilePopup = new PopupWithForm('.popup_edit', submitFormEditHandler);
+// const editAvatarPopup = new PopupWithForm ('.popup_type_avatar', submitEditAvatarForm);
 
 
 const enableValidation = ({

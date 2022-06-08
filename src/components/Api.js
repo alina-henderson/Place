@@ -17,6 +17,14 @@ getUserInfo() {
   .then((res) => this._handleResponse(res));
 }
 
+getInitialCards() {
+  return fetch(`${this._url}/cards`, {
+      headers: this._headers
+  })
+  .then((res) => this._handleResponse(res));
+}
+
+
 editProfile(userData) {
   return fetch(`${this._url}/users/me`, {
     method: 'PATCH',
@@ -25,17 +33,26 @@ editProfile(userData) {
       name: userData.name,
       about: userData.occupation
     })
-  }).then((response) => this._handleResponse(response))
+  }).then((res) => this._handleResponse(res))
 }
 
-getInitialCards() {
-  return fetch(`${this._url}/cards `, {
-      headers: this._headers
+addCard(data) {
+  return fetch(`${this._url}/cards`, {
+    method: 'POST',
+    headers: this._headers,
+    body: JSON.stringify(data)
   })
-  .then((res) => this._handleResponse(res));
+  .then(this._handleResponse)
 }
 
-
+deleteCard(data) {
+  return fetch(`${this._url}/cards `, {
+    method: 'DELETE',
+    headers: this._headers,
+    body: JSON.stringify(data)
+  })
+  .then(this._handleResponse)
+}
 
 
 }

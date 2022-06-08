@@ -8,17 +8,6 @@ export default class Section {
     this._container.prepend(element);
   }
 
-  // setData(data) {
-  //   this._occupation.textContent = data._occupation;
-  //   this._name.textContent = data.name
-  // }
-
-  // getData(data) {
-  //   return{
-  //     name: this._name.textContent,
-  //     occupation: this._occupation.textContent
-  //   }
-  // }
 
   renderItems(cards) {
     cards.forEach((cards) => {
