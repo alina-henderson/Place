@@ -164,7 +164,26 @@ const submitAddCardForm = (inputData) => {
 //   cardList.addItem(createCard(data))
 // }
 
+function addLikeToCard(card) {
+  if(!card.getIsLike()) {
+      api.putLikeCard(card.getCardID())
+      .then((res) => {
+          card.likeCard(res)
+      })
+      .catch((err) => {
+          console.log(`Невозможно поставить лайк карточке ${err}`);
+      });
+  } else {
+      api.deleteLikeCard(card.getCardID())
+      .then((res) => {
+          card.likeCard(res)
+      })
+      .catch((err) => {
+          console.log(`Невозможно убрать лайк у карточки ${err}`);
+      });
+  }
 
+}
 
 
 // each popup gets its own sample from PopupWithForm

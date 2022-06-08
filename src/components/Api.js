@@ -54,21 +54,21 @@ deleteCard(data) {
   .then(this._handleResponse)
 }
 
-// putLikeCard(cardID) {
-//   return fetch(`${this._url}/cards/${cardID}/likes`, {
-//       method: 'PUT',
-//       headers: this._headers
-//   })
-//   .then((res) => this._handleResponse(res));
-// }
+putLikeCard(cardID) {
+  return fetch(`${this._url}/cards/${cardID}/likes`, {
+      method: 'PUT',
+      headers: this._headers
+  })
+  .then((res) => this._handleResponse(res));
+}
 
-// deleteLikeCard(cardID) {
-//   return fetch(`${this._url}/cards/${cardID}/likes`, {
-//       method: 'DELETE',
-//       headers: this._headers
-//   })
-//   .then((res) => this._handleResponse(res));
-// }
+deleteLikeCard(cardID) {
+  return fetch(`${this._url}/cards/${cardID}/likes`, {
+      method: 'DELETE',
+      headers: this._headers
+  })
+  .then((res) => this._handleResponse(res));
+}
 
 // patchAvatar(avatar) {
 //   return fetch(`${this._url}/users/me/avatar`, {
@@ -80,13 +80,3 @@ deleteCard(data) {
 // }
 
 }
-
-
-
-// api.getInitialCards()
-//   .then((result) => {
-//     // обрабатываем результат
-//   })
-//   .catch((err) => {
-//     console.log(err); // выведем ошибку в консоль
-//   });
