@@ -41,5 +41,6 @@
 @import url(../blocks/button-close/_popuppic/button-close_popuppic.css);
 @import url(../blocks/popup/__container/popup__container.css);
 @import url(../blocks/popup/popup.css);
+@import url(../blocks/popup/__content/popup__content_confirm.css);
 @import url(../blocks/popup/_opened/popup_opened.css);
 @import url(../blocks/popup/__overlay/popup__overlay.css);

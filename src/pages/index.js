@@ -6,7 +6,8 @@ import Popup from '../components/Popup.js';
 import UserInfo from '../components/UserInfo.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import PicturePopup from '../components/PicturePopup.js';
-import Api from '../components/Api';
+import Api from '../components/Api.js';
+import PopupConfirmation from '../components/PopupConfirmation.js';
 
 const initialCards = [
   {
@@ -135,9 +136,7 @@ const submitFormEditHandler = (profileData) => {
     .catch((error) => {
       console.log(`Ошибка редактирования профиля ${error}`)
     })
-    .finally(() => {
-      profileButton.textContent = 'Сохранить';
-    });
+
 };
  //insert data from setUserInfo
 
@@ -172,7 +171,26 @@ const submitAddCardForm = (inputData) => {
 const picturePopup = new PicturePopup('.popup_pic');
 const addPicturePopup = new PopupWithForm('.popup_add', submitAddCardForm);
 const editProfilePopup = new PopupWithForm('.popup_edit', submitFormEditHandler);
+const popupConfirm = new PopupConfirmation('.popup_confirm', submitDeleteCard);
+
 // const editAvatarPopup = new PopupWithForm ('.popup_type_avatar', submitEditAvatarForm);
+
+//open popup to confirm deletion
+function confirmCardDelete(card) {
+  popupConfirm.open(card);
+}
+
+//card deletion
+function submitDeleteCard(card) {
+  api.deleteCard(card.getCardID())
+      .then(() => {
+          card.removeCard();
+          popupConfirm.close();
+      })
+      .catch((err) => {
+          console.log(`Невозможно удалить карточку ${err}`);
+      });
+}
 
 
 const enableValidation = ({
@@ -194,6 +212,7 @@ formAddValidator.enableValidation();
 picturePopup.setEventListeners()
 addPicturePopup.setEventListeners()
 editProfilePopup.setEventListeners()
+popupConfirm.setEventListeners()
 
 buttonAdd.addEventListener('click', () => {
   formAddValidator.resetValidation();

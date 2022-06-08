@@ -46,7 +46,7 @@ addCard(data) {
 }
 
 deleteCard(data) {
-  return fetch(`${this._url}/cards `, {
+  return fetch(`${this._url}/cards`, {
     method: 'DELETE',
     headers: this._headers,
     body: JSON.stringify(data)
@@ -54,6 +54,30 @@ deleteCard(data) {
   .then(this._handleResponse)
 }
 
+// putLikeCard(cardID) {
+//   return fetch(`${this._url}/cards/${cardID}/likes`, {
+//       method: 'PUT',
+//       headers: this._headers
+//   })
+//   .then((res) => this._handleResponse(res));
+// }
+
+// deleteLikeCard(cardID) {
+//   return fetch(`${this._url}/cards/${cardID}/likes`, {
+//       method: 'DELETE',
+//       headers: this._headers
+//   })
+//   .then((res) => this._handleResponse(res));
+// }
+
+// patchAvatar(avatar) {
+//   return fetch(`${this._url}/users/me/avatar`, {
+//       method: 'PATCH',
+//       headers: this._headers,
+//       body: JSON.stringify({avatar: avatar}),
+//   })
+//   .then((res) => this._handleResponse(res));
+// }
 
 }
 
