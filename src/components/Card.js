@@ -17,9 +17,6 @@ export default class Card {
     this._like = this._element.querySelector('.element__button-like');
     this._likesNumber = this._element.querySelector('.element__likes-number');
     this._trash = this._element.querySelector('.element__button-trash')
-    // if (this._isLike) {
-    //   this._like.classList.add('element__button-like_active');
-    // }
   }
 
   _getTemplate() { //returns template by selector
