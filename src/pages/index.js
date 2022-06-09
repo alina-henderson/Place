@@ -81,8 +81,9 @@ const api = new Api({
 });
 
 const createCard = (cardsData) => {
-  const newCard = new Card('.template', cardsData.name, cardsData.link, cardsData.alt, () => picturePopup.open(cardsData));
+  const newCard = new Card('.template', cardsData.name, cardsData.link, cardsData.alt, cardsData.likes, cardsData.id, cardsData.userId, cardsData.ownerId, () => picturePopup.open(cardsData));
   const cardsElement = newCard.getView();
+  // console.log('cardsElement', cardsElement)
   return cardsElement;
 }
 
@@ -113,7 +114,7 @@ const loadCards = api.getInitialCards()
   .catch((err) => {
     console.log(`Ошибка загрузки информации о пользователе с сервера ${err}`)
   });
-console.log('const result', loadCards)
+// console.log('const result', loadCards)
 
 
 
@@ -166,7 +167,7 @@ const submitAddCardForm = (inputData) => {
 
 function addLikeToCard(card) {
   if(!card.getIsLike()) {
-      api.putLikeCard(card.getCardID())
+      api.handleLike(card.getCardID())
       .then((res) => {
           card.likeCard(res)
       })

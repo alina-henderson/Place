@@ -54,7 +54,7 @@ deleteCard(data) {
   .then(this._handleResponse)
 }
 
-putLikeCard(cardID) {
+addLikeCard(cardID) {
   return fetch(`${this._url}/cards/${cardID}/likes`, {
       method: 'PUT',
       headers: this._headers
