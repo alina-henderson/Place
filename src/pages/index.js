@@ -154,7 +154,7 @@ const submitAddCardForm = (inputData) => {
   api.addCard(inputData)
   
   .then((res) => {
-    cardList.addItem(createCard(inputData))
+    cardList.addItem(createCard(cardsData))
     addPicturePopup.close();
   })
   .catch((err) => {
