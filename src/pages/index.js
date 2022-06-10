@@ -164,7 +164,7 @@ const submitAddCardForm = (inputData) => {
 
 function addLikeToCard(card) {
   if (!card.getIsLike()) {
-    api.handleLike(card.getCardID())
+    api.handleLike(card._id())
       .then((res) => {
         card.likeCard(res)
       })
@@ -172,7 +172,7 @@ function addLikeToCard(card) {
         console.log(`Невозможно поставить лайк карточке ${err}`);
       });
   } else {
-    api.deleteLikeCard(card.getCardID())
+    api.deleteLikeCard(card._id())
       .then((res) => {
         card.likeCard(res)
       })
@@ -193,13 +193,14 @@ const popupConfirm = new PopupConfirmation('.popup_confirm', submitDeleteCard);
 // const editAvatarPopup = new PopupWithForm ('.popup_type_avatar', submitEditAvatarForm);
 
 //open popup to confirm deletion
-function confirmCardDelete(card) {
-  popupConfirm.open(card);
-}
+// function confirmCardDelete(card) {
+//   popupConfirm.open(card);
+// }
+popupConfirm.open();
 
 //card deletion
 function submitDeleteCard(card) {
-  api.deleteCard(card.getCardID())
+  api.deleteCard(card._id())
     .then(() => {
       card.removeCard();
       popupConfirm.close();

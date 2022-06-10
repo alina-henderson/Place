@@ -53,11 +53,6 @@ export default class Card {
     return this._isLike
   }
 
-  // _hideTrash = () => {
-  //   if (this._ownerId != this._userId) {
-  //     this._element.querySelector('.element__button-trash').classList.add('element__button-trash_hidden');
-  //   }
-  // }
 
 
   //returns html structure
@@ -70,7 +65,7 @@ export default class Card {
 
     //  this._isLike ? this._like.classList.add('element__button_active') : null;
 
-    if (this._ownerId !== this._userID) {
+    if (this._ownerId !== this._userId) {
       this._element.querySelector('.element__button-trash').classList.add('element__button-trash_hidden')
     }
     // this._hideTrash();
