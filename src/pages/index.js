@@ -139,7 +139,7 @@ const submitFormEditHandler = (profileData) => {
     })
 
 };
- //insert data from setUserInfo
+//insert data from setUserInfo
 
 
 // function submitFormEditHandler(data) {
@@ -152,35 +152,32 @@ const submitFormEditHandler = (profileData) => {
 const submitAddCardForm = (inputData) => {
   // buttonCreate.textContent = 'Создание...';
   api.addCard(inputData)
-  
-  .then((res) => {
-    cardList.addItem(createCard(cardsData))
-    addPicturePopup.close();
-  })
-  .catch((err) => {
-    console.log(`Невозможно добавить карточку ${err}`);
-  })
+    .then((res) => {
+      cardList.addItem(createCard(res, userInfo._id))
+      addPicturePopup.close();
+    })
+    .catch((err) => {
+      console.log(`Невозможно добавить карточку ${err}`);
+    })
 }
-// const submitAddCardForm = (data) => {
-//   cardList.addItem(createCard(data))
-// }
+
 
 function addLikeToCard(card) {
-  if(!card.getIsLike()) {
-      api.handleLike(card.getCardID())
+  if (!card.getIsLike()) {
+    api.handleLike(card.getCardID())
       .then((res) => {
-          card.likeCard(res)
+        card.likeCard(res)
       })
       .catch((err) => {
-          console.log(`Невозможно поставить лайк карточке ${err}`);
+        console.log(`Невозможно поставить лайк карточке ${err}`);
       });
   } else {
-      api.deleteLikeCard(card.getCardID())
+    api.deleteLikeCard(card.getCardID())
       .then((res) => {
-          card.likeCard(res)
+        card.likeCard(res)
       })
       .catch((err) => {
-          console.log(`Невозможно убрать лайк у карточки ${err}`);
+        console.log(`Невозможно убрать лайк у карточки ${err}`);
       });
   }
 
@@ -203,13 +200,13 @@ function confirmCardDelete(card) {
 //card deletion
 function submitDeleteCard(card) {
   api.deleteCard(card.getCardID())
-      .then(() => {
-          card.removeCard();
-          popupConfirm.close();
-      })
-      .catch((err) => {
-          console.log(`Невозможно удалить карточку ${err}`);
-      });
+    .then(() => {
+      card.removeCard();
+      popupConfirm.close();
+    })
+    .catch((err) => {
+      console.log(`Невозможно удалить карточку ${err}`);
+    });
 }
 
 
