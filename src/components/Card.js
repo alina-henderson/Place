@@ -68,6 +68,7 @@ export default class Card {
     if (this._ownerId !== this._userId) {
       this._element.querySelector('.element__button-trash').classList.add('element__button-trash_hidden')
     }
+    
     // this._hideTrash();
     this._setEventListeners();
     return this._element;

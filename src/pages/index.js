@@ -81,9 +81,9 @@ const api = new Api({
 });
 
 const createCard = (cardsData) => {
-  const newCard = new Card('.template', cardsData.name, cardsData.link, cardsData.alt, cardsData.likes, cardsData._id, cardsData.user_id, cardsData.owner_id, () => picturePopup.open(cardsData), () => popupConfirm.open(cardsData));
+  console.log('cardsData', cardsData);
+  const newCard = new Card('.template', cardsData.name, cardsData.link, cardsData.alt, cardsData.likes, cardsData._id, cardsData.owner_id, () => picturePopup.open(cardsData), () => popupConfirm.open(cardsData));
   const cardsElement = newCard.getView();
-  console.log('newCard', newCard);
   return cardsElement;
 }
 
