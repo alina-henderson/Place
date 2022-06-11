@@ -81,11 +81,13 @@ const api = new Api({
 });
 
 const createCard = (cardsData) => {
-  const newCard = new Card('.template', cardsData.name, cardsData.link, cardsData.alt, cardsData.likes, cardsData.id, cardsData.userId, cardsData.ownerId, () => picturePopup.open(cardsData), () => popupConfirm.open(cardsData));
+  const newCard = new Card('.template', cardsData.name, cardsData.link, cardsData.alt, cardsData.likes, cardsData._id, cardsData.user_id, cardsData.owner_id, () => picturePopup.open(cardsData), () => popupConfirm.open(cardsData));
   const cardsElement = newCard.getView();
-  // console.log('cardsElement', cardsElement)
+  console.log('newCard', newCard);
   return cardsElement;
 }
+
+  // console.log('cardsElement', cardsElement)
 
 
 // User info
@@ -125,6 +127,7 @@ const cardList = new Section({
   }
 }, '.elements');
 // cardList.renderItems(initialCards);
+
 
 //edit profile/submit form
 const submitFormEditHandler = (profileData) => {
@@ -200,11 +203,11 @@ const popupConfirm = new PopupConfirmation('.popup_confirm', submitDeleteCard);
 
 //card deletion
  const submitDeleteCard = (card) => {
-  popupConfirm.open();
+  // console.log('card', card);
 
-  api.deleteCard(card._id())
+  api.deleteCard(card.getCardID())
     .then(() => {
-      card.deleteCard();
+      card.removeCard();
       popupConfirm.close();
     })
     .catch((err) => {

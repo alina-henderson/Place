@@ -40,7 +40,7 @@ export default class Card {
     }
   }
 
-  deleteCard = () => {
+  removeCard = () => {
     this._element.remove();
     this._element = null
   }
