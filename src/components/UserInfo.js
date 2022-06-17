@@ -1,12 +1,12 @@
 
 export default class UserInfo {
-  constructor( {nameSelector, occupationSelector, avatarSelector } ) {
+  constructor({ nameSelector, occupationSelector, avatarSelector }) {
     this._name = document.querySelector(nameSelector);
     this._occupation = document.querySelector(occupationSelector);
     this._avatar = document.querySelector(avatarSelector)
   }
 
-  getUserInfo () {
+  getUserInfo() {
     const userData = {
       name: this._name.textContent,
       occupation: this._occupation.textContent,
@@ -21,4 +21,13 @@ export default class UserInfo {
     this._occupation.textContent = data.about;
     this._avatar.src = data.avatar
   }
+
+  getUserID() {
+    return this._id;
+  }
+
+  setUserID(id) {
+    this._id = id;
+  }
+
 }

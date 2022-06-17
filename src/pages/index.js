@@ -80,14 +80,30 @@ const api = new Api({
   }
 });
 
+Promise.all([api.getInitialCards(), api.getUserInfo()])
+  .then((cardsServer, userInfoServer) => {
+    userInfo.setUserInfo({
+      name: userInfoServer.name,
+      occupation: userInfoServer.about,
+      // avatar: userInfoServer.avatar
+    });
+    userInfo.setUserID(userInfoServer._id);
+    // render cards
+    cardList.renderItems(cardsServer);
+  })
+  .catch((err) => {
+    console.log(`Невозможно загрузить информацию с сервера ${err}`);
+  });
+
+
 const createCard = (cardsData) => {
-  console.log('cardsData', cardsData);
+  // console.log('cardsData', cardsData);
   const newCard = new Card('.template', cardsData.name, cardsData.link, cardsData.alt, cardsData.likes, cardsData._id, cardsData.owner_id, () => picturePopup.open(cardsData), () => popupConfirm.open(cardsData));
   const cardsElement = newCard.getView();
   return cardsElement;
 }
 
-  // console.log('cardsElement', cardsElement)
+// console.log('cardsElement', cardsElement)
 
 
 // User info
@@ -101,6 +117,7 @@ const userInfo = new UserInfo({
 // Load profile from the server
 const getServerUserInfo = api.getUserInfo()
   .then((userData) => {
+    console.log('userData', userData)
     userInfo.setUserInfo(userData)
   })
   .catch((err) => {
@@ -114,7 +131,7 @@ const loadCards = api.getInitialCards()
     cardList.renderItems(cardsData);
   })
   .catch((err) => {
-    console.log(`Ошибка загрузки информации о пользователе с сервера ${err}`)
+    console.log(`Ошибка загрузки информации о карточках с сервера ${err}`)
   });
 // console.log('const result', loadCards)
 
@@ -202,7 +219,7 @@ const popupConfirm = new PopupConfirmation('.popup_confirm', submitDeleteCard);
 
 
 //card deletion
- const submitDeleteCard = (card) => {
+const submitDeleteCard = (card) => {
   // console.log('card', card);
 
   api.deleteCard(card.getCardID())
