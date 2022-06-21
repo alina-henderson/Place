@@ -151,15 +151,15 @@ const getServerUserInfo = api.getUserInfo()
   });
 
 
-// Load cards from the server
-const loadCards = api.getInitialCards()
-  .then((cardsData) => {
-    cardList.renderItems(cardsData);
-  })
-  .catch((err) => {
-    console.log(`Ошибка загрузки информации о карточках с сервера ${err}`)
-  });
-// console.log('const result', loadCards)
+// // Load cards from the server
+// const loadCards = api.getInitialCards()
+//   .then((cardsData) => {
+//     cardList.renderItems(cardsData);
+//   })
+//   .catch((err) => {
+//     console.log(`Ошибка загрузки информации о карточках с сервера ${err}`)
+//   });
+// // console.log('const result', loadCards)
 
 
 
