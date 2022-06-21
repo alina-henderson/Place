@@ -46,7 +46,7 @@ export default class Card {
   }
 
   getCardID() {
-    return this._cardID;
+    return this._cardId;
   }
 
   getIsLike() {

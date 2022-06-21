@@ -80,25 +80,51 @@ const api = new Api({
   }
 });
 
-Promise.all([api.getInitialCards(), api.getUserInfo()])
-  .then((cardsServer, userInfoServer) => {
+// Promise.all([api.getUserInfo(), api.getInitialCards()])
+//   .then((user, cards) => {
+//     console.log("user", user)
+//     userInfo.setUserInfo({
+//       name: user.name,
+//       occupation: user.about,
+//       avatar: user.avatar
+//     });
+//     userInfo.setUserID(user._id);
+//     // render cards
+//     cardList.renderItems(cards);
+//   })
+//   .catch((err) => {
+//     console.log(`Невозможно загрузить информацию с сервера ${err}`);
+//   });
+
+// Promise.all([api.getUserInfo(), api.getInitialCards()])
+//   .then((values) => {
+//     console.log('values', values)
+//   })
+//   .catch((err) => {
+//     console.log(`Невозможно загрузить информацию с сервера ${err}`);
+//   });
+
+Promise.all([api.getUserInfo(), api.getInitialCards()])
+  .then(([user, cards]) => {
+    // console.log("user cards ", user, cards)
     userInfo.setUserInfo({
-      name: userInfoServer.name,
-      occupation: userInfoServer.about,
-      // avatar: userInfoServer.avatar
+      name: user.name,
+      occupation: user.about,
+      avatar: user.avatar
     });
-    userInfo.setUserID(userInfoServer._id);
+    userInfo.setUserID(user._id);
     // render cards
-    cardList.renderItems(cardsServer);
+    cardList.renderItems(cards);
   })
   .catch((err) => {
     console.log(`Невозможно загрузить информацию с сервера ${err}`);
   });
 
-
 const createCard = (cardsData) => {
   // console.log('cardsData', cardsData);
-  const newCard = new Card('.template', cardsData.name, cardsData.link, cardsData.alt, cardsData.likes, cardsData._id, cardsData.owner_id, () => picturePopup.open(cardsData), () => popupConfirm.open(cardsData));
+  const dataUserId = userInfo.getUserID();
+  // console.log(dataUserId)
+  const newCard = new Card('.template', cardsData.name, cardsData.link, cardsData.alt, cardsData.likes, cardsData._id, dataUserId, cardsData.owner._id, () => picturePopup.open(cardsData), () => popupConfirm.open(cardsData));
   const cardsElement = newCard.getView();
   return cardsElement;
 }
@@ -117,7 +143,7 @@ const userInfo = new UserInfo({
 // Load profile from the server
 const getServerUserInfo = api.getUserInfo()
   .then((userData) => {
-    console.log('userData', userData)
+    // console.log('userData', userData)
     userInfo.setUserInfo(userData)
   })
   .catch((err) => {
@@ -138,13 +164,30 @@ const loadCards = api.getInitialCards()
 
 
 const cardList = new Section({
-  items: initialCards.reverse(),
+  // items: initialCards.reverse(),
   renderer: (item) => {
     cardList.addItem(createCard(item));
   }
 }, '.elements');
 // cardList.renderItems(initialCards);
 
+
+//card deletion
+const submitDeleteCard = (card) => {
+  // console.log('card', card);
+
+  const cardId = card.getCardID();
+  // console.log('cardId', cardId);
+
+  api.deleteCard(cardId)
+    .then(() => {
+      card.removeCard();
+      popupConfirm.close();
+    })
+    .catch((err) => {
+      console.log(`Невозможно удалить карточку ${err}`);
+    });
+}
 
 //edit profile/submit form
 const submitFormEditHandler = (profileData) => {
@@ -218,19 +261,7 @@ const popupConfirm = new PopupConfirmation('.popup_confirm', submitDeleteCard);
 // }
 
 
-//card deletion
-const submitDeleteCard = (card) => {
-  // console.log('card', card);
 
-  api.deleteCard(card.getCardID())
-    .then(() => {
-      card.removeCard();
-      popupConfirm.close();
-    })
-    .catch((err) => {
-      console.log(`Невозможно удалить карточку ${err}`);
-    });
-}
 
 
 const enableValidation = ({
