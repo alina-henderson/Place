@@ -114,7 +114,7 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
     });
     userInfo.setUserID(user._id);
     // render cards
-    cardList.renderItems(cards);
+    cardList.renderItems(cards.reverse());
   })
   .catch((err) => {
     console.log(`Невозможно загрузить информацию с сервера ${err}`);
@@ -169,7 +169,6 @@ const cardList = new Section({
     cardList.addItem(createCard(item));
   }
 }, '.elements');
-// cardList.renderItems(initialCards);
 
 
 //card deletion
