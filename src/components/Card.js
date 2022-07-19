@@ -74,7 +74,7 @@ export default class Card {
 
   _setEventListeners() {
     this._element.querySelector('.element__button-like').addEventListener('click', this._handleLikeCard);
-    this._element.querySelector('.element__button-trash').addEventListener('click', this._handleCardDelete);
+    this._element.querySelector('.element__button-trash').addEventListener('click', () => this._handleCardDelete(this));
     this._element.querySelector('.element__picture').addEventListener('click', () => {
       this._handleCardClick()
     });

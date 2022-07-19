@@ -175,7 +175,7 @@ const cardList = new Section({
 const submitDeleteCard = (card) => {
   // console.log('card', card);
 
-  const cardId = card.getCardID();
+  // const cardId = card.getCardID(card);
   // console.log('cardId', cardId);
 
   api.deleteCard(cardId)
