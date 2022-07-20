@@ -175,27 +175,15 @@ const cardList = new Section({
 const submitDeleteCard = (card) => {
   console.log('card', card);
 
-  // const cardId = card.getCardID(card);
-  // console.log('cardId', cardId);
-
-  // api.deleteCard(cardId)
-  //   .then(() => {
-  //     card.removeCard();
-  //     popupConfirm.close();
-  //   })
-  //   .catch((err) => {
-  //     console.log(`Невозможно удалить карточку ${err}`);
-  //   });
 
   popupConfirm.setSubmitHanlder(() => {
-    api
-      .deleteCard(card._id)
+    api.deleteCard(card._id)
       .then((res) => {
         card.removeCard();
         popupConfirm.close();
       })
-      .catch((res) => {
-        console.log(res);
+      .catch((err) => {
+        console.log(`Невозможно удалить карточку ${err}`);
       });
   });
 
