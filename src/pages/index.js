@@ -173,19 +173,33 @@ const cardList = new Section({
 
 //card deletion
 const submitDeleteCard = (card) => {
-  // console.log('card', card);
+  console.log('card', card);
 
   // const cardId = card.getCardID(card);
   // console.log('cardId', cardId);
 
-  api.deleteCard(cardId)
-    .then(() => {
-      card.removeCard();
-      popupConfirm.close();
-    })
-    .catch((err) => {
-      console.log(`Невозможно удалить карточку ${err}`);
-    });
+  // api.deleteCard(cardId)
+  //   .then(() => {
+  //     card.removeCard();
+  //     popupConfirm.close();
+  //   })
+  //   .catch((err) => {
+  //     console.log(`Невозможно удалить карточку ${err}`);
+  //   });
+
+  popupConfirm.setSubmitHanlder(() => {
+    api
+      .deleteCard(card._id)
+      .then((res) => {
+        card.removeCard();
+        popupConfirm.close();
+      })
+      .catch((res) => {
+        console.log(res);
+      });
+  });
+
+
 }
 
 //edit profile/submit form
