@@ -176,19 +176,15 @@ const submitDeleteCard = (card) => {
   console.log('card', card);
 
 
-  popupConfirm.setSubmitHanlder(() => {
-    api.deleteCard(card._id)
-      .then((res) => {
+    api.deleteCard(card.getCardID())
+      .then(() => {
         card.removeCard();
         popupConfirm.close();
       })
       .catch((err) => {
         console.log(`Невозможно удалить карточку ${err}`);
       });
-  });
-
-
-}
+  }
 
 //edit profile/submit form
 const submitFormEditHandler = (profileData) => {

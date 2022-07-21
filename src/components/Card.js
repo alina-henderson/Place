@@ -6,7 +6,7 @@ export default class Card {
     this._alt = alt;
     this._likes = likes;
     this._isLike = likes.some(item => item._id === this._userId);
-    this._cardId = id
+    this._cardId = id;
     this._userId = userId;
     this._ownerId = ownerId;
     this._handleCardClick = handleCardClick;
