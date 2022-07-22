@@ -120,16 +120,27 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
     console.log(`Невозможно загрузить информацию с сервера ${err}`);
   });
 
-const createCard = (cardsData) => {
-  // console.log('cardsData', cardsData);
-  const dataUserId = userInfo.getUserID();
-  // console.log(dataUserId)
-  const newCard = new Card('.template', cardsData.name, cardsData.link, cardsData.alt, cardsData.likes, cardsData._id, dataUserId, cardsData.owner._id, () => picturePopup.open(cardsData), () => popupConfirm.open(cardsData));
-  const cardsElement = newCard.getView();
-  return cardsElement;
-}
 
-// console.log('cardsElement', cardsElement)
+  const createCard = (cardsData) => {
+    // console.log('cardsData', cardsData);
+    const dataUserId = userInfo.getUserID();
+    // console.log(dataUserId)
+    const newCard = new Card('.template', cardsData.name, cardsData.link, cardsData.alt, cardsData.likes, cardsData._id, dataUserId, cardsData.owner._id, () => picturePopup.open(cardsData), () => {
+      popupConfirm.open(cardsData);
+      popupConfirm.setAction(() => {
+        api.deleteCard(cardsData._id)
+            .then(() => {
+              newCard.removeCard();
+              popupConfirm.close();
+            })
+            .catch((err) => {
+              console.log(`Невозможно удалить карточку ${err}`);
+            });
+      })
+    });
+    const cardsElement = newCard.getView();
+    return cardsElement;
+  }
 
 
 // User info
@@ -143,7 +154,6 @@ const userInfo = new UserInfo({
 // Load profile from the server
 const getServerUserInfo = api.getUserInfo()
   .then((userData) => {
-    // console.log('userData', userData)
     userInfo.setUserInfo(userData)
   })
   .catch((err) => {
@@ -171,20 +181,20 @@ const cardList = new Section({
 }, '.elements');
 
 
-//card deletion
-const submitDeleteCard = (card) => {
-  console.log('card', card);
+// //card deletion
+// const submitDeleteCard = (card) => {
+//   console.log('card', card);
 
 
-    api.deleteCard(card.getCardID())
-      .then(() => {
-        card.removeCard();
-        popupConfirm.close();
-      })
-      .catch((err) => {
-        console.log(`Невозможно удалить карточку ${err}`);
-      });
-  }
+//     api.deleteCard(card.getCardID())
+//       .then(() => {
+//         card.removeCard();
+//         popupConfirm.close();
+//       })
+//       .catch((err) => {
+//         console.log(`Невозможно удалить карточку ${err}`);
+//       });
+//   }
 
 //edit profile/submit form
 const submitFormEditHandler = (profileData) => {
@@ -248,7 +258,7 @@ function addLikeToCard(card) {
 const picturePopup = new PicturePopup('.popup_pic');
 const addPicturePopup = new PopupWithForm('.popup_add', submitAddCardForm);
 const editProfilePopup = new PopupWithForm('.popup_edit', submitFormEditHandler);
-const popupConfirm = new PopupConfirmation('.popup_confirm', submitDeleteCard);
+const popupConfirm = new PopupConfirmation('.popup_confirm');
 
 // const editAvatarPopup = new PopupWithForm ('.popup_type_avatar', submitEditAvatarForm);
 

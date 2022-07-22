@@ -45,13 +45,11 @@ addCard(data) {
   .then(this._handleResponse)
 }
 
-deleteCard(data) {
-  return fetch(`${this._url}/cards`, {
+deleteCard(cardId) {
+  return fetch(`${this._url}/cards/${cardId}`, {
     method: 'DELETE',
-    headers: this._headers,
-    body: JSON.stringify(data)
-  })
-  .then(this._handleResponse)
+    headers: this._headers
+  }).then((response) => this._handleResponse(response))
 }
 
 addLikeCard(cardID) {
