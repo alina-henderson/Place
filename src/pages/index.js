@@ -141,7 +141,7 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
   // }
 
 
-debugger
+// debugger
   const createCard = (cardsData) => {
     const dataUserId = userInfo.getUserID();
     const newCard = new Card('.template', cardsData.name, cardsData.link, cardsData.alt, cardsData.likes, cardsData._id, dataUserId, cardsData.owner._id, () => picturePopup.open(cardsData), () => {
