@@ -157,11 +157,13 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
             });
       })
     },
+  
+    
     () => {
-      if (!card.getIsLike()) {
+      if (!newCard.getIsLike()) {
         api.addLikeCard(cardsData._id)
           .then(() => {
-            card.handleLike();
+            newCard.handleLike();
           })
           .catch((error) => {
             console.log(`Ошибка проставления лайка ${error}`);
@@ -169,7 +171,7 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
       } else {
         api.deleteLikeCard(cardsData._id)
           .then(() => {
-            card.handleLike();
+            newCard.handleLike();
           })
           .catch((error) => {
             console.log(`Ошибка удаления лайка ${error}`);
@@ -177,7 +179,7 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
       }
 
     });
-
+    console.log('newCard', newCard);
     const cardsElement = newCard.getView();
     return cardsElement;
   }
