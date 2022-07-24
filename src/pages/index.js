@@ -141,7 +141,7 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
   // }
 
 
-
+debugger
   const createCard = (cardsData) => {
     const dataUserId = userInfo.getUserID();
     const newCard = new Card('.template', cardsData.name, cardsData.link, cardsData.alt, cardsData.likes, cardsData._id, dataUserId, cardsData.owner._id, () => picturePopup.open(cardsData), () => {
@@ -157,13 +157,12 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
             });
       })
     },
-  
-    
+
     () => {
       if (!newCard.getIsLike()) {
         api.addLikeCard(cardsData._id)
           .then(() => {
-            newCard.handleLike();
+            newCard.handleLike(newCard);
           })
           .catch((error) => {
             console.log(`Ошибка проставления лайка ${error}`);
@@ -171,7 +170,7 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
       } else {
         api.deleteLikeCard(cardsData._id)
           .then(() => {
-            newCard.handleLike();
+            newCard.handleLike(newCard);
           })
           .catch((error) => {
             console.log(`Ошибка удаления лайка ${error}`);
@@ -179,7 +178,7 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
       }
 
     });
-    console.log('newCard', newCard);
+    // console.log('newCard', newCard);
     const cardsElement = newCard.getView();
     return cardsElement;
   }
