@@ -121,10 +121,29 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
   });
 
 
+  // const createCard = (cardsData) => {
+  //   const dataUserId = userInfo.getUserID();
+  //   const newCard = new Card('.template', cardsData.name, cardsData.link, cardsData.alt, cardsData.likes, cardsData._id, dataUserId, cardsData.owner._id, () => picturePopup.open(cardsData), () => {
+  //     popupConfirm.open(cardsData);
+  //     popupConfirm.setAction(() => {
+  //       api.deleteCard(cardsData._id)
+  //           .then(() => {
+  //             newCard.removeCard();
+  //             popupConfirm.close();
+  //           })
+  //           .catch((err) => {
+  //             console.log(`Невозможно удалить карточку ${err}`);
+  //           });
+  //     })
+  //   });
+  //   const cardsElement = newCard.getView();
+  //   return cardsElement;
+  // }
+
+
+
   const createCard = (cardsData) => {
-    // console.log('cardsData', cardsData);
     const dataUserId = userInfo.getUserID();
-    // console.log(dataUserId)
     const newCard = new Card('.template', cardsData.name, cardsData.link, cardsData.alt, cardsData.likes, cardsData._id, dataUserId, cardsData.owner._id, () => picturePopup.open(cardsData), () => {
       popupConfirm.open(cardsData);
       popupConfirm.setAction(() => {
@@ -137,11 +156,31 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
               console.log(`Невозможно удалить карточку ${err}`);
             });
       })
+    },
+    () => {
+      if (!card.getIsLike()) {
+        api.addLikeCard(cardsData._id)
+          .then(() => {
+            card.handleLike();
+          })
+          .catch((error) => {
+            console.log(`Ошибка проставления лайка ${error}`);
+          });
+      } else {
+        api.deleteLikeCard(cardsData._id)
+          .then(() => {
+            card.handleLike();
+          })
+          .catch((error) => {
+            console.log(`Ошибка удаления лайка ${error}`);
+          });
+      }
+
     });
+
     const cardsElement = newCard.getView();
     return cardsElement;
   }
-
 
 // User info
 const userInfo = new UserInfo({

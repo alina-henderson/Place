@@ -49,7 +49,7 @@ deleteCard(cardId) {
   return fetch(`${this._url}/cards/${cardId}`, {
     method: 'DELETE',
     headers: this._headers
-  }).then((response) => this._handleResponse(response))
+  }).then((res) => this._handleResponse(res))
 }
 
 addLikeCard(cardID) {
