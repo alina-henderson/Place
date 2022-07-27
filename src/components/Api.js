@@ -68,13 +68,13 @@ deleteLikeCard(cardID) {
   .then((res) => this._handleResponse(res));
 }
 
-// patchAvatar(avatar) {
-//   return fetch(`${this._url}/users/me/avatar`, {
-//       method: 'PATCH',
-//       headers: this._headers,
-//       body: JSON.stringify({avatar: avatar}),
-//   })
-//   .then((res) => this._handleResponse(res));
-// }
+patchAvatar(avatar) {
+  return fetch(`${this._url}/users/me/avatar`, {
+      method: 'PATCH',
+      headers: this._headers,
+      body: JSON.stringify({avatar: avatar}),
+  })
+  .then((res) => this._handleResponse(res));
+}
 
 }
