@@ -76,9 +76,9 @@ export default class Card {
     }
 
     // this._isLike ? this._like.classList.add('element__button_active') : null;
-    if (this._isLike) {
-      this._like.classList.add('element__button-like_active');
-    }
+    // if (this._isLike) {
+    //   this._like.classList.add('element__button-like_active');
+    // }
 
     this._setEventListeners();
     return this._element;
