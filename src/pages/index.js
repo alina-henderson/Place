@@ -161,8 +161,8 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
     () => {
       if (!newCard.getIsLike()) {
         api.addLikeCard(cardsData._id)
-          .then(() => {
-            newCard.handleLike(newCard);
+          .then((res) => {
+            newCard.handleLike(res);
           })
           .catch((error) => {
             console.log(`Ошибка проставления лайка ${error}`);

@@ -52,16 +52,16 @@ deleteCard(cardId) {
   }).then((res) => this._handleResponse(res))
 }
 
-addLikeCard(cardID) {
-  return fetch(`${this._url}/cards/${cardID}/likes`, {
+addLikeCard(id) {
+  return fetch(`${this._url}/cards/${id}/likes`, {
       method: 'PUT',
       headers: this._headers
   })
   .then((res) => this._handleResponse(res));
 }
 
-deleteLikeCard(cardID) {
-  return fetch(`${this._url}/cards/${cardID}/likes`, {
+deleteLikeCard(id) {
+  return fetch(`${this._url}/cards/${id}/likes`, {
       method: 'DELETE',
       headers: this._headers
   })
