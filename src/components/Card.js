@@ -12,13 +12,12 @@ export default class Card {
     this._handleCardClick = handleCardClick;
     this._handleCardDelete = handleCardDelete;
     this._handleLikeCard = handleLikeCard;
-    this._like = this._element.querySelector('.element__button-like');
 
-    // this._element = this._getTemplate();
+    this._element = this._getTemplate();
     // this._cardPic = this._element.querySelector('.element__picture');
-    // 
-    
+
     // this._trash = this._element.querySelector('.element__button-trash')
+    this._like = this._element.querySelector('.element__button-like');
   }
 
   _getTemplate() { //returns template by selector
@@ -31,13 +30,14 @@ export default class Card {
   // _likeCard = () => {
   //   this._like.classList.toggle('element__button-like_active')
   // }
+
   // debugger
   handleLike() {
-    console.log('this', this);
+    // console.log('this', this);
 
     // this._likesNumber = this._element.querySelector('.element__likes-number');
     this._element.querySelector('.element__likes-number').textContent = this._likes.length;
-    
+
     this._isLike = !this._isLike
     if (this._isLike) {
       this._like.classList.add('element__button-like_active');
@@ -63,7 +63,7 @@ export default class Card {
 
   //returns html structure
   getView() {
-    this._element = this._getTemplate();
+    // this._element = this._getTemplate();
     this._element.querySelector('.element__picture').src = this._link;
     this._element.querySelector('.element__picture').alt = this._name;
     this._element.querySelector('.element__title').textContent = this._name;
@@ -75,9 +75,9 @@ export default class Card {
       this._element.querySelector('.element__button-trash').classList.add('element__button-trash_hidden')
     }
 
-    // this._isLike ? this._like.classList.add('element__button_active') : null;
+    this._isLike ? this._like.classList.add('element__button_active') : null;
     // if (this._isLike) {
-    //   this._like.classList.add('element__button-like_active');
+    //   this._like.classList.add('card__like-button_active');
     // }
 
     this._setEventListeners();
