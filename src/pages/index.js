@@ -169,8 +169,8 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
           });
       } else {
         api.deleteLikeCard(cardsData._id)
-          .then(() => {
-            newCard.handleLike(newCard);
+          .then((res) => {
+            newCard.handleLike(res);
           })
           .catch((error) => {
             console.log(`Ошибка удаления лайка ${error}`);
