@@ -27,16 +27,9 @@ export default class Card {
 		return document.querySelector(this._selector).content.querySelector(".element").cloneNode(true);
 	}
 
-	// _likeCard = () => {
-	//   this._like.classList.toggle('element__button-like_active')
-	// }
-
-	// debugger
-	handleLike() {
-		// console.log('this', this);
-
-		this._likesNumber.textContent = this._likes.length;
-    console.log('this._likes.length', this._likes.length);
+	handleLike(item) {
+		this._likesNumber.textContent = item.likes.length;
+		console.log("this._likes.length", this._likes.length);
 
 		this._isLike = !this._isLike;
 		if (this._isLike) {
@@ -61,21 +54,16 @@ export default class Card {
 
 	//returns html structure
 	getView() {
-    this._isLike ? this._like.classList.add("element__button_active") : null;
+		this._isLike ? this._like.classList.add("element__button-like_active") : null;
 
-		// this._element = this._getTemplate();
 		this._element.querySelector(".element__picture").src = this._link;
 		this._element.querySelector(".element__picture").alt = this._name;
 		this._title.textContent = this._name;
 		this._likesNumber.textContent = this._likes.length;
 
 		if (this._ownerId !== this._userId) {
-			this._trash .classList.add("element__button-trash_hidden");
+			this._trash.classList.add("element__button-trash_hidden");
 		}
-
-		// if (this._isLike) {
-		//   this._like.classList.add('card__like-button_active');
-		// }
 
 		this._setEventListeners();
 		return this._element;

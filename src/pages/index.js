@@ -80,29 +80,6 @@ const api = new Api({
   }
 });
 
-// Promise.all([api.getUserInfo(), api.getInitialCards()])
-//   .then((user, cards) => {
-//     console.log("user", user)
-//     userInfo.setUserInfo({
-//       name: user.name,
-//       occupation: user.about,
-//       avatar: user.avatar
-//     });
-//     userInfo.setUserID(user._id);
-//     // render cards
-//     cardList.renderItems(cards);
-//   })
-//   .catch((err) => {
-//     console.log(`Невозможно загрузить информацию с сервера ${err}`);
-//   });
-
-// Promise.all([api.getUserInfo(), api.getInitialCards()])
-//   .then((values) => {
-//     console.log('values', values)
-//   })
-//   .catch((err) => {
-//     console.log(`Невозможно загрузить информацию с сервера ${err}`);
-//   });
 
 Promise.all([api.getUserInfo(), api.getInitialCards()])
   .then(([user, cards]) => {
@@ -120,25 +97,6 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
     console.log(`Невозможно загрузить информацию с сервера ${err}`);
   });
 
-
-  // const createCard = (cardsData) => {
-  //   const dataUserId = userInfo.getUserID();
-  //   const newCard = new Card('.template', cardsData.name, cardsData.link, cardsData.alt, cardsData.likes, cardsData._id, dataUserId, cardsData.owner._id, () => picturePopup.open(cardsData), () => {
-  //     popupConfirm.open(cardsData);
-  //     popupConfirm.setAction(() => {
-  //       api.deleteCard(cardsData._id)
-  //           .then(() => {
-  //             newCard.removeCard();
-  //             popupConfirm.close();
-  //           })
-  //           .catch((err) => {
-  //             console.log(`Невозможно удалить карточку ${err}`);
-  //           });
-  //     })
-  //   });
-  //   const cardsElement = newCard.getView();
-  //   return cardsElement;
-  // }
 
 
 // debugger
@@ -200,41 +158,12 @@ const getServerUserInfo = api.getUserInfo()
     console.log(`Ошибка загрузки информации о пользователе с сервера ${err}`)
   });
 
-
-// // Load cards from the server
-// const loadCards = api.getInitialCards()
-//   .then((cardsData) => {
-//     cardList.renderItems(cardsData);
-//   })
-//   .catch((err) => {
-//     console.log(`Ошибка загрузки информации о карточках с сервера ${err}`)
-//   });
-// // console.log('const result', loadCards)
-
-
-
 const cardList = new Section({
   // items: initialCards.reverse(),
   renderer: (item) => {
     cardList.addItem(createCard(item));
   }
 }, '.elements');
-
-
-// //card deletion
-// const submitDeleteCard = (card) => {
-//   console.log('card', card);
-
-
-//     api.deleteCard(card.getCardID())
-//       .then(() => {
-//         card.removeCard();
-//         popupConfirm.close();
-//       })
-//       .catch((err) => {
-//         console.log(`Невозможно удалить карточку ${err}`);
-//       });
-//   }
 
 //edit profile/submit form
 const submitFormEditHandler = (profileData) => {
@@ -249,12 +178,6 @@ const submitFormEditHandler = (profileData) => {
     })
 
 };
-//insert data from setUserInfo
-
-
-// function submitFormEditHandler(data) {
-//   userInfo.setUserInfo(data); //insert data from setUserInfo
-// }
 
 // add a new picture card
 
