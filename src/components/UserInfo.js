@@ -9,7 +9,7 @@ export default class UserInfo {
   getUserInfo() {
     const userData = {
       name: this._name.textContent,
-      occupation: this._occupation.textContent,
+      about: this._occupation.textContent,
     };
 
     return userData;
@@ -18,7 +18,7 @@ export default class UserInfo {
   setUserInfo(data) {
     // console.log('setuserinfo', data)
     this._name.textContent = data.name;
-    this._occupation.textContent = data.about;
+    this._occupation.textContent = data.occupation;
     this._avatar.src = data.avatar
   }
 

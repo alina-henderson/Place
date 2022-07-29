@@ -14,9 +14,9 @@
 
 @media screen and (max-width: 768px) {
   .profile__occupation {
-    max-width: 200px;
+    /* max-width: 200px; */
     grid-row: 2;
-    grid-column: 1 / 2;
+    grid-column: 1;
     align-self: center;
     text-align: center;
   }

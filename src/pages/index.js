@@ -88,6 +88,8 @@ const api = new Api({
 
 Promise.all([api.getUserInfo(), api.getInitialCards()])
   .then(([user, cards]) => {
+  console.log('user', user);
+  
     userInfo.setUserInfo({
       name: user.name,
       occupation: user.about,
@@ -151,14 +153,14 @@ const userInfo = new UserInfo({
 });
 
 
-// Load profile from the server
-const getServerUserInfo = api.getUserInfo()
-  .then((userData) => {
-    userInfo.setUserInfo(userData)
-  })
-  .catch((err) => {
-    console.log(`Ошибка загрузки информации о пользователе с сервера ${err}`)
-  });
+// // Load profile from the server
+// const getServerUserInfo = api.getUserInfo()
+//   .then((userData) => {
+//     userInfo.setUserInfo(userData)
+//   })
+//   .catch((err) => {
+//     console.log(`Ошибка загрузки информации о пользователе с сервера ${err}`)
+//   });
 
 const cardList = new Section({
   // items: initialCards.reverse(),
