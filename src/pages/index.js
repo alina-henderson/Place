@@ -166,13 +166,18 @@ const cardList = new Section({
   }
 }, '.elements');
 
+debugger
 //edit profile/submit form
 const submitFormEditHandler = (profileData) => {
+  buttonSaveProfile.textContent = 'Сохранение...'
   api.editProfile(profileData)
     .then((response) => {
-      userInfo.setUserInfo(profileData);
-      buttonSaveProfile.textContent = 'Сохранение...';
-      popupEdit.close();
+      userInfo.setUserInfo({
+        name: response.name,
+        occupation: response.about,
+        avatar: response.avatar
+      });
+      editProfilePopup.close();
     })
     .catch((error) => {
       console.log(`Ошибка редактирования профиля ${error}`)
@@ -193,39 +198,12 @@ const submitAddCardForm = (inputData) => {
     })
 }
 
-// submit form to change avatar
-// function submitAvatarForm (inputValues) {
-//   buttonAvatarChange.textContent = 'Сохранение...'
-//   api.patchAvatar(inputValues.url)
-//       .then((res) => {
-//           userInfo.setUserInfo ({
-//               name: res.name,
-//               occupation: res.about,
-//               avatar: res.avatar,
-//           });
-//           popupAvatar.close();
-//       })
-//       .catch((err) => {
-//           console.log(`Невозможно загрузить аватар на сервер ${err}`);
-//       })
-//       .finally(() => {
-//         buttonAvatarChange.textContent = 'Сохранить';
-//       });
-// }
-debugger
-const submitAvatarForm = (newAvatar) => {
 
+
+const submitAvatarForm = (newAvatar) => {
   api.patchAvatar(newAvatar)
     .then((response) => {
-      console.log('response', response);
-      
       userInfo.setUserInfo({
-        // nameSelector: response.name,
-        // occupationSelector: response.about,
-        // avatarSelector: response.avatar,
-        // newNameSelector: response.name,
-        // newOccupationSelector: response.about,
-        // newAvatarSelector: response.avatar
         name: response.name,
         occupation: response.about,
         avatar: response.avatar

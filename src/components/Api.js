@@ -26,7 +26,6 @@ getInitialCards() {
 
 
 editProfile(userData) {
-  console.log('userData', userData);
   return fetch(`${this._url}/users/me`, {
     method: 'PATCH',
     headers: this._headers,
