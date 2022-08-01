@@ -74,8 +74,8 @@ const buttonAvatarChange = document.querySelector ('.profile__image-cropper');
 const buttonSaveAvatar = popupAvatar.querySelector('.popup__button_avatar');
 // const formAvatar = document.querySelector ('.form_avatar');
 
-//card container
-const template = '.template';
+// //card container
+// const template = '.template';
 
 const api = new Api({
   url: 'https://mesto.nomoreparties.co/v1/cohort-42',
@@ -172,7 +172,7 @@ const submitFormEditHandler = (profileData) => {
     .then((response) => {
       userInfo.setUserInfo(profileData);
       buttonSaveProfile.textContent = 'Сохранение...';
-      PopupWithForm.close();
+      popupEdit.close();
     })
     .catch((error) => {
       console.log(`Ошибка редактирования профиля ${error}`)
@@ -217,13 +217,18 @@ const submitAvatarForm = (newAvatar) => {
 
   api.patchAvatar(newAvatar)
     .then((response) => {
+      console.log('response', response);
+      
       userInfo.setUserInfo({
         // nameSelector: response.name,
         // occupationSelector: response.about,
         // avatarSelector: response.avatar,
-        newNameSelector: response.name,
-        newOccupationSelector: response.about,
-        newAvatarSelector: response.link
+        // newNameSelector: response.name,
+        // newOccupationSelector: response.about,
+        // newAvatarSelector: response.avatar
+        name: response.name,
+        occupation: response.about,
+        avatar: response.avatar
       });
       // buttonSaveAvatar.textContent = 'Сохранение...';
       popupAvatarUpdate.close();
