@@ -69,9 +69,9 @@ const popupAdd = document.querySelector('.popup_add');
 const buttonSaveProfile = popupEdit.querySelector('.popup__button_edit');
 
 //change avatar
-// const popupAvatar = document.querySelector('.popup_avatar');
-// const buttonAvatarChange = document.querySelector ('.profile__image');
-// const buttonAvatarSave = popupAvatar.querySelector('.popup__button_avatar');
+const popupAvatar = document.querySelector('.popup_avatar');
+const buttonAvatarChange = document.querySelector ('.profile__image-cropper');
+const buttonSaveAvatar = popupAvatar.querySelector('.popup__button_avatar');
 // const formAvatar = document.querySelector ('.form_avatar');
 
 //card container
@@ -88,8 +88,6 @@ const api = new Api({
 
 Promise.all([api.getUserInfo(), api.getInitialCards()])
   .then(([user, cards]) => {
-  console.log('user', user);
-  
     userInfo.setUserInfo({
       name: user.name,
       occupation: user.about,
@@ -144,7 +142,7 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
     const cardsElement = newCard.getView();
     return cardsElement;
   }
-  debugger
+
 // User info
 const userInfo = new UserInfo({
   nameSelector: '.profile__name',
@@ -163,7 +161,6 @@ const userInfo = new UserInfo({
 //   });
 
 const cardList = new Section({
-  // items: initialCards.reverse(),
   renderer: (item) => {
     cardList.addItem(createCard(item));
   }
@@ -184,10 +181,8 @@ const submitFormEditHandler = (profileData) => {
 };
 
 // add a new picture card
-
-
 const submitAddCardForm = (inputData) => {
-  // buttonCreate.textContent = 'Создание...';
+  // buttonAdd.textContent = 'Создание...';
   api.addCard(inputData)
     .then((res) => {
       cardList.addItem(createCard(res, userInfo._id))
@@ -198,6 +193,48 @@ const submitAddCardForm = (inputData) => {
     })
 }
 
+// submit form to change avatar
+// function submitAvatarForm (inputValues) {
+//   buttonAvatarChange.textContent = 'Сохранение...'
+//   api.patchAvatar(inputValues.url)
+//       .then((res) => {
+//           userInfo.setUserInfo ({
+//               name: res.name,
+//               occupation: res.about,
+//               avatar: res.avatar,
+//           });
+//           popupAvatar.close();
+//       })
+//       .catch((err) => {
+//           console.log(`Невозможно загрузить аватар на сервер ${err}`);
+//       })
+//       .finally(() => {
+//         buttonAvatarChange.textContent = 'Сохранить';
+//       });
+// }
+debugger
+const submitAvatarForm = (newAvatar) => {
+
+  api.patchAvatar(newAvatar)
+    .then((response) => {
+      userInfo.setUserInfo({
+        // nameSelector: response.name,
+        // occupationSelector: response.about,
+        // avatarSelector: response.avatar,
+        newNameSelector: response.name,
+        newOccupationSelector: response.about,
+        newAvatarSelector: response.link
+      });
+      // buttonSaveAvatar.textContent = 'Сохранение...';
+      popupAvatarUpdate.close();
+    })
+    .catch((error) => {
+      console.log(`Ошибка обновления аватара ${error}`);
+    })
+    .finally(() => {
+      buttonSaveAvatar.textContent = 'Сохранить';
+    });
+};
 
 function addLikeToCard(card) {
   if (!card.getIsLike()) {
@@ -226,15 +263,7 @@ const picturePopup = new PicturePopup('.popup_pic');
 const addPicturePopup = new PopupWithForm('.popup_add', submitAddCardForm);
 const editProfilePopup = new PopupWithForm('.popup_edit', submitFormEditHandler);
 const popupConfirm = new PopupConfirmation('.popup_confirm');
-
-// const editAvatarPopup = new PopupWithForm ('.popup_type_avatar', submitEditAvatarForm);
-
-//open popup to confirm deletion
-// function confirmCardDelete(card) {
-//   popupConfirm.open(card);
-// }
-
-
+const popupAvatarUpdate = new PopupWithForm ('.popup_avatar', submitAvatarForm);
 
 
 
@@ -249,15 +278,20 @@ const enableValidation = ({
 
 const formEditValidator = new FormValidator(enableValidation, popupEdit);
 const formAddValidator = new FormValidator(enableValidation, popupAdd);
+const formAvatarValidator = new FormValidator(enableValidation, popupAvatar);
+
+
 formEditValidator.enableValidation();
 formAddValidator.enableValidation();
+formAvatarValidator.enableValidation();
 
 
 // EventListeners
-picturePopup.setEventListeners()
-addPicturePopup.setEventListeners()
-editProfilePopup.setEventListeners()
-popupConfirm.setEventListeners()
+picturePopup.setEventListeners();
+addPicturePopup.setEventListeners();
+editProfilePopup.setEventListeners();
+popupConfirm.setEventListeners();
+popupAvatarUpdate.setEventListeners()
 
 buttonAdd.addEventListener('click', () => {
   formAddValidator.resetValidation();
@@ -268,7 +302,13 @@ buttonEdit.addEventListener('click', () => {
   const updatedUserInfo = userInfo.getUserInfo();
   // fill out form with user's data
   nameInput.value = updatedUserInfo.name;
-  occupationInput.value = updatedUserInfo.occupation;
+  occupationInput.value = updatedUserInfo.about;
   formEditValidator.resetValidation();
   editProfilePopup.open();
+});
+
+
+buttonAvatarChange.addEventListener ('click', function() {
+  formAvatarValidator.resetValidation();
+  popupAvatarUpdate.open();
 });
