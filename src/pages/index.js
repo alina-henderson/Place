@@ -187,7 +187,7 @@ const submitFormEditHandler = (profileData) => {
 
 // add a new picture card
 const submitAddCardForm = (inputData) => {
-  // buttonAdd.textContent = 'Создание...';
+  buttonAdd.textContent = 'Создание...';
   api.addCard(inputData)
     .then((res) => {
       cardList.addItem(createCard(res, userInfo._id))
@@ -201,6 +201,8 @@ const submitAddCardForm = (inputData) => {
 
 
 const submitAvatarForm = (newAvatar) => {
+  buttonAvatarChange.textContent = 'Сохранение...';
+
   api.patchAvatar(newAvatar)
     .then((response) => {
       userInfo.setUserInfo({
@@ -208,7 +210,6 @@ const submitAvatarForm = (newAvatar) => {
         occupation: response.about,
         avatar: response.avatar
       });
-      // buttonSaveAvatar.textContent = 'Сохранение...';
       popupAvatarUpdate.close();
     })
     .catch((error) => {
