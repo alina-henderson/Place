@@ -43,39 +43,21 @@ import PopupConfirmation from '../components/PopupConfirmation.js';
 // ];
 
 
-// const element = document.querySelector('.elements');
-const popups = document.querySelectorAll('.popup');
-
 //for edit button
 const buttonEdit = document.querySelector('.profile__edit-button');
 const popupEdit = document.querySelector('.popup_edit');
-// const formEdit = popupEdit.querySelector('.form_edit');
 const nameInput = popupEdit.querySelector('.form__input_value_name');
 const occupationInput = popupEdit.querySelector('.form__input_value_occupation');
-// const nameValue = document.querySelector('.profile__name');
-// const occupationValue = document.querySelector('.profile__occupation');
 
 //for add button
 const buttonAdd = document.querySelector('.profile__add-button');
 const popupAdd = document.querySelector('.popup_add');
-// const formAdd = popupAdd.querySelector('.form_add');
-// const titleInput = popupAdd.querySelector('.form__input_value_title');
-// const linkInput = popupAdd.querySelector('.form__input_value_image-link');
-// const titleValue = document.querySelector('.element__title');
-// const linkValue = document.querySelector('.element__picture');
-// const buttonSave = popupAdd.querySelector('.popup__button_add');
 
-//button to save changes in profile data
-const buttonSaveProfile = popupEdit.querySelector('.popup__button_edit');
 
 //change avatar
 const popupAvatar = document.querySelector('.popup_avatar');
 const buttonAvatarChange = document.querySelector ('.profile__image-cropper');
-const buttonSaveAvatar = popupAvatar.querySelector('.popup__button_avatar');
-// const formAvatar = document.querySelector ('.form_avatar');
 
-// //card container
-// const template = '.template';
 
 const api = new Api({
   url: 'https://mesto.nomoreparties.co/v1/cohort-42',
@@ -201,9 +183,6 @@ const submitAvatarForm = (newAvatar) => {
     .catch((error) => {
       console.log(`Ошибка обновления аватара ${error}`);
     })
-    // .finally(() => {
-    //   buttonSaveAvatar.textContent = 'Сохранить';
-    // });
 };
 
 function addLikeToCard(card) {

@@ -5,7 +5,6 @@ export default class Card {
 		this._link = link;
 		this._alt = alt;
 		this._likes = likes;
-		// this._isLike = likes.some(item => item._id === this._userId);
 		this._cardId = id;
 		this._userId = userId;
 		this._ownerId = ownerId;
@@ -14,7 +13,7 @@ export default class Card {
 		this._handleLikeCard = handleLikeCard;
 
 		this._element = this._getTemplate();
-		// this._cardPic = this._element.querySelector(".element__picture");
+		this._image = this._element.querySelector(".element__picture");
 		this._title = this._element.querySelector(".element__title");
 		this._likesNumber = this._element.querySelector(".element__likes-number");
 		this._trash = this._element.querySelector(".element__button-trash");
@@ -56,8 +55,8 @@ export default class Card {
 	getView() {
 		this._isLike ? this._like.classList.add("element__button-like_active") : null;
 
-		this._element.querySelector(".element__picture").src = this._link;
-		this._element.querySelector(".element__picture").alt = this._name;
+		this._image.src = this._link;
+		this._image.alt = this._name;
 		this._title.textContent = this._name;
 		this._likesNumber.textContent = this._likes.length;
 
@@ -72,6 +71,6 @@ export default class Card {
 	_setEventListeners() {
 		this._like.addEventListener("click", () => this._handleLikeCard(this));
 		this._trash.addEventListener("click", () => this._handleCardDelete(this));
-		this._element.querySelector(".element__picture").addEventListener("click", () => this._handleCardClick());
+		this._image.addEventListener("click", () => this._handleCardClick());
 	}
 }
