@@ -29,5 +29,4 @@ export default class UserInfo {
   setUserID(id) {
     this._id = id;
   }
-
 }

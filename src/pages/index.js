@@ -150,26 +150,15 @@ const userInfo = new UserInfo({
   avatarSelector: '.profile__image'
 });
 
-
-// // Load profile from the server
-// const getServerUserInfo = api.getUserInfo()
-//   .then((userData) => {
-//     userInfo.setUserInfo(userData)
-//   })
-//   .catch((err) => {
-//     console.log(`Ошибка загрузки информации о пользователе с сервера ${err}`)
-//   });
-
 const cardList = new Section({
   renderer: (item) => {
     cardList.addItem(createCard(item));
   }
 }, '.elements');
 
-debugger
+
 //edit profile/submit form
 const submitFormEditHandler = (profileData) => {
-  buttonSaveProfile.textContent = 'Сохранение...'
   api.editProfile(profileData)
     .then((response) => {
       userInfo.setUserInfo({
@@ -187,7 +176,6 @@ const submitFormEditHandler = (profileData) => {
 
 // add a new picture card
 const submitAddCardForm = (inputData) => {
-  buttonAdd.textContent = 'Создание...';
   api.addCard(inputData)
     .then((res) => {
       cardList.addItem(createCard(res, userInfo._id))
@@ -201,8 +189,6 @@ const submitAddCardForm = (inputData) => {
 
 
 const submitAvatarForm = (newAvatar) => {
-  buttonAvatarChange.textContent = 'Сохранение...';
-
   api.patchAvatar(newAvatar)
     .then((response) => {
       userInfo.setUserInfo({
@@ -215,9 +201,9 @@ const submitAvatarForm = (newAvatar) => {
     .catch((error) => {
       console.log(`Ошибка обновления аватара ${error}`);
     })
-    .finally(() => {
-      buttonSaveAvatar.textContent = 'Сохранить';
-    });
+    // .finally(() => {
+    //   buttonSaveAvatar.textContent = 'Сохранить';
+    // });
 };
 
 function addLikeToCard(card) {
