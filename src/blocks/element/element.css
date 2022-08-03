@@ -1,22 +1,22 @@
 .element {
-  border: none;
-  border-radius: 10px;
-  background: #FFFFFF;
-  box-sizing: border-box;
-  overflow: hidden;
-  object-fit: cover;
-  object-position: center;
-  margin: 0 auto;
-  height: 361px;
-  position: relative;
-  cursor: pointer;
+	border: none;
+	border-radius: 10px;
+	background: #ffffff;
+	box-sizing: border-box;
+	overflow: hidden;
+	object-fit: cover;
+	object-position: center;
+	margin: 0 auto;
+	height: 361px;
+	position: relative;
+	cursor: pointer;
 }
 
 @media screen and (max-width: 320px) {
-  .element {
-    margin-bottom: 20px;
-  }
-  .element:last-child {
-    margin-bottom: 0;
-  }
+	.element {
+		margin-bottom: 20px;
+	}
+	.element:last-child {
+		margin-bottom: 0;
+	}
 }

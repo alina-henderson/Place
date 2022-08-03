@@ -12,7 +12,6 @@
 	.profile__info {
 		margin: 0 auto;
 		text-align: center;
-		grid-template-columns: max-content max-content;
 		column-gap: 10;
 		row-gap: 10px;
 		padding-top: 25px;

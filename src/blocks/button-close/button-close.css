@@ -1,29 +1,29 @@
 .button-close {
-  background-image: url("../../images/close_icon.svg");
-  background-color: transparent;
-  border: none;
-  object-fit: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  position: absolute;
-  width: 32px;
-  height: 32px;
-  right: -40px;
-  top: -40px;
-  cursor: pointer;
-  padding: 0;
+	background-image: url("../../images/close_icon.svg");
+	background-color: transparent;
+	border: none;
+	object-fit: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	position: absolute;
+	width: 32px;
+	height: 32px;
+	right: -40px;
+	top: -40px;
+	cursor: pointer;
+	padding: 0;
 }
 
 .button-close:hover {
-  opacity: 0.6;
+	opacity: 0.6;
 }
 
 @media screen and (max-width: 630px) {
-  .button-close {
-    background-image: url("../../images/close_icon_mob.svg");
-    right: 0;
-    top: -36px;
-    width: 20px;
-    height: 20px;
-  }
+	.button-close {
+		background-image: url("../../images/close_icon_mob.svg");
+		right: 0;
+		top: -36px;
+		width: 20px;
+		height: 20px;
+	}
 }

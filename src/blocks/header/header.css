@@ -1,19 +1,19 @@
 .header {
-  margin: 45px auto 40px;
-  max-width: 880px;
-  border-bottom: 1px solid rgba(84,84,84, .7);
+	margin: 45px auto 40px;
+	max-width: 880px;
+	border-bottom: 1px solid rgba(84, 84, 84, 0.7);
 }
 
 @media screen and (max-width: 934px) {
-  .header {
-    margin: 45px 27px 42px;
-  }
+	.header {
+		margin: 45px 27px 42px;
+	}
 }
 
 @media screen and (max-width: 630px) {
-  .header {
-    max-width: 320px;
-    margin: 0 auto 42px;
-    padding: 0;
-  }
+	.header {
+		max-width: 320px;
+		margin: 0 auto 42px;
+		padding: 0;
+	}
 }

@@ -1,24 +1,24 @@
 .footer {
-  max-width: 880px;
-  margin: 0 auto;
-  color: #545454;
+	max-width: 880px;
+	margin: 0 auto;
+	color: #545454;
 }
 
 @media screen and (max-width: 1024px) {
-  .footer {
-    max-width: 581px;
-  }
+	.footer {
+		max-width: 581px;
+	}
 }
 
 @media screen and (max-width: 768px) {
-  .footer {
-    padding: 0 19px;
-  }
+	.footer {
+		padding: 0 19px;
+	}
 }
 
 @media screen and (max-width: 630px) {
-  .footer {
-    max-width: 282px;
-    margin: 0;
-  }
+	.footer {
+		max-width: 282px;
+		margin: 0;
+	}
 }

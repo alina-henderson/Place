@@ -1,31 +1,31 @@
 .popup__button {
-  margin: 0 auto;
-  width: 358px;
-  height: 50px;
-  background-color: #000000;
-  color: white;
-  font-size: 18px;
-  font-weight: 400;
-  font-style: normal;
-  line-height: 22px;
-  border: none;
-  cursor: pointer;
-  border-radius: 2px;
-  position: absolute;
-  bottom: 37px;
+	margin: 0 auto;
+	width: 358px;
+	height: 50px;
+	background-color: #000000;
+	color: white;
+	font-size: 18px;
+	font-weight: 400;
+	font-style: normal;
+	line-height: 22px;
+	border: none;
+	cursor: pointer;
+	border-radius: 2px;
+	position: absolute;
+	bottom: 37px;
 }
 
 .popup__button:hover {
-  opacity: 80%;
+	opacity: 80%;
 }
 
 @media screen and (max-width: 630px) {
-  .popup__button {
-    width: 238px;
-    height: 46px;
-    font-size: 14px;
-    line-height: 17px;
-    bottom: 25px;
-    padding: 0;
-  }
+	.popup__button {
+		width: 238px;
+		height: 46px;
+		font-size: 14px;
+		line-height: 17px;
+		bottom: 25px;
+		padding: 0;
+	}
 }

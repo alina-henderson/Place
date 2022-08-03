@@ -1,14 +1,14 @@
 .footer__sign {
-  margin: 0 0 60px;
-  font-size: 18px;
-  font-weight: 400px;
-  font-style: normal;
-  line-height: 21.78px;
+	margin: 0 0 60px;
+	font-size: 18px;
+	font-weight: 400px;
+	font-style: normal;
+	line-height: 21.78px;
 }
 
 @media screen and (max-width: 320px) {
-  .footer__sign {
-    font-size: 14px;
-    line-height: 16.94px;
-  }
+	.footer__sign {
+		font-size: 14px;
+		line-height: 16.94px;
+	}
 }
