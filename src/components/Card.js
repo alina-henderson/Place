@@ -28,8 +28,6 @@ export default class Card {
 
 	handleLike(item) {
 		this._likesNumber.textContent = item.likes.length;
-		console.log("this._likes.length", this._likes.length);
-
 		this._isLike = !this._isLike;
 		if (this._isLike) {
 			this._like.classList.add("element__button-like_active");

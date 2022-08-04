@@ -2,7 +2,7 @@ import "./index.css";
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 import Section from "../components/Section.js";
-import Popup from "../components/Popup.js";
+// import Popup from "../components/Popup.js";
 import UserInfo from "../components/UserInfo.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import PicturePopup from "../components/PicturePopup.js";
@@ -67,7 +67,6 @@ const createCard = (cardsData) => {
 		() => {
 			popupConfirm.open();
 			popupConfirm.setAction(() => {
-				// buttonSubmitConfirmation.textContent = "Удаление...";
 				api
 					.deleteCard(cardsData._id)
 					.then(() => {
@@ -77,9 +76,6 @@ const createCard = (cardsData) => {
 					.catch((err) => {
 						console.log(`Невозможно удалить карточку ${err}`);
 					});
-				// .finally(() => {
-				//   buttonSubmitProfile.textContent = "Удалить";
-				// });
 			});
 		},
 
@@ -87,10 +83,8 @@ const createCard = (cardsData) => {
 			if (!newCard.getIsLike()) {
 				api
 					.addLikeCard(cardsData._id)
-					.then((res) => {
-						console.log("res", res);
-
-						newCard.handleLike(res);
+					.then((card) => {
+						newCard.handleLike(card);
 					})
 					.catch((error) => {
 						console.log(`Ошибка проставления лайка ${error}`);
@@ -98,8 +92,8 @@ const createCard = (cardsData) => {
 			} else {
 				api
 					.deleteLikeCard(cardsData._id)
-					.then((res) => {
-						newCard.handleLike(res);
+					.then((card) => {
+						newCard.handleLike(card);
 					})
 					.catch((error) => {
 						console.log(`Ошибка удаления лайка ${error}`);
@@ -132,11 +126,11 @@ const submitFormEditHandler = (profileData) => {
 	buttonSubmitProfile.textContent = "Сохранение...";
 	api
 		.editProfile(profileData)
-		.then((response) => {
+		.then((user) => {
 			userInfo.setUserInfo({
-				name: response.name,
-				occupation: response.about,
-				avatar: response.avatar,
+				name: user.name,
+				occupation: user.about,
+				avatar: user.avatar,
 			});
 			editProfilePopup.close();
 		})

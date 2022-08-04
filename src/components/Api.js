@@ -17,7 +17,7 @@ export default class Api {
 	getInitialCards() {
 		return fetch(`${this._url}/cards`, {
 			headers: this._headers,
-		}).then((res) => this._handleResponse(res));
+		}).then((card) => this._handleResponse(card));
 	}
 
 	editProfile(userData) {
@@ -28,7 +28,7 @@ export default class Api {
 				name: userData.name,
 				about: userData.occupation,
 			}),
-		}).then((res) => this._handleResponse(res));
+		}).then((user) => this._handleResponse(user));
 	}
 
 	addCard(data) {
@@ -43,21 +43,21 @@ export default class Api {
 		return fetch(`${this._url}/cards/${cardId}`, {
 			method: "DELETE",
 			headers: this._headers,
-		}).then((res) => this._handleResponse(res));
+		}).then((card) => this._handleResponse(card));
 	}
 
 	addLikeCard(id) {
 		return fetch(`${this._url}/cards/${id}/likes`, {
 			method: "PUT",
 			headers: this._headers,
-		}).then((res) => this._handleResponse(res));
+		}).then((card) => this._handleResponse(card));
 	}
 
 	deleteLikeCard(id) {
 		return fetch(`${this._url}/cards/${id}/likes`, {
 			method: "DELETE",
 			headers: this._headers,
-		}).then((res) => this._handleResponse(res));
+		}).then((card) => this._handleResponse(card));
 	}
 
 	patchAvatar(userData) {
@@ -67,6 +67,6 @@ export default class Api {
 			body: JSON.stringify({
 				avatar: userData.link,
 			}),
-		}).then((response) => this._handleResponse(response));
+		}).then((userData) => this._handleResponse(userData));
 	}
 }
