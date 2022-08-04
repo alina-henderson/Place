@@ -63,7 +63,7 @@ const createCard = (cardsData) => {
 		cardsData._id,
 		dataUserId,
 		cardsData.owner._id,
-		() => picturePopup.open(),
+		() => picturePopup.open(newCard),
 		() => {
 			popupConfirm.open();
 			popupConfirm.setAction(() => {
@@ -144,12 +144,16 @@ const submitFormEditHandler = (profileData) => {
 
 // add a new picture card
 const submitAddCardForm = (inputData) => {
+	const card = {
+		name: inputData.name,
+		link: inputData.link,
+	};
 	buttonSubmitPicture.textContent = "Создание...";
 
 	api
-		.addCard(inputData)
-		.then((res) => {
-			cardList.addItem(createCard(res, userInfo._id));
+		.addCard(card)
+		.then((card) => {
+			cardList.addItem(createCard(card));
 			addPicturePopup.close();
 		})
 		.catch((err) => {

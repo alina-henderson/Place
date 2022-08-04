@@ -8,9 +8,11 @@ export default class PicturePopup extends Popup {
   }
 
   open(data) {
-    this._popupLink.alt = data.name;
-    this._popupLink.src = data.link;
-    this._popupSign.textContent = data.name;
+    console.log("data", data);
+    
+    this._popupLink.alt = data._name;
+    this._popupLink.src = data._link;
+    this._popupSign.textContent = data._name;
     super.open();
   }
 }
