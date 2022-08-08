@@ -31,7 +31,7 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
 		cardList.renderItems(cards.reverse());
 	})
 	.catch((err) => {
-		console.log(`Невозможно загрузить информацию с сервера ${err}`);
+		console.log(`Unable to load data from the server ${err}`);
 	});
 
 const createCard = (cardsData) => {
@@ -56,7 +56,7 @@ const createCard = (cardsData) => {
 						popupConfirm.close();
 					})
 					.catch((err) => {
-						console.log(`Невозможно удалить карточку ${err}`);
+						console.log(`Unable to delete the card ${err}`);
 					});
 			});
 		},
@@ -69,7 +69,7 @@ const createCard = (cardsData) => {
 						newCard.handleLike(card);
 					})
 					.catch((error) => {
-						console.log(`Ошибка проставления лайка ${error}`);
+						console.log(`Error: unable to add "Like" ${error}`);
 					});
 			} else {
 				api
@@ -78,7 +78,7 @@ const createCard = (cardsData) => {
 						newCard.handleLike(card);
 					})
 					.catch((error) => {
-						console.log(`Ошибка удаления лайка ${error}`);
+						console.log(`Error: unable to remove "Like" ${error}`);
 					});
 			}
 		}
@@ -105,7 +105,7 @@ const cardList = new Section(
 
 //edit profile/submit form
 const submitFormEditHandler = (profileData) => {
-	buttonSubmitProfile.textContent = "Сохранение...";
+	buttonSubmitProfile.textContent = "Saving...";
 	api
 		.editProfile(profileData)
 		.then((user) => {
@@ -117,10 +117,10 @@ const submitFormEditHandler = (profileData) => {
 			popupEditProfile.close();
 		})
 		.catch((error) => {
-			console.log(`Ошибка редактирования профиля ${error}`);
+			console.log(`Error editing profile ${error}`);
 		})
 		.finally(() => {
-			buttonSubmitProfile.textContent = "Сохранить";
+			buttonSubmitProfile.textContent = "Save";
 		});
 };
 
@@ -130,7 +130,7 @@ const submitAddCardForm = (inputData) => {
 		name: inputData.name,
 		link: inputData.link,
 	};
-	buttonSubmitPicture.textContent = "Создание...";
+	buttonSubmitPicture.textContent = "Creating...";
 
 	api
 		.addCard(card)
@@ -139,15 +139,15 @@ const submitAddCardForm = (inputData) => {
 			popupAddPicture.close();
 		})
 		.catch((err) => {
-			console.log(`Невозможно добавить карточку ${err}`);
+			console.log(`Unable to add the card ${err}`);
 		})
 		.finally(() => {
-			buttonSubmitPicture.textContent = "Создать";
+			buttonSubmitPicture.textContent = "Create";
 		});
 };
 
 const submitAvatarForm = (newAvatar) => {
-	buttonSubmitAvatar.textContent = "Сохранение...";
+	buttonSubmitAvatar.textContent = "Saving...";
 
 	api
 		.patchAvatar(newAvatar)
@@ -160,34 +160,12 @@ const submitAvatarForm = (newAvatar) => {
 			popupAvatarUpdate.close();
 		})
 		.catch((error) => {
-			console.log(`Ошибка обновления аватара ${error}`);
+			console.log(`Error: unable to update the avatar ${error}`);
 		})
 		.finally(() => {
-			buttonSubmitAvatar.textContent = "Сохранить";
+			buttonSubmitAvatar.textContent = "Save";
 		});
 };
-
-function addLikeToCard(card) {
-	if (!card.getIsLike()) {
-		api
-			.handleLike(card.id)
-			.then((card) => {
-				card.likeCard(card);
-			})
-			.catch((err) => {
-				console.log(`Невозможно поставить лайк карточке ${err}`);
-			});
-	} else {
-		api
-			.deleteLikeCard(card.id)
-			.then((card) => {
-				card.likeCard(card);
-			})
-			.catch((err) => {
-				console.log(`Невозможно убрать лайк у карточки ${err}`);
-			});
-	}
-}
 
 // each popup gets its own sample from PopupWithForm
 const picturePopup = new PicturePopup(".popup_pic");
